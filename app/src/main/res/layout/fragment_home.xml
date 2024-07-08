@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/Green_1_300">
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nested_scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <FrameLayout
+                android:id="@+id/home_half_top_bg_iv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_half_top"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/home_profile_iv"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/ic_logo_profile"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/home_profile_name_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="Hi, 효재"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/home_profile_iv"
+                app:layout_constraintStart_toEndOf="@id/home_profile_iv"
+                app:layout_constraintTop_toTopOf="@id/home_profile_iv" />
+
+            <FrameLayout
+                android:id="@+id/home_logo_image_cl"
+                android:layout_width="253dp"
+                android:layout_height="232dp"
+                android:layout_marginStart="34dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="34dp"
+                android:src="@drawable/ic_logo_image"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/home_profile_iv">
+
+                <ImageView
+                    android:id="@+id/home_logo_image_iv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_logo_image" />
+
+            </FrameLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:layout_marginEnd="60dp"
+                android:background="@drawable/ic_speech_bubble"
+                android:gravity="center"
+                android:paddingTop="12dp"
+                android:paddingBottom="20dp"
+                android:text="Hi, 효재"
+                android:textColor="@color/white"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/home_logo_image_cl" />
+
+            <TextView
+                android:id="@+id/home_attendance_check_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/attendance_check"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/home_logo_image_cl" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/home_days_rv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="12dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintStart_toStartOf="@id/home_attendance_check_tv"
+                app:layout_constraintTop_toBottomOf="@id/home_attendance_check_tv" />
+
+            <EditText
+                android:id="@+id/home_search_here_et"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:layout_marginTop="28dp"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/rounded_rectangle_26dp"
+                android:drawableEnd="@drawable/ic_search"
+                android:hint="@string/search_here"
+                android:paddingStart="26dp"
+                android:paddingEnd="26dp"
+                android:textColorHint="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/home_days_rv"
+                app:layout_constraintTop_toBottomOf="@id/home_days_rv" />
+
+            <TextView
+                android:id="@+id/home_best_search_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:text="@string/best_search"
+                android:textColor="@color/Green_2_300"
+                app:layout_constraintStart_toStartOf="@id/home_search_here_et"
+                app:layout_constraintTop_toBottomOf="@id/home_search_here_et" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/home_best_word_rv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="28dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintStart_toStartOf="@id/home_best_search_tv"
+                app:layout_constraintTop_toBottomOf="@id/home_best_search_tv" />
+            <TextView
+                android:id="@+id/home_recommend_word_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:text="@string/recomend_words"
+                android:textColor="@color/Green_2_300"
+                app:layout_constraintStart_toStartOf="@id/home_best_word_rv"
+                app:layout_constraintTop_toBottomOf="@id/home_best_word_rv" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/home_word_card_rv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintStart_toStartOf="@id/home_recommend_word_tv"
+                app:layout_constraintTop_toBottomOf="@id/home_recommend_word_tv" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
