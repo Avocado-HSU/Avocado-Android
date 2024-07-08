@@ -2,14 +2,24 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.Avocado_Android" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-<!--        <item name="colorPrimary">@color/primary</item>-->
+        <item name="colorPrimary">@color/Green_1_300</item>
+        <item name="android:colorBackground">@color/white</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+
+        <!-- Status Bar -->
+        <item name="android:windowLightStatusBar">true</item> <!-- 상태 바 아이콘(true: 검정 / false: 흰색) -->
         <item name="android:statusBarColor">@color/white</item>
-        <item name="android:windowBackground">@color/white</item>
-        <item name="android:windowLightStatusBar">true</item>   <!-- 상태바 아이콘(true: 검정 / false: 흰색) -->
+
+        <!-- 커스텀 폰트 -->
+        <item name="android:textViewStyle">@style/customEditTextFontStyle</item>
+        <item name="android:editTextStyle">@style/customEditTextFontStyle</item>
+        <item name="android:buttonStyle">@style/customButtonFontStyle</item>
     </style>
 
     <style name="Theme.Avocado_Android" parent="Base.Theme.Avocado_Android" />
 
+    <!-- 스플래시 -->
 <!--    <style name="AppTheme.Splash" parent="Theme.Avocado_Android">-->
 <!--        <item name="windowSplashScreenBackground"></item>-->
 <!--        <item name="windowSplashScreenAnimatedIcon"></item>-->

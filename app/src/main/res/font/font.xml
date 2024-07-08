@@ -6,6 +6,7 @@
     <font
         android:font="@font/pretendard_medium"
         android:fontStyle="normal"
+        android:fontWeight="300"
         app:font="@font/pretendard_medium"
         app:fontStyle="normal"
         app:fontWeight="300"/>
@@ -14,6 +15,7 @@
     <font
         android:font="@font/pretendard_semibold"
         android:fontStyle="normal"
+        android:fontWeight="400"
         app:font="@font/pretendard_semibold"
         app:fontStyle="normal"
         app:fontWeight="400"/>
@@ -22,6 +24,7 @@
     <font
         android:font="@font/pretendard_bold"
         android:fontStyle="normal"
+        android:fontWeight="500"
         app:font="@font/pretendard_bold"
         app:fontStyle="normal"
         app:fontWeight="500"/>
