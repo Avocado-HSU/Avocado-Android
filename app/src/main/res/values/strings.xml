@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Avocado_Android</string>
+    <string name="attendance_check">%d월 출석체크</string>
+    <string name="search_here">Search Here</string>
+    <string name="best_search">인기 검색어</string>
+    <string name="recomend_words">추천 단어</string>
 </resources>
