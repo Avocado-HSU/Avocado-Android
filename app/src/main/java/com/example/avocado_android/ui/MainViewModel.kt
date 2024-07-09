@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.example.avocado_android.R
 import com.example.avocado_android.domain.model.HomeDaysItem
 
 class MainViewModel : ViewModel() {
@@ -13,13 +14,13 @@ class MainViewModel : ViewModel() {
     init {
         // 초기 데이터 설정
         _checkedDayItems.value = listOf(
-            HomeDaysItem(0, "MON", null),
-            HomeDaysItem(1, "TUE", null),
-            HomeDaysItem(2, "WED", null),
-            HomeDaysItem(3, "THU", null),
-            HomeDaysItem(4, "FRI", null),
-            HomeDaysItem(5, "SAT", null),
-            HomeDaysItem(6, "SUN", null),
+            HomeDaysItem(0, "MON", R.drawable.ic_circle_days_32dp),
+            HomeDaysItem(1, "TUE", R.drawable.ic_circle_days_32dp),
+            HomeDaysItem(2, "WED", R.drawable.ic_circle_days_32dp),
+            HomeDaysItem(3, "THU", R.drawable.ic_circle_days_32dp),
+            HomeDaysItem(4, "FRI", R.drawable.ic_circle_days_32dp),
+            HomeDaysItem(5, "SAT", R.drawable.ic_circle_days_32dp),
+            HomeDaysItem(6, "SUN", R.drawable.ic_circle_days_32dp),
         )
     }
 
