@@ -21,8 +21,8 @@
             app:destination="@id/homeFragment" />
     </fragment>
     <fragment
-        android:id="@+id/quizFragment"
-        android:name="com.example.avocado_android.ui.quiz.QuizFragment"
+        android:id="@+id/chatBotFragment"
+        android:name="com.example.avocado_android.ui.ChatBot.ChatBotFragment"
         android:label="QuizFragment" >
         <action
             android:id="@+id/action_quizFragment_to_homeFragment"

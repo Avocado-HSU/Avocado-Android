@@ -11,7 +11,7 @@
         android:title="Home"/>
 
     <item
-        android:id="@+id/quizFragment"
+        android:id="@+id/chatBotFragment"
         android:icon="@drawable/nav_quiz_selector"
         android:title="Quiz"/>
 </menu>

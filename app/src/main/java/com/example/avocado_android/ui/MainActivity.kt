@@ -1,23 +1,14 @@
 package com.example.avocado_android.ui
 
-import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.replace
 import androidx.navigation.NavController
-import androidx.navigation.Navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.setupWithNavController
 import com.example.avocado_android.R
 import com.example.avocado_android.base.BaseActivity
 import com.example.avocado_android.databinding.ActivityMainBinding
 import com.example.avocado_android.ui.home.HomeFragment
 import com.example.avocado_android.ui.library.LibraryFragment
-import com.example.avocado_android.ui.quiz.QuizFragment
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.example.avocado_android.ui.ChatBot.ChatBotFragment
 
 class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
@@ -25,7 +16,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
     private var homeFragment: HomeFragment? = null
     private var libraryFragment: LibraryFragment? = null
-    private var quizFragment:QuizFragment? = null
+    private var chatBotFragment:ChatBotFragment? = null
 
     override fun setLayout() {
         setBottomNavigation()
@@ -45,9 +36,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
                         homeFragment = HomeFragment()
                         addFragment(homeFragment!!)
                     }
-                    if (homeFragment != null) supportFragmentManager.beginTransaction().apply { show(homeFragment!!).commit() }
-                    if (libraryFragment != null) supportFragmentManager.beginTransaction().apply { hide(libraryFragment!!).commit() }
-                    if (quizFragment != null) supportFragmentManager.beginTransaction().apply { hide(quizFragment!!).commit() }
+                    homeFragment?.let { supportFragmentManager.beginTransaction().apply { show(it).commit() } }
+                    libraryFragment?.let { supportFragmentManager.beginTransaction().apply { hide(it).commit() } }
+                    chatBotFragment?.let { supportFragmentManager.beginTransaction().apply { hide(it).commit() } }
+
                     return@setOnItemSelectedListener true
                 }
                 R.id.libraryFragment -> {
@@ -55,19 +47,21 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
                         libraryFragment = LibraryFragment()
                         addFragment(libraryFragment!!)
                     }
-                    if (libraryFragment != null) supportFragmentManager.beginTransaction().apply { show(libraryFragment!!).commit() }
-                    if (homeFragment != null) supportFragmentManager.beginTransaction().apply { hide(homeFragment!!).commit() }
-                    if (quizFragment != null) supportFragmentManager.beginTransaction().apply { hide(quizFragment!!).commit() }
+                    libraryFragment?.let { supportFragmentManager.beginTransaction().apply { show(it).commit() } }
+                    homeFragment?.let { supportFragmentManager.beginTransaction().apply { hide(it).commit() } }
+                    chatBotFragment?.let { supportFragmentManager.beginTransaction().apply { hide(it).commit() } }
+
                     return@setOnItemSelectedListener true
                 }
-                R.id.quizFragment -> {
-                    if (quizFragment == null) {
-                        quizFragment = QuizFragment()
-                        addFragment(quizFragment!!)
+                R.id.chatBotFragment -> {
+                    if (chatBotFragment == null) {
+                        chatBotFragment = ChatBotFragment()
+                        addFragment(chatBotFragment!!)
                     }
-                    if (quizFragment != null) supportFragmentManager.beginTransaction().apply { show(quizFragment!!).commit() }
-                    if (homeFragment != null) supportFragmentManager.beginTransaction().apply { hide(homeFragment!!).commit() }
-                    if (libraryFragment != null) supportFragmentManager.beginTransaction().apply { hide(libraryFragment!!).commit() }
+                    chatBotFragment?.let { supportFragmentManager.beginTransaction().apply { show(it).commit() } }
+                    homeFragment?.let { supportFragmentManager.beginTransaction().apply { hide(it).commit() } }
+                    libraryFragment?.let { supportFragmentManager.beginTransaction().apply { hide(it).commit() } }
+
                     return@setOnItemSelectedListener true
                 }
                 else -> return@setOnItemSelectedListener true
