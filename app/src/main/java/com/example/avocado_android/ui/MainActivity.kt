@@ -20,7 +20,7 @@ import com.example.avocado_android.ui.ChatBot.ChatBotFragment
 class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
     private lateinit var navController: NavController
-
+    private lateinit var viewModel : MainViewModel
     private var homeFragment: HomeFragment? = null
     private var libraryFragment: LibraryFragment? = null
     private var chatBotFragment:ChatBotFragment? = null
