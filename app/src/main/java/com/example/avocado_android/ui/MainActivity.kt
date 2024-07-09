@@ -5,26 +5,23 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation.findNavController
 import com.example.avocado_android.R
+import com.example.avocado_android.base.BaseActivity
 import com.example.avocado_android.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class MainActivity : AppCompatActivity() {
-    lateinit var binding: ActivityMainBinding
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
-        // 바텀 네비게이션 아이템의 원래 색깔 나오게
+    private lateinit var viewModel: MainViewModel
+
+    override fun setLayout() {
+        bindingViewModel()
         binding.mainNavBar.itemIconTintList = null
-
+    }
+    // 바텀 네비게이션 아이템의 원래 색깔 나오게
+    private fun bindingViewModel(){
+        viewModel = ViewModelProvider(this)[MainViewModel::class.java]
     }
 }
