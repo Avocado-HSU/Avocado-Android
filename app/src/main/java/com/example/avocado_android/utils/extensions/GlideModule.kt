@@ -6,22 +6,26 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.annotation.GlideModule
 import com.bumptech.glide.module.AppGlideModule
 
-// Glide -> GlideApp로 사용
 @GlideModule
-class GlideModule: AppGlideModule() {
-    @BindingAdapter(value = ["loadUrl"])
-    fun ImageView.loadUrl(url: String?) {
+class MyAppGlideModule : AppGlideModule()
+
+object GlideBindingAdapters {
+
+    @JvmStatic
+    @BindingAdapter("loadUrl")
+    fun loadUrl(view: ImageView, url: String?) {
         url?.let {
-            Glide.with(this.context)
+            Glide.with(view.context)
                 .load(url)
-                .into(this)
-        }
-    }
-    @BindingAdapter("drawableRes")
-    fun ImageView.setDrawableRes(drawableRes: Int?) {
-        drawableRes?.let {
-            this.setImageResource(it)
+                .into(view)
         }
     }
 
+    @JvmStatic
+    @BindingAdapter("drawableRes")
+    fun setDrawableRes(view: ImageView, drawableRes: Int?) {
+        drawableRes?.let {
+            view.setImageResource(it)
+        }
+    }
 }
