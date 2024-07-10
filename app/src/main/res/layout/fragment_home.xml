@@ -117,7 +117,6 @@
                     android:foregroundGravity="center"
                     android:clipToPadding="false"
                     android:orientation="horizontal"
-                    tools:listitem="@layout/item_home_checked_days"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@id/home_attendance_check_tv"
