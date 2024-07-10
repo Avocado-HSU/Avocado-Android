@@ -12,16 +12,20 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home)  
     private val viewModel : MainViewModel by activityViewModels()
     private lateinit var checkDaysAdapter: CheckDaysAdapter
     private lateinit var bestChoiceAdapter: BestChoiceAdapter
+    private lateinit var recommendDataAdapter: RecommendedWordAdapter
+
     override fun setLayout() {
         initAdapter()
     }
+
     private fun initAdapter() {
         checkDaysAdapter = CheckDaysAdapter()
         bestChoiceAdapter = BestChoiceAdapter()
+        recommendDataAdapter = RecommendedWordAdapter()
 
         binding.homeDaysRv.adapter = checkDaysAdapter
         binding.homeBestWordRv.adapter = bestChoiceAdapter
-
+        binding.homeWordCardRv.adapter = recommendDataAdapter
 
         viewModel.homeDaysItem.observe(viewLifecycleOwner) { newList ->
             checkDaysAdapter.submitList(newList)
@@ -29,5 +33,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home)  
         viewModel.bestChoiceItem.observe(viewLifecycleOwner) { newList ->
             bestChoiceAdapter.submitList(newList)
         }
+        viewModel.recommendedItem.observe(viewLifecycleOwner){newList ->
+            recommendDataAdapter.submitList(newList)
+        }
+
     }
 }
