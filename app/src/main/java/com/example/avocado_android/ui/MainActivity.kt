@@ -14,13 +14,15 @@ import com.example.avocado_android.R
 import com.example.avocado_android.base.BaseActivity
 import com.example.avocado_android.databinding.ActivityMainBinding
 import com.example.avocado_android.ui.home.HomeFragment
-import com.example.avocado_android.ui.library.LibraryFragment
 import com.example.avocado_android.ui.ChatBot.ChatBotFragment
+import com.example.avocado_android.ui.library.LibraryFragment
+import com.example.avocado_android.ui.search.SearchViewModel
 
 class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
     private lateinit var navController: NavController
     private lateinit var viewModel : MainViewModel
+    private lateinit var searchViewModel : SearchViewModel
     private var homeFragment: HomeFragment? = null
     private var libraryFragment: LibraryFragment? = null
     private var chatBotFragment:ChatBotFragment? = null
@@ -92,5 +94,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     // 바텀 네비게이션 아이템의 원래 색깔 나오게
     private fun bindingViewModel(){
         viewModel = ViewModelProvider(this)[MainViewModel::class.java]
+        searchViewModel = ViewModelProvider(this)[SearchViewModel::class.java]
     }
 }
