@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-<!--    <data>-->
-<!--        <variable-->
-<!--            name="search_recent"-->
-<!--            type="" />-->
-<!--        -->
-<!--    </data>-->
+    <data>
+        <variable
+            name="searchRecent"
+            type="com.example.avocado_android.domain.model.RecentWordItem" />
+
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -18,7 +18,7 @@
             android:id="@+id/item_recent_word_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="단어"
+            android:text="@{searchRecent.word}"
             style="@style/body_regular_14"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>
