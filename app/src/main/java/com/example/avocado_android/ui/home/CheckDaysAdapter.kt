@@ -10,19 +10,6 @@ import com.example.avocado_android.R
 import com.example.avocado_android.databinding.ItemHomeCheckedDaysBinding
 import com.example.avocado_android.domain.model.HomeDaysItem
 
-class HomeDaysDiffCallback(
-    private val oldList: List<HomeDaysItem>,
-    private val newList: List<HomeDaysItem>
-) : DiffUtil.Callback() {
-
-    override fun getOldListSize(): Int = oldList.size
-
-    override fun getNewListSize(): Int = newList.size
-
-    override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int) = oldList[oldItemPosition].id == newList[newItemPosition].id
-
-    override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int)= oldList[oldItemPosition] == newList[newItemPosition]
-}
 class CheckDaysAdapter : ListAdapter<HomeDaysItem, CheckDaysAdapter.HomeDaysViewHolder>(HomeDaysDiffCallback()) {
 
     inner class HomeDaysViewHolder(private val binding: ItemHomeCheckedDaysBinding) : RecyclerView.ViewHolder(binding.root) {
