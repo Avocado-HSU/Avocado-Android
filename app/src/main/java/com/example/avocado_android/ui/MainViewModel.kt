@@ -11,6 +11,10 @@ class MainViewModel : ViewModel() {
     private val _checkedDayItems = MutableLiveData<List<HomeDaysItem>>()
     val homeDaysItem: LiveData<List<HomeDaysItem>> get() = _checkedDayItems
 
+    private val _bestChoiceItem = MutableLiveData<List<String>>()
+    val bestChoiceItem: LiveData<List<String>> get() = _bestChoiceItem
+
+
     init {
         // 초기 데이터 설정
         _checkedDayItems.value = listOf(
@@ -21,6 +25,14 @@ class MainViewModel : ViewModel() {
             HomeDaysItem(4, "FRI", R.drawable.ic_circle_days_32dp),
             HomeDaysItem(5, "SAT", R.drawable.ic_circle_days_32dp),
             HomeDaysItem(6, "SUN", R.drawable.ic_circle_days_32dp),
+        )
+
+
+        _bestChoiceItem.value = listOf(
+            "Technology",
+            "Nature",
+            "Food",
+            "Responsive"
         )
     }
 
