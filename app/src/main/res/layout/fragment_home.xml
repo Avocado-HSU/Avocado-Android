@@ -12,7 +12,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/Green_1_300">
+        android:background="@color/Yellow">
 
         <androidx.core.widget.NestedScrollView
             android:id="@+id/nested_scroll_view"
@@ -110,22 +110,27 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/home_days_rv"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
+                    android:layout_marginEnd="24dp"
+                    android:foregroundGravity="center"
+                    android:clipToPadding="false"
                     android:orientation="horizontal"
-                    tools:listitem="@layout/item_home_checked_days"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@id/home_attendance_check_tv"
                     app:layout_constraintTop_toBottomOf="@id/home_attendance_check_tv"
-                    app:listData="@{checkedDaysViewModel.homeDaysItem}" />
+                    app:listData="@{checkedDaysViewModel.homeDaysItem}"
+                    tools:listitem="@layout/item_home_checked_days" />
 
                 <EditText
                     android:id="@+id/home_search_here_et"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginTop="28dp"
                     android:layout_marginEnd="24dp"
+                    android:layout_marginStart="24dp"
                     android:background="@drawable/rounded_rectangle_26dp"
                     android:drawableEnd="@drawable/ic_search"
                     android:hint="@string/search_here"
@@ -133,7 +138,7 @@
                     android:paddingEnd="26dp"
                     android:textColorHint="@color/white"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@id/home_days_rv"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/home_days_rv" />
 
                 <TextView
@@ -148,9 +153,10 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/home_best_word_rv"
+                    tools:listitem="@layout/item_home_best_search"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="28dp"
+                    android:layout_marginTop="12dp"
                     android:orientation="horizontal"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -172,6 +178,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="28dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintStart_toStartOf="@id/home_recommend_word_tv"
                     app:layout_constraintTop_toBottomOf="@id/home_recommend_word_tv" />
