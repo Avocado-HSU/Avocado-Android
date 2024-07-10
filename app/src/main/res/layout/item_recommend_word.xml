@@ -1,20 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginBottom="8dp"
-    android:background="@drawable/shape_square_corner_radius_20dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout>
 
-    <TextView
-        android:layout_width="312dp"
+    <data>
+        <variable
+            name="recommendedData"
+            type="com.example.avocado_android.domain.model.HomeRecommendedItem" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
         android:layout_height="76dp"
-        android:textSize="16sp"
-        android:text="dd"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/shape_square_corner_radius_20dp">
+
+        <TextView
+            android:id="@+id/item_recommend_word_word_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="8dp"
+            android:text="@{recommendedData.word}"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/item_recommend_word_meaning_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:text="@{recommendedData.meaning}"
+            app:layout_constraintBottom_toBottomOf="@id/item_recommend_word_word_tv"
+            app:layout_constraintStart_toEndOf="@id/item_recommend_word_word_tv" />
+
+        <TextView
+            android:id="@+id/item_recommend_word_description_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="@{recommendedData.description}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/item_recommend_word_word_tv" />
+
+        <ImageButton
+            android:id="@+id/item_recommend_word_next_ib"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="20dp"
+            android:backgroundTint="@color/Green_1_300"
+            android:src="@drawable/ic_word_reco_next"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
