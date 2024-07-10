@@ -146,6 +146,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="28dp"
+                    android:textSize="20dp"
                     android:text="@string/best_search"
                     android:textColor="@color/Green_2_300"
                     app:layout_constraintStart_toStartOf="@id/home_search_here_et"
@@ -169,6 +170,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="28dp"
                     android:text="@string/recomend_words"
+                    android:textSize="20dp"
                     android:textColor="@color/Green_2_300"
                     app:layout_constraintStart_toStartOf="@id/home_best_word_rv"
                     app:layout_constraintTop_toBottomOf="@id/home_best_word_rv" />
@@ -180,6 +182,7 @@
                     android:layout_marginTop="28dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    tools:listitem="@layout/item_recommend_word"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintStart_toStartOf="@id/home_recommend_word_tv"
                     app:layout_constraintTop_toBottomOf="@id/home_recommend_word_tv" />
