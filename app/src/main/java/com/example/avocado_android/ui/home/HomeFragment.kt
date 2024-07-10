@@ -7,6 +7,7 @@ import com.example.avocado_android.R
 import com.example.avocado_android.base.BaseFragment
 import com.example.avocado_android.databinding.FragmentHomeBinding
 import com.example.avocado_android.ui.MainViewModel
+import com.example.avocado_android.ui.search.SearchFragment
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home)  {
     private val viewModel : MainViewModel by activityViewModels()
@@ -16,6 +17,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home)  
 
     override fun setLayout() {
         initAdapter()
+        setSearchBar()
     }
 
     private fun initAdapter() {
@@ -37,5 +39,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home)  
             recommendDataAdapter.submitList(newList)
         }
 
+    }
+
+    private fun setSearchBar() {
+        binding.homeSearchHereEt.setOnClickListener {
+            requireActivity().supportFragmentManager.beginTransaction()
+                .add(R.id.main_fragment_container_view, SearchFragment())
+                .commitAllowingStateLoss()
+        }
     }
 }
