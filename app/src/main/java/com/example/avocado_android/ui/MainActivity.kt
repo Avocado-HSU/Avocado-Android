@@ -3,6 +3,13 @@ package com.example.avocado_android.ui
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
+import android.os.Bundle
+import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation.findNavController
 import com.example.avocado_android.R
 import com.example.avocado_android.base.BaseActivity
 import com.example.avocado_android.databinding.ActivityMainBinding
@@ -13,13 +20,14 @@ import com.example.avocado_android.ui.ChatBot.ChatBotFragment
 class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
     private lateinit var navController: NavController
-
+    private lateinit var viewModel : MainViewModel
     private var homeFragment: HomeFragment? = null
     private var libraryFragment: LibraryFragment? = null
     private var chatBotFragment:ChatBotFragment? = null
-
     override fun setLayout() {
         setBottomNavigation()
+        bindingViewModel()
+        binding.mainNavBar.itemIconTintList = null
     }
 
     private fun setBottomNavigation() {
@@ -81,4 +89,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
             .commit()
     }
 
+    // 바텀 네비게이션 아이템의 원래 색깔 나오게
+    private fun bindingViewModel(){
+        viewModel = ViewModelProvider(this)[MainViewModel::class.java]
+    }
 }
