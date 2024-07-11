@@ -11,21 +11,25 @@
         android:label="HomeFragment"
         tools:layout="@layout/fragment_home">
 
+        <action
+            android:id="@+id/action_homeFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
     </fragment>
     <fragment
         android:id="@+id/libraryFragment"
         android:name="com.example.avocado_android.ui.library.LibraryFragment"
-        android:label="LibraryFragment" >
-        <action
-            android:id="@+id/action_libraryFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+        android:label="LibraryFragment"
+        tools:layout="@layout/fragment_library">
     </fragment>
     <fragment
         android:id="@+id/chatBotFragment"
         android:name="com.example.avocado_android.ui.ChatBot.ChatBotFragment"
-        android:label="QuizFragment" >
-        <action
-            android:id="@+id/action_quizFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+        android:label="ChatBotFragment"
+        tools:layout="@layout/fragment_chatbot">
     </fragment>
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.example.avocado_android.ui.search.SearchFragment"
+        android:label="SearchFragment"
+        tools:layout="@layout/fragment_search"/>
 </navigation>
