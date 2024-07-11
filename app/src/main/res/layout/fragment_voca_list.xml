@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/Green_2_300"
+        tools:context=".ui.vocalist.VocaListFragment">
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/vocalist_nested_scroll_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/vocalist_back_iv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_back_btn"
+                    android:layout_marginTop="37dp"
+                    android:layout_marginStart="17dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    style="@style/head_bold_16"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="36dp"
+                    android:text="@string/toolbar_name"
+                    android:textColor="@color/Green_1_300"
+                    app:layout_constraintStart_toEndOf="@+id/vocalist_back_iv"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/vocalist_profile_iv"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="37dp"
+                    android:layout_marginEnd="15dp"
+                    android:src="@drawable/ic_logo_profile"
+                    app:layout_constraintEnd_toStartOf="@+id/vocalist_profile_name_tv"
+                    app:layout_constraintTop_toTopOf="parent" />
+                <TextView
+                    android:id="@+id/vocalist_profile_name_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="37dp"
+                    android:layout_marginEnd="24dp"
+                    android:text="Hi, 효재"
+                    android:textColor="@color/white"
+                    style="@style/body_semi_bold_14"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <TextView
+                    android:id="@+id/vocalist_search_bar"
+                    style="@style/body_medium_14"
+                    android:layout_width="match_parent"
+                    android:layout_height="33dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/rounded_rectangle_26dp"
+                    android:drawableEnd="@drawable/ic_search"
+                    android:gravity="center|start"
+                    android:hint="@string/search_here"
+                    android:paddingStart="26dp"
+                    android:paddingEnd="26dp"
+                    android:text="@string/search_here"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/vocalist_word_bubble_constraint"
+                    android:layout_width="220dp"
+                    android:layout_height="110dp"
+                    android:layout_marginTop="30dp"
+                    app:layout_constraintTop_toBottomOf="@+id/vocalist_search_bar"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:background="@drawable/ic_word_bubble">
+
+                    <TextView
+                        android:id="@+id/vocalist_word_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="15dp"
+                        android:text="Dictionary"
+                        style="@style/title_bold_32"
+                        android:textColor="@color/white"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/vocalist_word_detail_tv"
+                        style="@style/body_semi_bold_14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:text="단어 의미 살펴보기"
+                        android:textColor="@color/white"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/vocalist_word_tv" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <ImageView
+                    android:id="@+id/vocalist_logo_img_iv"
+                    android:layout_width="223dp"
+                    android:layout_height="246dp"
+                    android:layout_marginTop="20dp"
+                    android:src="@drawable/ic_logo_image"
+                    app:layout_constraintEnd_toEndOf="@+id/vocalist_word_bubble_constraint"
+                    app:layout_constraintStart_toStartOf="@+id/vocalist_word_bubble_constraint"
+                    app:layout_constraintTop_toBottomOf="@+id/vocalist_word_bubble_constraint" />
+
+                <ImageView
+                    android:id="@+id/vocalist_save_library_iv"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    app:layout_constraintTop_toBottomOf="@+id/vocalist_logo_img_iv"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:background="@color/Yellow"
+                    app:layout_constraintTop_toBottomOf="@+id/vocalist_save_library_iv">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/vocalist_word_meaning_tv"
+                            style="@style/title_bold_18"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="55dp"
+                            android:layout_marginStart="8dp"
+                            android:text="단어적 의미"
+                            android:textColor="@color/Green_2_500"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/vocalist_profile_img1" />
+
+                        <FrameLayout
+                            android:id="@+id/vocalist_frame_1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="24dp"
+                            android:layout_marginEnd="24dp"
+                            android:background="@drawable/rounded_rectangle_40dp"
+                            app:layout_constraintTop_toBottomOf="@+id/vocalist_word_meaning_tv"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent">
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <TextView
+                                    android:id="@+id/vocalist_word_meaning_eng_word"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Dictionary"
+                                    android:layout_marginStart="28dp"
+                                    android:layout_marginTop="38dp"
+                                    style="@style/head_semi_bold_16"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    android:textColor="@color/Green_2_500"/>
+
+                                <TextView
+                                    android:id="@+id/vocalist_word_meaning_kor_word"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="사전"
+                                    android:layout_marginStart="24dp"
+                                    android:layout_marginTop="38dp"
+                                    style="@style/head_semi_bold_16"
+                                    app:layout_constraintStart_toEndOf="@+id/vocalist_word_meaning_eng_word"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    android:textColor="@color/Green_2_500"/>
+
+                                <TextView
+                                    android:id="@+id/vocalist_word_meaning_description"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="28dp"
+                                    android:layout_marginTop="16dp"
+                                    android:layout_marginEnd="28dp"
+                                    android:layout_marginBottom="36dp"
+                                    android:text="@string/word_meaning"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/vocalist_word_meaning_eng_word" />
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        </FrameLayout>
+
+                        <ImageView
+                            android:id="@+id/vocalist_profile_img1"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:layout_marginTop="44dp"
+                            android:layout_marginStart="26dp"
+                            android:src="@drawable/ic_logo_profile"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"/>
+
+                        <!-- -->
+                        <TextView
+                            android:id="@+id/vocalist_etymology_tv"
+                            style="@style/title_bold_18"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="55dp"
+                            android:layout_marginStart="8dp"
+                            android:text="어원 분리"
+                            android:textColor="@color/Green_2_500"
+                            app:layout_constraintTop_toBottomOf="@+id/vocalist_frame_1"
+                            app:layout_constraintStart_toEndOf="@+id/vocalist_profile_img2" />
+
+                        <FrameLayout
+                            android:id="@+id/vocalist_frame_2"
+                            android:layout_width="match_parent"
+                            android:layout_height="214dp"
+                            android:layout_marginStart="24dp"
+                            android:layout_marginEnd="24dp"
+                            android:background="@drawable/rounded_rectangle_40dp"
+                            app:layout_constraintTop_toBottomOf="@+id/vocalist_etymology_tv"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent">
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="358dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="38dp"
+                                    android:layout_marginStart="28dp"
+                                    android:text="라틴어"
+                                    style="@style/body_semi_bold_14"
+                                    android:textColor="@color/Green_2_500"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"/>
+
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        </FrameLayout>
+
+                        <ImageView
+                            android:id="@+id/vocalist_profile_img2"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:layout_marginTop="44dp"
+                            android:layout_marginStart="26dp"
+                            android:src="@drawable/ic_logo_profile"
+                            app:layout_constraintTop_toBottomOf="@id/vocalist_frame_1"
+                            app:layout_constraintStart_toStartOf="parent"/>
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </FrameLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
