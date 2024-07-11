@@ -47,13 +47,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         navController.navigate(R.id.homeFragment)
     }
 
-    private fun changeFragment(fragment: Fragment) {
-        supportFragmentManager.beginTransaction()
-            .replace(binding.mainNavHostFragment.id, fragment)
-            .commit()
-    }
-
-    // 바텀 네비게이션 아이템의 원래 색깔 나오게
+    // 뷰모델 초기화 및 연결 (MainActivity 생명주기에 맞춤)
     private fun bindingViewModel(){
         viewModel = ViewModelProvider(this)[MainViewModel::class.java]
         searchViewModel = ViewModelProvider(this)[SearchViewModel::class.java]
