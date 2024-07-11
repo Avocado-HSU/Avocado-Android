@@ -1,10 +1,13 @@
 <resources>
     <string name="app_name">Avocado_Android</string>
+    <string name="toolbar_name">A VOCA DO</string>
     <string name="attendance_check">%d월 출석체크</string>
     <string name="search_here">Search Here</string>
     <string name="best_search">인기 검색어</string>
     <string name="recomend_words">추천 단어</string>
     <string name="search_hint">검색어 입력</string>
+    <string name="word_meaning">단어와 그 단어의 의미, 발음, 사용 예시 등을 알파벳 순서로 정리한 책이나 전자 문서.\n\n
+        일반적으로 한 언어에서 사용되는 단어들을 포함하며, 각 단어의 철자, 발음, 의미, 문법 정보, 어원, 동의어, 반의어, 예문 등을 제공한다</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
