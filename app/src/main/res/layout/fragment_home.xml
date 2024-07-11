@@ -183,7 +183,7 @@
                     android:id="@+id/home_word_card_rv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="28dp"
+                    android:layout_marginTop="12dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
                     tools:listitem="@layout/item_recommend_word"
