@@ -3,6 +3,7 @@ package com.example.avocado_android.ui.home
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.example.avocado_android.R
 import com.example.avocado_android.base.BaseFragment
 import com.example.avocado_android.databinding.FragmentHomeBinding
@@ -35,9 +36,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home)  
 
     private fun setSearchBar() {
         binding.homeSearchHereEt.setOnClickListener {
-            requireActivity().supportFragmentManager.beginTransaction()
-                .add(R.id.main_fragment_container_view, SearchFragment())
-                .commitAllowingStateLoss()
+           val action = HomeFragmentDirections.actionHomeFragmentToSearchFragment()
+            findNavController().navigate(action)
         }
     }
 }

@@ -9,7 +9,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavHost
 import androidx.navigation.Navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
 import com.example.avocado_android.R
 import com.example.avocado_android.base.BaseActivity
 import com.example.avocado_android.databinding.ActivityMainBinding
@@ -24,70 +27,29 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     private lateinit var viewModel : MainViewModel
     private lateinit var searchViewModel : SearchViewModel
     private var homeFragment: HomeFragment? = null
-    private var libraryFragment: LibraryFragment? = null
-    private var chatBotFragment:ChatBotFragment? = null
+
     override fun setLayout() {
-        setBottomNavigation()
-        bindingViewModel()
-        binding.mainNavBar.itemIconTintList = null
+        setNavigation()
+
     }
 
-    private fun setBottomNavigation() {
+    private fun setNavigation() {
+
+        binding.mainBottomNavigationBar.itemIconTintList = null
+
+        val host = supportFragmentManager
+            .findFragmentById(binding.mainNavHostFragment.id) as NavHostFragment ?: return
+        navController = host.navController
+        binding.mainBottomNavigationBar.setupWithNavController(navController)
+
         // 최소 실행시 프래그먼트 설정
-        binding.mainNavBar.selectedItemId = R.id.homeFragment
-        homeFragment = HomeFragment()
-        changeFragment(homeFragment!!)
-
-        binding.mainNavBar.itemIconTintList = null
-        binding.mainNavBar.setOnItemSelectedListener { item ->
-            when(item.itemId) {
-                R.id.homeFragment -> {
-                    if (homeFragment == null) {
-                        homeFragment = HomeFragment()
-                        addFragment(homeFragment!!)
-                    }
-                    homeFragment?.let { supportFragmentManager.beginTransaction().apply { show(it).commit() } }
-                    libraryFragment?.let { supportFragmentManager.beginTransaction().apply { hide(it).commit() } }
-                    chatBotFragment?.let { supportFragmentManager.beginTransaction().apply { hide(it).commit() } }
-
-                    return@setOnItemSelectedListener true
-                }
-                R.id.libraryFragment -> {
-                    if (libraryFragment == null) {
-                        libraryFragment = LibraryFragment()
-                        addFragment(libraryFragment!!)
-                    }
-                    libraryFragment?.let { supportFragmentManager.beginTransaction().apply { show(it).commit() } }
-                    homeFragment?.let { supportFragmentManager.beginTransaction().apply { hide(it).commit() } }
-                    chatBotFragment?.let { supportFragmentManager.beginTransaction().apply { hide(it).commit() } }
-
-                    return@setOnItemSelectedListener true
-                }
-                R.id.chatBotFragment -> {
-                    if (chatBotFragment == null) {
-                        chatBotFragment = ChatBotFragment()
-                        addFragment(chatBotFragment!!)
-                    }
-                    chatBotFragment?.let { supportFragmentManager.beginTransaction().apply { show(it).commit() } }
-                    homeFragment?.let { supportFragmentManager.beginTransaction().apply { hide(it).commit() } }
-                    libraryFragment?.let { supportFragmentManager.beginTransaction().apply { hide(it).commit() } }
-
-                    return@setOnItemSelectedListener true
-                }
-                else -> return@setOnItemSelectedListener true
-            }
-        }
+        binding.mainBottomNavigationBar.selectedItemId = R.id.homeFragment
+        navController.navigate(R.id.homeFragment)
     }
 
     private fun changeFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction()
-            .replace(binding.mainFragmentContainerView.id, fragment)
-            .commit()
-    }
-
-    private fun addFragment(fragment: Fragment) {
-        supportFragmentManager.beginTransaction()
-            .add(binding.mainFragmentContainerView.id, fragment)
+            .replace(binding.mainNavHostFragment.id, fragment)
             .commit()
     }
 
