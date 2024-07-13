@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/libraryFragment"
+        android:id="@+id/vocaListFragment"
         android:icon="@drawable/nav_library_selector"
-        android:title="Library"/>
+        android:title="VocaTest"/>
 
     <item
         android:id="@+id/homeFragment"
@@ -12,6 +12,6 @@
 
     <item
         android:id="@+id/chatBotFragment"
-        android:icon="@drawable/nav_quiz_selector"
-        android:title="Quiz"/>
+        android:icon="@drawable/nav_chat_selector"
+        android:title="Chat"/>
 </menu>

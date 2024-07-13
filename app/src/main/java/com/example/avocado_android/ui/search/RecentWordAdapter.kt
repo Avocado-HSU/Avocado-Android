@@ -1,17 +1,14 @@
 package com.example.avocado_android.ui.search
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.avocado_android.R
-import com.example.avocado_android.databinding.FragmentSearchBinding
 import com.example.avocado_android.databinding.ItemSerachRecentBinding
-import com.example.avocado_android.domain.model.RecentWordItem
+import com.example.avocado_android.domain.model.search.RecentWordItem
 
 class RecentWordAdapter: ListAdapter<RecentWordItem, RecentWordAdapter.RecentWordViewHolder>(diffUtil) {
 

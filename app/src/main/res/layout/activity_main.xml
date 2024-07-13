@@ -5,7 +5,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main"
-        android:background="@color/Green_1_300"
+        android:background="@color/Yellow"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.MainActivity">
@@ -31,8 +31,7 @@
             app:itemTextAppearanceActive="@style/BottomNavigationView.Active"
             app:itemBackground="@android:color/transparent"
             app:itemActiveIndicatorStyle="@android:color/transparent"
-            app:itemIconSize="32dp"
-            app:itemPaddingBottom="0dp"
+            app:itemIconSize="36dp"
             app:menu="@menu/bottom_menu"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

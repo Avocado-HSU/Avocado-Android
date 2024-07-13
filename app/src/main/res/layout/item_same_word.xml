@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+        <variable
+            name="SameWordItem"
+            type="com.example.avocado_android.domain.model.vocalist.SameWordItem" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_square_corner_radius_12dp_stroke_2">
+
+        <TextView
+            android:id="@+id/item_home_best_choice_word_tv"
+            android:layout_width="100dp"
+            android:layout_height="36dp"
+            android:gravity="center"
+            android:text="@{SameWordItem.word}"
+            style="@style/body_semi_bold_14"
+            android:textColor="@color/Green_2_300"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
