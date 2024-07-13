@@ -5,10 +5,65 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main"
-        android:background="@color/Yellow"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/Yellow"
         tools:context=".ui.MainActivity">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/main_tb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/Green_2_300"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+            <ImageView
+                android:id="@+id/vocalist_back_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_back_btn"
+                android:layout_marginTop="17dp"
+                android:layout_marginStart="17dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/textView2"
+                style="@style/head_bold_16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/toolbar_name"
+                android:textColor="@color/Green_1_300"
+                app:layout_constraintStart_toEndOf="@+id/vocalist_back_iv"
+                app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/vocalist_profile_name_tv"
+                style="@style/body_semi_bold_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginTop="17dp"
+                android:layout_marginEnd="24dp"
+                android:text="Hi, 효재"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/vocalist_profile_iv"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="end"
+                android:layout_marginTop="17dp"
+                android:layout_marginEnd="15dp"
+                android:src="@drawable/ic_logo_profile"
+                app:layout_constraintEnd_toStartOf="@+id/vocalist_profile_name_tv"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </com.google.android.material.appbar.MaterialToolbar>
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/main_nav_host_fragment"
@@ -16,26 +71,27 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:defaultNavHost="true"
-            app:navGraph="@navigation/nav_graph"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/main_bottom_navigation_bar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/main_bottom_navigation_bar" />
+            app:layout_constraintTop_toBottomOf="@id/main_tb"
+            app:navGraph="@navigation/nav_graph" />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/main_bottom_navigation_bar"
             android:layout_width="match_parent"
             android:layout_height="87dp"
             android:background="@drawable/top_rounded_corners"
-            app:itemTextColor="@color/white"
-            app:itemTextAppearanceActive="@style/BottomNavigationView.Active"
-            app:itemBackground="@android:color/transparent"
             app:itemActiveIndicatorStyle="@android:color/transparent"
+            app:itemBackground="@android:color/transparent"
             app:itemIconSize="36dp"
-            app:menu="@menu/bottom_menu"
+            app:itemTextAppearanceActive="@style/BottomNavigationView.Active"
+            app:itemTextColor="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/main_nav_host_fragment"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:menu="@menu/bottom_menu" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
