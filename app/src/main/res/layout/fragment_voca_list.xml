@@ -27,7 +27,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_back_btn"
-                    android:layout_marginTop="37dp"
+                    android:layout_marginTop="17dp"
                     android:layout_marginStart="17dp"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
@@ -38,7 +38,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="12dp"
-                    android:layout_marginTop="36dp"
+                    android:layout_marginTop="16dp"
                     android:text="@string/toolbar_name"
                     android:textColor="@color/Green_1_300"
                     app:layout_constraintStart_toEndOf="@+id/vocalist_back_iv"
@@ -48,7 +48,7 @@
                     android:id="@+id/vocalist_profile_iv"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:layout_marginTop="37dp"
+                    android:layout_marginTop="17dp"
                     android:layout_marginEnd="15dp"
                     android:src="@drawable/ic_logo_profile"
                     app:layout_constraintEnd_toStartOf="@+id/vocalist_profile_name_tv"
@@ -57,7 +57,7 @@
                     android:id="@+id/vocalist_profile_name_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="37dp"
+                    android:layout_marginTop="17dp"
                     android:layout_marginEnd="24dp"
                     android:text="Hi, 효재"
                     android:textColor="@color/white"
@@ -88,9 +88,13 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/vocalist_word_bubble_constraint"
-                    android:layout_width="220dp"
-                    android:layout_height="110dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
+                    android:layout_marginStart="70dp"
+                    android:layout_marginEnd="70dp"
+                    android:minWidth="220dp"
+                    android:minHeight="110dp"
                     app:layout_constraintTop_toBottomOf="@+id/vocalist_search_bar"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -138,14 +142,17 @@
                     android:id="@+id/vocalist_save_library_tv"
                     android:layout_width="match_parent"
                     android:layout_height="56dp"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="24dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
                     android:text="라이브러리에 저장하기"
+                    android:maxLines="1"
                     style="@style/head_semi_bold_16"
                     android:textColor="@color/Yellow"
+                    android:paddingStart="66dp"
+                    android:paddingEnd="39dp"
                     android:drawableStart="@drawable/ic_book"
-                    android:padding="66dp"
+                    android:gravity="center"
                     android:background="@drawable/rounded_rectangle_50dp"
                     app:layout_constraintTop_toBottomOf="@+id/vocalist_logo_img_iv"
                     app:layout_constraintStart_toStartOf="parent"
@@ -155,6 +162,7 @@
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     android:background="@color/Yellow"
@@ -260,7 +268,7 @@
                         <FrameLayout
                             android:id="@+id/vocalist_frame_2"
                             android:layout_width="match_parent"
-                            android:layout_height="214dp"
+                            android:layout_height="wrap_content"
                             android:layout_marginStart="24dp"
                             android:layout_marginEnd="24dp"
                             android:background="@drawable/rounded_rectangle_40dp"
@@ -270,9 +278,10 @@
 
                             <androidx.constraintlayout.widget.ConstraintLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="358dp">
+                                android:layout_height="match_parent">
 
                                 <TextView
+                                    android:id="@+id/vocalist_latina_word_exp_tv"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="38dp"
@@ -283,6 +292,59 @@
                                     app:layout_constraintTop_toTopOf="parent"
                                     app:layout_constraintStart_toStartOf="parent"/>
 
+                                <TextView
+                                    android:id="@+id/vocalist_latina_word_tv"
+                                    style="@style/body_semi_bold_14"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="8dp"
+                                    android:background="@drawable/shape_square_corner_radius_55dp_stroke_1"
+                                    android:paddingStart="12dp"
+                                    android:paddingTop="4dp"
+                                    android:paddingEnd="12dp"
+                                    android:paddingBottom="4dp"
+                                    android:text="Dicere (말하다)"
+                                    app:layout_constraintStart_toStartOf="@+id/vocalist_latina_word_exp_tv"
+                                    app:layout_constraintTop_toBottomOf="@+id/vocalist_latina_word_exp_tv" />
+
+                                <TextView
+                                    android:id="@+id/vocalist_suffix_sub_title_tv"
+                                    style="@style/body_semi_bold_14"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="접미사"
+                                    android:textColor="@color/Green_2_500"
+                                    android:layout_marginTop="16dp"
+                                    app:layout_constraintStart_toStartOf="@+id/vocalist_latina_word_tv"
+                                    app:layout_constraintTop_toBottomOf="@+id/vocalist_latina_word_tv" />
+
+                                <androidx.recyclerview.widget.RecyclerView
+                                    android:id="@+id/vocalist_suffix_rv"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="8dp"
+                                    android:layout_marginStart="28dp"
+                                    android:layout_marginEnd="28dp"
+                                    tools:listitem="@layout/item_vocalist_suffix"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/vocalist_suffix_sub_title_tv"/>
+                                <TextView
+                                    android:id="@+id/vocalist_suffix_desc_tv"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/suffix_desc"
+                                    style="@style/body_medium_14"
+                                    android:layout_marginTop="36dp"
+                                    android:layout_marginStart="28dp"
+                                    android:layout_marginEnd="28dp"
+                                    android:layout_marginBottom="36dp"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/vocalist_suffix_rv"
+
+                                    />
 
                             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -314,7 +376,7 @@
                         <FrameLayout
                             android:id="@+id/vocalist_frame_3"
                             android:layout_width="match_parent"
-                            android:layout_height="214dp"
+                            android:layout_height="wrap_content"
                             android:layout_marginStart="24dp"
                             android:layout_marginEnd="24dp"
                             android:background="@drawable/rounded_rectangle_40dp"
@@ -324,7 +386,7 @@
 
                             <androidx.constraintlayout.widget.ConstraintLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="358dp">
+                                android:layout_height="match_parent">
 
                                 <TextView
                                     android:id="@+id/vocalist_example_sentence_guide_tv"
@@ -332,19 +394,25 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="38dp"
                                     android:layout_marginStart="28dp"
-                                    android:text="@string/easy_memorize_word"
+                                    android:text="@string/memorize_word_using_example_sentence"
                                     style="@style/body_medium_12"
                                     android:textColor="@color/Green_2_300"
                                     app:layout_constraintTop_toTopOf="parent"
                                     app:layout_constraintStart_toStartOf="parent"/>
+
                                 <TextView
                                     android:id="@+id/vocalist_example_sentence_tv"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    app:layout_constraintTop_toBottomOf="@+id/vocalist_example_sentence_guide_tv"
+                                    android:layout_marginStart="28dp"
+                                    android:layout_marginBottom="36dp"
+                                    android:layout_marginTop="12dp"
+                                    android:layout_marginEnd="28dp"
+                                    android:text="@string/example_sentence"
                                     app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintEnd_toEndOf="parent"/>
+                                    app:layout_constraintTop_toBottomOf="@+id/vocalist_example_sentence_guide_tv" />
 
 
                             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -377,7 +445,7 @@
                         <FrameLayout
                             android:id="@+id/vocalist_frame_4"
                             android:layout_width="match_parent"
-                            android:layout_height="214dp"
+                            android:layout_height="wrap_content"
                             android:layout_marginStart="24dp"
                             android:layout_marginEnd="24dp"
                             android:background="@drawable/rounded_rectangle_40dp"
@@ -387,18 +455,34 @@
 
                             <androidx.constraintlayout.widget.ConstraintLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="358dp">
+                                android:layout_height="match_parent">
 
                                 <TextView
+                                    android:id="@+id/vocalist_easy_memorize_word_tip_guide_tv"
+                                    style="@style/body_medium_12"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="38dp"
                                     android:layout_marginStart="28dp"
-                                    android:text="라틴어"
-                                    style="@style/body_semi_bold_14"
-                                    android:textColor="@color/Green_2_500"
-                                    app:layout_constraintTop_toTopOf="parent"
-                                    app:layout_constraintStart_toStartOf="parent"/>
+                                    android:layout_marginEnd="28dp"
+                                    android:text="@string/easy_memorize_word_tip"
+                                    android:textColor="@color/Green_2_300"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent" />
+
+                                <TextView
+                                    android:id="@+id/vocalist_easy_memorize_word_tip_tv"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="28dp"
+                                    android:layout_marginTop="12dp"
+                                    android:layout_marginBottom="36dp"
+                                    android:text="@string/easy_easy_memorize_word_tip_exp"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="@+id/vocalist_easy_memorize_word_tip_guide_tv"
+                                    app:layout_constraintStart_toStartOf="@+id/vocalist_easy_memorize_word_tip_guide_tv"
+                                    app:layout_constraintTop_toBottomOf="@+id/vocalist_easy_memorize_word_tip_guide_tv" />
 
 
                             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -414,6 +498,53 @@
                             android:src="@drawable/ic_logo_profile"
                             app:layout_constraintTop_toBottomOf="@id/vocalist_frame_3"
                             app:layout_constraintStart_toStartOf="parent"/>
+
+                        <TextView
+                            android:id="@+id/vocalist_same_word_list_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="28dp"
+                            android:text="@string/same_word_list"
+                            style="@style/title_bold_18"
+                            android:textColor="@color/Green_2_500"
+                            android:textSize="20dp"
+                            app:layout_constraintStart_toStartOf="@+id/vocalist_frame_4"
+                            app:layout_constraintTop_toBottomOf="@id/vocalist_frame_4" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/vocalist_same_word_rv"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:orientation="horizontal"
+                            tools:listitem="@layout/item_same_word"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@id/vocalist_same_word_list_tv"
+                            app:layout_constraintTop_toBottomOf="@id/vocalist_same_word_list_tv" />
+
+                        <TextView
+                            android:id="@+id/vocalist_same_affix_list_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="28dp"
+                            android:text="@string/same_affix_list"
+                            style="@style/title_bold_18"
+                            android:textColor="@color/Green_2_500"
+                            android:textSize="20dp"
+                            app:layout_constraintStart_toStartOf="@+id/vocalist_same_word_rv"
+                            app:layout_constraintTop_toBottomOf="@id/vocalist_same_word_rv" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/vocalist_same_affix_rv"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:orientation="horizontal"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@id/vocalist_same_affix_list_tv"
+                            app:layout_constraintTop_toBottomOf="@id/vocalist_same_affix_list_tv" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 

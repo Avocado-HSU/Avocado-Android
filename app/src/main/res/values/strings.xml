@@ -8,8 +8,14 @@
     <string name="search_hint">검색어 입력</string>
     <string name="word_meaning">단어와 그 단어의 의미, 발음, 사용 예시 등을 알파벳 순서로 정리한 책이나 전자 문서.\n\n
         일반적으로 한 언어에서 사용되는 단어들을 포함하며, 각 단어의 철자, 발음, 의미, 문법 정보, 어원, 동의어, 반의어, 예문 등을 제공한다</string>
-    <string name="easy_memorize_word">문장을 통해 단어가 사용되는 방식을 알아보세요</string>
-    <string name="example_sentence">Example sentence showcasing the\n\n usage of the word</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="memorize_word_using_example_sentence">문장을 통해 단어가 사용되는 방식을 알아보세요</string>
+    <string name="example_sentence">Example sentence showcasing the\n usage of the word</string>
+    <string name="easy_memorize_word_tip">단어를 쉽게 외울 수 있는 방법에는 무엇이 있을까요?</string>
+    <string name="easy_easy_memorize_word_tip_exp">단어와 관련된 이미지를 떠올리거나 상황을 연상하여 기억하는 방법입니다.\n
+        예를 들어, "dictionary"를 "책상 위에 사전이 놓여 있는 모습"으로 연상해 보세요.</string>
+   <string name="suffix_desc">"\"dictionary\"라는 단어는 "말하다"라는 의미의 라틴어 "dicere"에서 시작하여 중세 라틴어 "dictionarium" 을 거쳐 현재의 영어 단어가 되었습니다.말하기, 표현이라는 뜻의 어근 ‘diction’과 관련된,장소 또는 물건이라는 뜻의 접미사 ‘-ary’가 합쳐진 단어입니다.</string>
+    <string name="same_word_list">유사한 단어</string>
+    <string name="same_affix_list">같은 접두사/접미사를 사용한 단어</string>
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
