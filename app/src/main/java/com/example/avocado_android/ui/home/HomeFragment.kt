@@ -16,7 +16,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home)  
     private lateinit var checkDaysAdapter: CheckDaysAdapter
     private lateinit var bestChoiceAdapter: BestChoiceAdapter
     private lateinit var recommendDataAdapter: RecommendedWordAdapter
-    private val horizontalSpaceItemDecoration = HorizontalSpaceItemDecoration(23)
     override fun setLayout() {
         initAdapter()
         setSearchBar()
