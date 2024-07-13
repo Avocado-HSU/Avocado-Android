@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.avocado_android.R
 import com.example.avocado_android.databinding.ItemHomeCheckedDaysBinding
-import com.example.avocado_android.domain.model.HomeDaysItem
+import com.example.avocado_android.domain.model.home.HomeDaysItem
 
 class CheckDaysAdapter : ListAdapter<HomeDaysItem, CheckDaysAdapter.HomeDaysViewHolder>(HomeDaysDiffCallback()) {
 

@@ -16,7 +16,6 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
     private lateinit var recentWordAdapter: RecentWordAdapter
 
     override fun setLayout() {
-
         setAdapter()
     }
 

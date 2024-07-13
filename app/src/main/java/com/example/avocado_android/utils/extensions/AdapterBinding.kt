@@ -4,7 +4,7 @@ import androidx.databinding.BindingAdapter
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.RecyclerView
-import com.example.avocado_android.domain.model.HomeDaysItem
+import com.example.avocado_android.domain.model.home.HomeDaysItem
 import com.example.avocado_android.domain.model.search.RecentWordItem
 import com.example.avocado_android.domain.model.vocalist.AffixItem
 import com.example.avocado_android.ui.home.CheckDaysAdapter
