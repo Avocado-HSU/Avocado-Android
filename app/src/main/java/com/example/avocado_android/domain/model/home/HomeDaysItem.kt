@@ -1,4 +1,4 @@
-package com.example.avocado_android.domain.model
+package com.example.avocado_android.domain.model.home
 
 data class HomeDaysItem(
     var id : Int = 0,

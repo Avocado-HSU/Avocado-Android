@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.avocado_android.R
 import com.example.avocado_android.databinding.ItemRecommendWordBinding
-import com.example.avocado_android.domain.model.HomeRecommendedItem
+import com.example.avocado_android.domain.model.home.HomeRecommendedItem
 
 class RecommendedWordAdapter : ListAdapter<HomeRecommendedItem, RecommendedWordAdapter.RecommendedWordViewHolder>(HomeDaysDiffCallback()) {
 
