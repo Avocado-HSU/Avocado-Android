@@ -16,7 +16,7 @@ class VocaListFragment : BaseFragment<FragmentVocaListBinding>(R.layout.fragment
     }
 
     fun toast() {
-        Toast.makeText(requireContext(), "gagag", Toast.LENGTH_SHORT).show()
+        Toast.makeText(requireContext(), "vocalist", Toast.LENGTH_SHORT).show()
     }
 
 }

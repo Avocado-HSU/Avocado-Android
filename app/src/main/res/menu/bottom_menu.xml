@@ -12,6 +12,6 @@
 
     <item
         android:id="@+id/chatBotFragment"
-        android:icon="@drawable/nav_quiz_selector"
+        android:icon="@drawable/nav_chat_selector"
         android:title="Chat"/>
 </menu>
