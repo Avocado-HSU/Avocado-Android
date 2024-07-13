@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="LibraryWordCardData"
+            type="com.example.avocado_android.domain.model.library.LibraryWordCard" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:background="@drawable/shape_square_gr_1_500_corner_radius_21dp"
+        android:layout_marginTop="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="164dp">
+
+        <TextView
+            android:id="@+id/item_library_word_card_word_tv"
+            text= "@{LibraryWordCardData.word}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/item_library_word_card_mean_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{LibraryWordCardData.mean}"
+            android:layout_marginTop="4dp"
+            app:layout_constraintStart_toStartOf="@id/item_library_word_card_word_tv"
+            app:layout_constraintTop_toTopOf="@id/item_library_word_card_word_tv"/>
+
+        <ImageButton
+            android:id="@+id/item_library_word_card_next_ib"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/item_library_word_card_word_tv"
+            android:backgroundTint="@color/Green_1_500"
+            android:src="@drawable/ic_word_reco_next"/>
+
+
+        <TextView
+            android:id="@+id/item_library_word_card_frontDes_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_rectangle_33dp"
+            android:text="@{LibraryWordCardData.frontDes}"
+            app:layout_constraintBottom_toTopOf="@+id/item_library_word_card_endDes_tv"
+            app:layout_constraintStart_toStartOf="@id/item_library_word_card_mean_tv" />
+        <TextView
+            android:id="@+id/item_library_word_card_endDes_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_rectangle_33dp"
+            android:layout_marginBottom="16dp"
+            android:text="@{LibraryWordCardData.endDes}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/item_library_word_card_frontDes_tv"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

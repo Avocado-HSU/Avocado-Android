@@ -152,6 +152,7 @@
                     android:layout_marginTop="28dp"
                     android:textSize="20dp"
                     android:text="@string/best_search"
+                    android:textStyle="bold"
                     android:textColor="@color/Green_2_300"
                     app:layout_constraintStart_toStartOf="@id/home_search_here_et"
                     app:layout_constraintTop_toBottomOf="@id/home_search_here_et" />
@@ -174,6 +175,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="28dp"
                     android:text="@string/recomend_words"
+                    android:textStyle="bold"
                     android:textSize="20dp"
                     android:textColor="@color/Green_2_300"
                     app:layout_constraintStart_toStartOf="@id/home_best_word_rv"
