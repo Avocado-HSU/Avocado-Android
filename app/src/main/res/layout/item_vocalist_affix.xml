@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
 
+    <data>
+        <variable
+            name="AffixItem"
+            type="com.example.avocado_android.domain.model.vocalist.AffixItem" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
         android:background="@drawable/shape_square_corner_radius_12dp_stroke_2">
 
         <TextView
@@ -13,7 +18,7 @@
             android:layout_width="100dp"
             android:layout_height="36dp"
             android:gravity="center"
-            android:text="Technology"
+            android:text="@{AffixItem.affix}"
             style="@style/body_semi_bold_14"
             android:textColor="@color/Green_2_300"
             app:layout_constraintBottom_toBottomOf="parent"
