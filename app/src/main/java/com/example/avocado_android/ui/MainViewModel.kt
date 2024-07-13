@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.example.avocado_android.R
 import com.example.avocado_android.domain.model.home.HomeDaysItem
 import com.example.avocado_android.domain.model.home.HomeRecommendedItem
+import com.example.avocado_android.domain.model.library.LibraryWordCard
 
 class MainViewModel : ViewModel() {
     private val _checkedDayItems = MutableLiveData<List<HomeDaysItem>>()
@@ -16,6 +17,9 @@ class MainViewModel : ViewModel() {
 
     private val _recommendedItem = MutableLiveData<List<HomeRecommendedItem>>()
     val recommendedItem: LiveData<List<HomeRecommendedItem>> get() = _recommendedItem
+
+    private val _libraryWordCardItem = MutableLiveData<List<LibraryWordCard>>()
+    val libraryWordCardItem: LiveData<List<LibraryWordCard>> get() = _libraryWordCardItem
 
 
     init {
@@ -44,6 +48,17 @@ class MainViewModel : ViewModel() {
             HomeRecommendedItem(2,"Childhood","어린시절","Child(아이) + -hood(~기, ~상태)"),
             HomeRecommendedItem(3,"Childhood","어린시절","Child(아이) + -hood(~기, ~상태)")
         )
+
+        _libraryWordCardItem.value = listOf(
+            LibraryWordCard("Iconic","상징적인","icon(상징)","-ic(~의, ~적인)"),
+            LibraryWordCard("Iconic","상징적인","icon(상징)","-ic(~의, ~적인)"),
+            LibraryWordCard("Iconic","상징적인","icon(상징)","-ic(~의, ~적인)"),
+            LibraryWordCard("Iconic","상징적인","icon(상징)","-ic(~의, ~적인)"),
+            LibraryWordCard("Iconic","상징적인","icon(상징)","-ic(~의, ~적인)"),
+            LibraryWordCard("Iconic","상징적인","icon(상징)","-ic(~의, ~적인)"),
+            LibraryWordCard("Iconic","상징적인","icon(상징)","-ic(~의, ~적인)"),
+            LibraryWordCard("Iconic","상징적인","icon(상징)","-ic(~의, ~적인)"),
+            )
 
     }
 
