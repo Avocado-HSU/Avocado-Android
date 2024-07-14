@@ -35,5 +35,5 @@ class LibraryFragment : BaseFragment<FragmentLibraryBinding>(R.layout.fragment_l
             libraryAdapter.submitList(newList)
         }
     }
-    fun Float.fromDpToPx(): Int = (this * Resources.getSystem().displayMetrics.density).toInt()
+    private fun Float.fromDpToPx(): Int = (this * Resources.getSystem().displayMetrics.density).toInt()
 }
