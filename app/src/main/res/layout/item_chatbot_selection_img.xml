@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/item_chatbot_card_view"
+        android:layout_width="210dp"
+        android:layout_height="201dp"
+        app:cardCornerRadius="26.5dp">
+
+        <ImageView
+            android:id="@+id/item_chatbot_card_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/item_chatbot_card_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|bottom"
+            android:layout_marginBottom="23dp"
+            android:text="뜻이 궁금한 단어가 있어!"
+            style="@style/body_regular_14"
+            android:textSize="16sp"/>
+
+    </androidx.cardview.widget.CardView>
+
+</layout>
