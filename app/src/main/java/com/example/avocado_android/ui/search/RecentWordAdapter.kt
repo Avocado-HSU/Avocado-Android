@@ -19,7 +19,7 @@ class RecentWordAdapter: BaseAdapter<RecentWordItem, ItemSerachRecentBinding> (
         )
 ) {
 
-    override val layoutId : Int = R.layout.item_recommend_word
+    override val layoutId : Int = R.layout.item_serach_recent
 
     override fun bind(binding: ItemSerachRecentBinding, item: RecentWordItem) {
         binding.searchRecent = item
