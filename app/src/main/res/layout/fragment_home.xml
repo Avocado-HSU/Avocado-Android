@@ -42,12 +42,12 @@
                     android:layout_width="253dp"
                     android:layout_height="232dp"
                     android:layout_marginStart="34dp"
-                    android:layout_marginTop="6dp"
                     android:layout_marginEnd="34dp"
                     android:src="@drawable/ic_logo_image"
+                    app:layout_constraintBottom_toTopOf="@+id/home_attendance_check_tv"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    app:layout_constraintTop_toTopOf="@+id/home_half_top_bg_iv">
 
                     <ImageView
                         android:id="@+id/home_logo_image_iv"
@@ -78,50 +78,50 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
-                    android:layout_marginTop="16dp"
                     android:text="@string/attendance_check"
                     android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/home_logo_image_cl" />
+                    android:layout_marginBottom="12dp"
+                    app:layout_constraintBottom_toTopOf="@+id/home_days_rv"
+                    app:layout_constraintStart_toStartOf="parent" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/home_days_rv"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
                     android:layout_marginEnd="24dp"
-                    android:foregroundGravity="center"
                     android:clipToPadding="false"
+                    android:foregroundGravity="center"
                     android:orientation="horizontal"
+                    android:layout_marginBottom="28dp"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintBottom_toTopOf="@+id/home_search_here_et"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@id/home_attendance_check_tv"
-                    app:layout_constraintTop_toBottomOf="@id/home_attendance_check_tv"
                     app:listData="@{checkedDaysViewModel.homeDaysItem}"
                     tools:listitem="@layout/item_home_checked_days" />
 
                 <TextView
                     android:id="@+id/home_search_here_et"
+                    style="@style/body_medium_14"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
-                    android:layout_marginTop="28dp"
-                    android:layout_marginEnd="24dp"
                     android:layout_marginStart="24dp"
-                    style="@style/body_medium_14"
-                    android:text="@string/search_here"
-                    android:textColor="@color/white"
-                    android:gravity="center|start"
+                    android:layout_marginEnd="24dp"
                     android:background="@drawable/rounded_rectangle_26dp"
                     android:drawableEnd="@drawable/ic_search"
+                    android:gravity="center|start"
                     android:hint="@string/search_here"
                     android:paddingStart="26dp"
                     android:paddingEnd="26dp"
+                    android:text="@string/search_here"
+                    android:textColor="@color/white"
                     android:textColorHint="@color/white"
+                    app:layout_constraintBottom_toBottomOf="@+id/home_half_top_bg_iv"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/home_days_rv" />
+                    app:layout_constraintTop_toBottomOf="@+id/home_half_top_bg_iv" />
 
                 <TextView
                     android:id="@+id/home_best_search_tv"

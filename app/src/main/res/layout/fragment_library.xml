@@ -42,12 +42,12 @@
                     android:layout_width="253dp"
                     android:layout_height="232dp"
                     android:layout_marginStart="34dp"
-                    android:layout_marginTop="6dp"
                     android:layout_marginEnd="34dp"
                     android:src="@drawable/ic_logo_image"
+                    app:layout_constraintBottom_toTopOf="@+id/library_search_here_et"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    app:layout_constraintTop_toTopOf="@+id/library_half_top_bg_iv">
 
                     <ImageView
                         android:id="@+id/library_logo_image_iv"
@@ -64,7 +64,6 @@
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
-                    android:layout_marginTop="45dp"
                     android:background="@drawable/rounded_rectangle_26dp"
                     android:drawableEnd="@drawable/ic_search"
                     android:gravity="center|start"
@@ -74,9 +73,10 @@
                     android:text="@string/search_here"
                     android:textColor="@color/white"
                     android:textColorHint="@color/white"
+                    app:layout_constraintBottom_toBottomOf="@+id/library_half_top_bg_iv"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/library_logo_image_cl" />
+                    app:layout_constraintTop_toBottomOf="@+id/library_half_top_bg_iv" />
 
                 <TextView
                     android:id="@+id/library_best_search_tv"
@@ -95,9 +95,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="12dp"
                     android:layout_marginEnd="8dp"
-                    android:layout_marginBottom="30dp"
                     app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                     app:layout_constraintEnd_toEndOf="@+id/library_search_here_et"
                     app:layout_constraintStart_toStartOf="@id/library_search_here_et"
