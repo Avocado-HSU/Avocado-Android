@@ -8,43 +8,24 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.avocado_android.R
+import com.example.avocado_android.base.BaseAdapter
+import com.example.avocado_android.base.BaseDiffCallback
+import com.example.avocado_android.databinding.ItemSameWordBinding
 import com.example.avocado_android.databinding.ItemVocalistAffixBinding
 import com.example.avocado_android.domain.model.vocalist.AffixItem
+import com.example.avocado_android.domain.model.vocalist.SameWordItem
 
-class AffixAdapter: ListAdapter<AffixItem, AffixAdapter.AffixViewHolder>(diffUtil) {
+class AffixAdapter: BaseAdapter<AffixItem, ItemVocalistAffixBinding>(
+    BaseDiffCallback(
+        areItemsTheSame = { oldItem, newItem -> oldItem.id == newItem.id },
+        areContentsTheSame = { oldItem, newItem -> oldItem == newItem }
+    )
+) {
 
-    inner class AffixViewHolder(private val binding: ItemVocalistAffixBinding):
-        RecyclerView.ViewHolder(binding.root) {
-            fun bind(currentList: AffixItem) {
-                binding.affixItem = currentList
-                binding.executePendingBindings()
-            }
-        }
+    override val layoutId: Int = R.layout.item_same_word
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AffixViewHolder {
-        val binding = DataBindingUtil.inflate<ItemVocalistAffixBinding>(
-            LayoutInflater.from(parent.context),
-            R.layout.item_vocalist_affix,
-            parent,
-            false
-        )
-        return AffixViewHolder(binding)
+    override fun bind(binding: ItemVocalistAffixBinding, item: AffixItem) {
+        binding.affixItem = item
     }
 
-    override fun onBindViewHolder(holder: AffixViewHolder, position: Int) {
-        holder.bind(getItem(position))
-    }
-
-    companion object {
-        val diffUtil = object : DiffUtil.ItemCallback<AffixItem>() {
-            override fun areItemsTheSame(oldItem: AffixItem, newItem: AffixItem): Boolean {
-                return oldItem.id == newItem.id
-            }
-
-            override fun areContentsTheSame(oldItem: AffixItem, newItem: AffixItem): Boolean {
-                return oldItem == newItem
-            }
-
-        }
-    }
 }
