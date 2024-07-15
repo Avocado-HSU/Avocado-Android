@@ -20,7 +20,7 @@ class SuffixAdapter: BaseAdapter<SuffixItem, ItemVocalistSuffixBinding>(
     )
 ) {
 
-    override val layoutId: Int = R.layout.item_vocalist_affix
+    override val layoutId: Int = R.layout.item_vocalist_suffix
 
     override fun bind(binding: ItemVocalistSuffixBinding, item: SuffixItem) {
         binding.suffixItem = item

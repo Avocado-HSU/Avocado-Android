@@ -20,6 +20,9 @@
         android:name="com.example.avocado_android.ui.library.LibraryFragment"
         android:label="LibraryFragment"
         tools:layout="@layout/fragment_library">
+        <action
+            android:id="@+id/action_libraryFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
     </fragment>
     <fragment
         android:id="@+id/chatBotFragment"
@@ -36,5 +39,12 @@
         android:id="@+id/vocaListFragment"
         android:name="com.example.avocado_android.ui.vocalist.VocaListFragment"
         android:label="VocaListFragment"
-        tools:layout="@layout/fragment_voca_list"/>
+        tools:layout="@layout/fragment_voca_list">
+        <action
+            android:id="@+id/action_vocaListFragment_to_libraryFragment"
+            app:destination="@id/libraryFragment" />
+        <action
+            android:id="@+id/action_vocaListFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
+    </fragment>
 </navigation>

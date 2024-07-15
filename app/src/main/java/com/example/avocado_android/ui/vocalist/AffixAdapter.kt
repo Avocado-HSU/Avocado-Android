@@ -22,7 +22,7 @@ class AffixAdapter: BaseAdapter<AffixItem, ItemVocalistAffixBinding>(
     )
 ) {
 
-    override val layoutId: Int = R.layout.item_same_word
+    override val layoutId: Int = R.layout.item_vocalist_affix
 
     override fun bind(binding: ItemVocalistAffixBinding, item: AffixItem) {
         binding.affixItem = item

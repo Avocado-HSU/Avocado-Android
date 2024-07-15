@@ -7,9 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.example.avocado_android.R
 import com.example.avocado_android.base.BaseFragment
 import com.example.avocado_android.databinding.FragmentVocaListBinding
+import com.example.avocado_android.ui.library.LibraryFragmentDirections
 import com.example.avocado_android.utils.extensions.HorizontalSpaceItemDecoration
 
 class VocaListFragment : BaseFragment<FragmentVocaListBinding>(R.layout.fragment_voca_list) {
@@ -24,6 +26,8 @@ class VocaListFragment : BaseFragment<FragmentVocaListBinding>(R.layout.fragment
     override fun setLayout() {
         setAdapter()
         observeViewModel()
+        setSearchBar()
+        setButton()
     }
 
     private fun setAdapter() {
@@ -55,4 +59,17 @@ class VocaListFragment : BaseFragment<FragmentVocaListBinding>(R.layout.fragment
         }
     }
 
+    private fun setSearchBar() {
+        binding.vocalistSearchBar.setOnClickListener {
+            val action = VocaListFragmentDirections.actionVocaListFragmentToSearchFragment()
+            findNavController().navigate(action)
+        }
+    }
+
+    private fun setButton() {
+        binding.vocalistSaveLibraryTv.setOnClickListener {
+            val action = VocaListFragmentDirections.actionVocaListFragmentToLibraryFragment()
+            findNavController().navigate(action)
+        }
+    }
 }
