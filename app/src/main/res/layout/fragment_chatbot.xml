@@ -5,8 +5,136 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/bg_gray">
+
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/nestedScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <!-- 상단 부분 -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/chatbot_top_constraint"
+                    android:layout_width="0dp"
+                    android:layout_height="185dp"
+                    android:background="@drawable/shape_square_corner_radius_25dp_stroke_1"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0">
+
+                    <ImageView
+                        android:id="@+id/chatbot_back_iv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="23dp"
+                        android:layout_marginTop="21dp"
+                        android:src="@drawable/ic_chatbot_back"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/chatbot_title_tv"
+                        style="@style/title_bold_18"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:text="Avoca"
+                        android:textColor="@color/white"
+                        app:layout_constraintBottom_toBottomOf="@+id/chatbot_back_iv"
+                        app:layout_constraintStart_toEndOf="@+id/chatbot_back_iv"
+                        app:layout_constraintTop_toTopOf="@+id/chatbot_back_iv" />
+
+                    <ImageView
+                        android:id="@+id/chatbot_logo_iv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="36dp"
+                        android:layout_marginEnd="32dp"
+                        android:src="@drawable/ic_chatbot_logo"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </androidx.core.widget.NestedScrollView>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:background="@drawable/rounded_rectangle_top_25dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <ImageView
+                android:id="@+id/chatbot_plus_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="21dp"
+                android:layout_marginBottom="20dp"
+                android:src="@drawable/ic_chatbot_plus"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/chatbot_emoji_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:src="@drawable/ic_chatbot_emoji"
+                app:layout_constraintBottom_toBottomOf="@+id/chatbot_plus_iv"
+                app:layout_constraintStart_toEndOf="@+id/chatbot_plus_iv"
+                app:layout_constraintTop_toTopOf="@+id/chatbot_plus_iv" />
+
+            <EditText
+                android:id="@+id/chatbot_chat_et"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="7dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/rounded_rectangle_26dp"
+                android:backgroundTint="@color/Green_1_300"
+                android:drawableEnd="@drawable/ic_chatbot_mike"
+                android:padding="8dp"
+
+                android:gravity="center"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/chatbot_emoji_iv"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/chatbot_chat_rv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="17dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nestedScrollView" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </layout>
