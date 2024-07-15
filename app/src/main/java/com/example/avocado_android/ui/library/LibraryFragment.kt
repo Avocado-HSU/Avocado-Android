@@ -21,6 +21,7 @@ class LibraryFragment : BaseFragment<FragmentLibraryBinding>(R.layout.fragment_l
     private lateinit var libraryAdapter: LibraryCardAdapter
     override fun setLayout() {
         initAdapter()
+        setSearchBar()
     }
 
     private fun initAdapter() {
@@ -36,4 +37,11 @@ class LibraryFragment : BaseFragment<FragmentLibraryBinding>(R.layout.fragment_l
         }
     }
     private fun Float.fromDpToPx(): Int = (this * Resources.getSystem().displayMetrics.density).toInt()
+
+    private fun setSearchBar() {
+        binding.librarySearchHereEt.setOnClickListener {
+            val action = LibraryFragmentDirections.actionLibraryFragmentToSearchFragment()
+            findNavController().navigate(action)
+        }
+    }
 }
