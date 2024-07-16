@@ -3,6 +3,7 @@ package com.example.avocado_android.ui.ChatBot
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.avocado_android.R
 import com.example.avocado_android.domain.model.chatbot.ChatItem
 
 class ChatViewModel: ViewModel() {
@@ -27,11 +28,11 @@ class ChatViewModel: ViewModel() {
         )
 
         _imageCardList.value = listOf(
-            ChatItem.ChatCardItem("R.drawable.ic_chatbot_logo"),
-            ChatItem.ChatCardItem("R.drawable.ic_chatbot_mike"),
-            ChatItem.ChatCardItem("R.drawable.ic_chatbot_logo"),
-            ChatItem.ChatCardItem("R.drawable.ic_chatbot_mike"),
-            ChatItem.ChatCardItem("R.drawable.ic_chatbot_logo"),
+            ChatItem.ChatCardItem(R.drawable.ic_chatbot_logo),
+            ChatItem.ChatCardItem(R.drawable.ic_chatbot_mike),
+            ChatItem.ChatCardItem(R.drawable.ic_chatbot_logo),
+            ChatItem.ChatCardItem(R.drawable.ic_chatbot_mike),
+            ChatItem.ChatCardItem(R.drawable.ic_chatbot_logo),
         )
     }
 }
