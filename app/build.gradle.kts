@@ -61,6 +61,9 @@ dependencies {
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
 
+    // lifeCycle
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.4.0 ")
+
     // ViewModel, LiveData
     implementation(libs.androidx.lifecycle.livedata.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
