@@ -5,16 +5,18 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.avocado_android.R
 import com.example.avocado_android.domain.model.chatbot.ChatItem
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 
 class ChatViewModel: ViewModel() {
-    private val _userMsgList = MutableLiveData<List<ChatItem.UserChatItem>>()
-    val userMsgList : LiveData<List<ChatItem.UserChatItem>> get() = _userMsgList
+    private val _userMsgList = MutableStateFlow<List<ChatItem.UserChatItem>>(emptyList())
+    val userMsgList : StateFlow<List<ChatItem.UserChatItem>> get() = _userMsgList
 
-    private val _botMsgList = MutableLiveData<List<ChatItem.BotChatItem>>()
-    val botMsgList : LiveData<List<ChatItem.BotChatItem>> get() = _botMsgList
+    private val _botMsgList = MutableStateFlow<List<ChatItem.BotChatItem>>(emptyList())
+    val botMsgList : StateFlow<List<ChatItem.BotChatItem>> get() = _botMsgList
 
-    private val _imageCardList = MutableLiveData<List<ChatItem.ChatCardItem>>()
-    val imageCardList : LiveData<List<ChatItem.ChatCardItem>> get() = _imageCardList
+    private val _imageCardList = MutableStateFlow<List<ChatItem.ChatCardItem>>(emptyList())
+    val imageCardList : StateFlow<List<ChatItem.ChatCardItem>> get() = _imageCardList
 
     init {
         _userMsgList.value = listOf(
