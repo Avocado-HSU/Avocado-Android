@@ -81,6 +81,10 @@ dependencies {
     // gson
     implementation(libs.gson)
 
+    // Moshi
+    implementation ("com.squareup.moshi:moshi-kotlin:1.15.1")
+
+
     // dataStore
     implementation(libs.androidx.datastore.preferences)
 
