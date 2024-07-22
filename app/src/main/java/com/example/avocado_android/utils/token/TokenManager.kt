@@ -19,7 +19,7 @@ class TokenManager @Inject constructor(
 ) {
     companion object {
         private val ACCESS_TOKEN_KEY = stringPreferencesKey("access_token")
-        private val REFRESH_TOKEN_KEY = stringPreferencesKey("refresh_jwt")
+        private val REFRESH_TOKEN_KEY = stringPreferencesKey("refresh_token")
     }
 
     private val dataStore: DataStore<Preferences> = context.datastore
