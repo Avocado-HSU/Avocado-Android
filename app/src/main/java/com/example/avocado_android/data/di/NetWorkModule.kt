@@ -9,11 +9,16 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import javax.inject.Qualifier
 import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
 object NetWorkModule {
+
+    @Qualifier
+    @Retention(AnnotationRetention.BINARY)
+    annotation class ApiRetrofit
 
     @Singleton
     @Provides
@@ -37,6 +42,7 @@ object NetWorkModule {
     }
 
     // Retrofit 생성
+    @ApiRetrofit
     @Singleton
     @Provides
     fun provideRetrofit(
