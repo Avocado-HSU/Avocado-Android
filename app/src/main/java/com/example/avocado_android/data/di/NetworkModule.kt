@@ -14,7 +14,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object NetWorkModule {
+object NetworkModule {
 
     @Qualifier
     @Retention(AnnotationRetention.BINARY)
