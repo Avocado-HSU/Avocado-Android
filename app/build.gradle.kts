@@ -87,6 +87,7 @@ dependencies {
 
     // dataStore
     implementation(libs.androidx.datastore.preferences)
+    implementation ("androidx.datastore:datastore:1.1.1")
 
     // glide
     implementation(libs.glide)
