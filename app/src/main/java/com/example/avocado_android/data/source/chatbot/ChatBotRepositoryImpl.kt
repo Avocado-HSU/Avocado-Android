@@ -1,6 +1,6 @@
 package com.example.avocado_android.data.source.chatbot
 
-import com.example.avocado_android.domain.repository.ChatBotRepository
+import com.example.avocado_android.domain.repository.chatbot.ChatBotRepository
 import javax.inject.Inject
 
 class ChatBotRepositoryImpl @Inject constructor(
