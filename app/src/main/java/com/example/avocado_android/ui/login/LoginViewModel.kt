@@ -6,8 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.avocado_android.domain.model.home.MemberDto
-import com.example.avocado_android.domain.model.search.RecentWordItem
-import com.example.avocado_android.domain.repository.main.MainPageRepository
+
 import com.example.avocado_android.domain.repository.member.MemberControlRepository
 import com.example.avocado_android.utils.token.TokenManager
 import dagger.hilt.android.lifecycle.HiltViewModel

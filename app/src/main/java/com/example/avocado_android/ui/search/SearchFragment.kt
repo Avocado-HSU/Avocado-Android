@@ -23,9 +23,9 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
         recentWordAdapter = RecentWordAdapter()
         binding.searchRecentWordRv.adapter = recentWordAdapter
 
-        viewModel.recentWordList.observe(viewLifecycleOwner) { newList ->
+       /* viewModel.recentWordList.observe(viewLifecycleOwner) { newList ->
             recentWordAdapter.submitList(newList)
-        }
+        }*/
 
 
     }
