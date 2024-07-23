@@ -1,5 +1,7 @@
 package com.example.avocado_android.utils.token
 
+import android.util.Log
+import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.runBlocking
 import okhttp3.Interceptor
 import okhttp3.Response
@@ -15,11 +17,13 @@ class AccessTokenInterceptor @Inject constructor(
 
     override fun intercept(chain: Interceptor.Chain): Response {
         val token = runBlocking {
-            tokenManager.getAccessToken()
+            tokenManager.getAccessToken().firstOrNull() // Flow에서 첫 번째 값을 가져옴
         }
-        val request = chain.request().newBuilder()
-            .addHeader(HEADER_AUTHORIZATION, "$TOKEN_TYPE $token") // 헤더 값 "Bearer {token}" 형식으로 설정
-            .build()
-        return chain.proceed(request) // 요청 헤더에 엑세스 토큰 추가
+        val requestBuilder = chain.request().newBuilder()
+        if (token != null) {
+            requestBuilder.addHeader(HEADER_AUTHORIZATION, "$TOKEN_TYPE $token")
+        }
+        val request = requestBuilder.build()
+        return chain.proceed(request)
     }
 }
