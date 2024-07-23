@@ -26,7 +26,7 @@ interface LibraryPageApi {
     // 라이브러리에 단어 20개 이상 넘어가면 항목 삭제
     @DELETE("/api/library/{libraryId}")
     suspend fun deleteLibraryWord(
-        @Path("libraryId") libraryId: Int
+        @Path("libraryId") libraryId: Long
     ) : UpdateLibraryResponseDto
 
 }

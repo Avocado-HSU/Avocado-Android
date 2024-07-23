@@ -32,7 +32,7 @@ class LibraryPageDataSource @Inject constructor(
         Log.e("GET searchWord1 By SearchWordResponseDto Failure", it.message.toString())
     }
 
-    fun deleteLibraryWord(libraryId: Int) : Flow<UpdateLibraryResponseDto> = flow {
+    fun deleteLibraryWord(libraryId: Long) : Flow<UpdateLibraryResponseDto> = flow {
         val result = libraryPageApi.deleteLibraryWord(libraryId)
         emit(result)
     }.catch {

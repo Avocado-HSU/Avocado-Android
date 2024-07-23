@@ -9,5 +9,5 @@ interface LibraryPageRepository {
 
     suspend fun getLibraryPage(id: Long) : Flow<LibraryPageResponseDto>
     suspend fun searchWord1(id: Long, word: String) : Flow<SearchWordResponseDto>
-    suspend fun deleteLibraryWord(libraryId: Int) : Flow<UpdateLibraryResponseDto>
+    suspend fun deleteLibraryWord(libraryId: Long) : Flow<UpdateLibraryResponseDto>
 }

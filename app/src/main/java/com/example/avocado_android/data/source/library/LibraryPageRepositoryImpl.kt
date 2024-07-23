@@ -13,5 +13,5 @@ class LibraryPageRepositoryImpl @Inject constructor (
 
     override suspend fun getLibraryPage(id: Long): Flow<LibraryPageResponseDto> = dataSource.getLibraryPage(id)
     override suspend fun searchWord1(id: Long, word: String): Flow<SearchWordResponseDto> = dataSource.searchWord1(id, word)
-    override suspend fun deleteLibraryWord(libraryId: Int): Flow<UpdateLibraryResponseDto> = dataSource.deleteLibraryWord(libraryId)
+    override suspend fun deleteLibraryWord(libraryId: Long): Flow<UpdateLibraryResponseDto> = dataSource.deleteLibraryWord(libraryId)
 }

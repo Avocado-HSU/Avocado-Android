@@ -1,5 +1,6 @@
 package com.example.avocado_android.data.source.mainpage
 
+import com.example.avocado_android.domain.model.request.MainPageRequestDto
 import com.example.avocado_android.domain.model.response.RecentSearchWordResponseDto
 import com.example.avocado_android.domain.model.response.main.MainPageResponseDto
 import com.example.avocado_android.domain.model.response.main.SearchWordResponseDto
@@ -11,7 +12,7 @@ class MainPageRepositoryImpl @Inject constructor(
     private val dataSource: MainPageDataSource
 ) : MainPageRepository {
 
-    override suspend fun getMainPage(id: Long) : Flow<MainPageResponseDto> = dataSource.getMainPage(id)
+    override suspend fun getMainPage(id: Long, date : MainPageRequestDto) : Flow<MainPageResponseDto> = dataSource.getMainPage(id, date)
     override suspend fun searchWord(id: Long, word: String) : Flow<SearchWordResponseDto> = dataSource.searchWord(id, word)
     override suspend fun getRecentSearch(id: Long) : Flow<RecentSearchWordResponseDto> = dataSource.getRecentSearch(id)
 }
