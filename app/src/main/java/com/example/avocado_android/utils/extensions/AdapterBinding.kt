@@ -48,7 +48,7 @@ object AdapterBinding {
         }
         val myAdapter = recyclerView.adapter as RecentWordAdapter
         data?.observe(recyclerView.context as LifecycleOwner) { items ->
-            myAdapter.submitList(items)
+           // myAdapter.submitList(items)
         }
     }
 }

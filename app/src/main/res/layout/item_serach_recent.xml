@@ -19,7 +19,7 @@
             android:id="@+id/item_recent_word_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{searchRecent.word}"
+            android:text="ㅇ"
             style="@style/body_regular_14"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>
