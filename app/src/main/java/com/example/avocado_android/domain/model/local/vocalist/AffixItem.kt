@@ -1,4 +1,4 @@
-package com.example.avocado_android.domain.model.vocalist
+package com.example.avocado_android.domain.model.local.vocalist
 
 data class AffixItem(
     var id: Int = 0,

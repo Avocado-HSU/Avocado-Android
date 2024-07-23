@@ -10,7 +10,7 @@ import com.example.avocado_android.R
 import com.example.avocado_android.base.BaseAdapter
 import com.example.avocado_android.base.BaseDiffCallback
 import com.example.avocado_android.databinding.ItemSerachRecentBinding
-import com.example.avocado_android.domain.model.search.RecentWordItem
+import com.example.avocado_android.domain.model.local.search.RecentWordItem
 
 class RecentWordAdapter: BaseAdapter<RecentWordItem, ItemSerachRecentBinding> (
     BaseDiffCallback(

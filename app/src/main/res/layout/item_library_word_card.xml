@@ -5,7 +5,7 @@
     <data>
         <variable
             name="LibraryWordCardData"
-            type="com.example.avocado_android.domain.model.library.LibraryWordCard" />
+            type="com.example.avocado_android.domain.model.local.library.LibraryWordCard" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

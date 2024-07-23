@@ -3,7 +3,7 @@ package com.example.avocado_android.ui.search
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.avocado_android.domain.model.search.RecentWordItem
+import com.example.avocado_android.domain.model.local.search.RecentWordItem
 
 class SearchViewModel: ViewModel() {
     private val _recentWordList = MutableLiveData<List<RecentWordItem>>()

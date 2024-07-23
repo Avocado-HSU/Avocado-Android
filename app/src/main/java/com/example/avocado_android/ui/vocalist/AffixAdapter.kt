@@ -12,8 +12,8 @@ import com.example.avocado_android.base.BaseAdapter
 import com.example.avocado_android.base.BaseDiffCallback
 import com.example.avocado_android.databinding.ItemSameWordBinding
 import com.example.avocado_android.databinding.ItemVocalistAffixBinding
-import com.example.avocado_android.domain.model.vocalist.AffixItem
-import com.example.avocado_android.domain.model.vocalist.SameWordItem
+import com.example.avocado_android.domain.model.local.vocalist.AffixItem
+import com.example.avocado_android.domain.model.local.vocalist.SameWordItem
 
 class AffixAdapter: BaseAdapter<AffixItem, ItemVocalistAffixBinding>(
     BaseDiffCallback(

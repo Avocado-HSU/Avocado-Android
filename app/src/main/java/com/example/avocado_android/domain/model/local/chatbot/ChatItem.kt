@@ -1,4 +1,4 @@
-package com.example.avocado_android.domain.model.chatbot
+package com.example.avocado_android.domain.model.local.chatbot
 
 sealed class ChatItem {
     data class UserChatItem(val id: Long, val msg: String) : ChatItem()
