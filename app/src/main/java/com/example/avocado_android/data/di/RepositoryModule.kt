@@ -4,8 +4,17 @@ import com.example.avocado_android.data.source.chatbot.ChatBotDataSource
 import com.example.avocado_android.data.source.chatbot.ChatBotRepositoryImpl
 import com.example.avocado_android.data.source.member.MemberDataSource
 import com.example.avocado_android.data.source.member.MemberRepositoryImpl
+import com.example.avocado_android.data.source.library.LibraryPageDataSource
+import com.example.avocado_android.data.source.library.LibraryPageRepositoryImpl
+import com.example.avocado_android.data.source.mainpage.MainPageDataSource
+import com.example.avocado_android.data.source.mainpage.MainPageRepositoryImpl
+import com.example.avocado_android.data.source.wordpage.WordPageDataSource
+import com.example.avocado_android.data.source.wordpage.WordPageRepositoryImpl
 import com.example.avocado_android.domain.repository.chatbot.ChatBotRepository
 import com.example.avocado_android.domain.repository.member.MemberControlRepository
+import com.example.avocado_android.domain.repository.librarypage.LibraryPageRepository
+import com.example.avocado_android.domain.repository.mainpage.MainPageRepository
+import com.example.avocado_android.domain.repository.wordpage.WordPageRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -21,9 +30,15 @@ object RepositoryModule {
     fun provideChatBotRepository(chatBotDataSource: ChatBotDataSource): ChatBotRepository =
         ChatBotRepositoryImpl(chatBotDataSource)
 
-    //fun provideLibraryPageRepository
+    @Singleton
+    @Provides
+    fun provideLibraryPageRepository(libraryPageDataSource: LibraryPageDataSource) : LibraryPageRepository =
+        LibraryPageRepositoryImpl(libraryPageDataSource)
 
-    //fun provideMainPageRepository
+    @Singleton
+    @Provides
+    fun provideMainPageRepository(mainPageDataSource: MainPageDataSource) : MainPageRepository =
+        MainPageRepositoryImpl(mainPageDataSource)
 
     @Singleton
     @Provides
@@ -31,5 +46,9 @@ object RepositoryModule {
         MemberRepositoryImpl(memberDataSource)
 
     //fun provideWordPageRepository
+    @Singleton
+    @Provides
+    fun provideWordPageRepository(wordPageDataSource: WordPageDataSource) : WordPageRepository =
+        WordPageRepositoryImpl(wordPageDataSource)
 
 }

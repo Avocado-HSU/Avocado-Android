@@ -3,7 +3,7 @@
     <data>
         <variable
             name="checkedDayDate"
-            type="com.example.avocado_android.domain.model.home.HomeDaysItem" />
+            type="com.example.avocado_android.domain.model.local.home.HomeDaysItem" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"

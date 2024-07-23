@@ -4,7 +4,7 @@ import com.example.avocado_android.R
 import com.example.avocado_android.base.BaseAdapter
 import com.example.avocado_android.base.BaseDiffCallback
 import com.example.avocado_android.databinding.ItemRecommendWordBinding
-import com.example.avocado_android.domain.model.home.HomeRecommendedItem
+import com.example.avocado_android.domain.model.local.home.HomeRecommendedItem
 
 
 class RecommendedWordAdapter : BaseAdapter<HomeRecommendedItem, ItemRecommendWordBinding>(

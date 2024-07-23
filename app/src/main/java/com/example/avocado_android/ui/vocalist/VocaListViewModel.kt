@@ -3,9 +3,9 @@ package com.example.avocado_android.ui.vocalist
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.avocado_android.domain.model.vocalist.AffixItem
-import com.example.avocado_android.domain.model.vocalist.SameWordItem
-import com.example.avocado_android.domain.model.vocalist.SuffixItem
+import com.example.avocado_android.domain.model.local.vocalist.AffixItem
+import com.example.avocado_android.domain.model.local.vocalist.SameWordItem
+import com.example.avocado_android.domain.model.local.vocalist.SuffixItem
 
 class VocaListViewModel: ViewModel() {
     private val _suffixItemList = MutableLiveData<List<SuffixItem>>()

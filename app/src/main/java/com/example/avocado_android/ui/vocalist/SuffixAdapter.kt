@@ -11,7 +11,7 @@ import com.example.avocado_android.base.BaseAdapter
 import com.example.avocado_android.base.BaseDiffCallback
 import com.example.avocado_android.databinding.ItemSerachRecentBinding
 import com.example.avocado_android.databinding.ItemVocalistSuffixBinding
-import com.example.avocado_android.domain.model.vocalist.SuffixItem
+import com.example.avocado_android.domain.model.local.vocalist.SuffixItem
 
 class SuffixAdapter: BaseAdapter<SuffixItem, ItemVocalistSuffixBinding>(
     BaseDiffCallback(

@@ -10,7 +10,7 @@ import com.example.avocado_android.R
 import com.example.avocado_android.base.BaseAdapter
 import com.example.avocado_android.base.BaseDiffCallback
 import com.example.avocado_android.databinding.ItemSameWordBinding
-import com.example.avocado_android.domain.model.vocalist.SameWordItem
+import com.example.avocado_android.domain.model.local.vocalist.SameWordItem
 
 class SameWordAdapter: BaseAdapter<SameWordItem, ItemSameWordBinding>(
     BaseDiffCallback(

@@ -4,9 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.avocado_android.R
-import com.example.avocado_android.domain.model.home.HomeDaysItem
-import com.example.avocado_android.domain.model.home.HomeRecommendedItem
-import com.example.avocado_android.domain.model.library.LibraryWordCard
+import com.example.avocado_android.domain.model.local.home.HomeDaysItem
+import com.example.avocado_android.domain.model.local.home.HomeRecommendedItem
+import com.example.avocado_android.domain.model.local.library.LibraryWordCard
 
 class MainViewModel : ViewModel() {
     private val _checkedDayItems = MutableLiveData<List<HomeDaysItem>>()

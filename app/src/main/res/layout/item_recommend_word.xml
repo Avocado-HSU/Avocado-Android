@@ -4,7 +4,7 @@
     <data>
         <variable
             name="recommendedData"
-            type="com.example.avocado_android.domain.model.home.HomeRecommendedItem" />
+            type="com.example.avocado_android.domain.model.local.home.HomeRecommendedItem" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
