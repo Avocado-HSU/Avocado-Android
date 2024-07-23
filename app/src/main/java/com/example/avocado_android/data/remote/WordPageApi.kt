@@ -8,7 +8,7 @@ import retrofit2.http.Query
 import java.lang.reflect.Member
 
 interface WordPageApi {
-
+    
     // 단어 라이브러리에 등록
     @POST("/api/word/library/{libraryId}")
     suspend fun updateLibrary(
@@ -21,5 +21,4 @@ interface WordPageApi {
         @Path("id") id : Long,
         @Path("word") word : String
     ) : SearchWordResponseDto
-
 }
