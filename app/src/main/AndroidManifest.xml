@@ -22,9 +22,11 @@
             android:exported="false" />
         <activity
             android:name=".ui.MainActivity"
-            android:exported="true" />
-        <activity
-            android:name=".ui.login.LoginActivity"
+            android:exported="true"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize">
+        </activity>
+
+        <activity android:name=".ui.login.LoginActivity"
             android:exported="true">
 
             <intent-filter>
