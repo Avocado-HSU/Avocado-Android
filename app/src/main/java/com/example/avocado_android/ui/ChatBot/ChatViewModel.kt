@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.avocado_android.R
-import com.example.avocado_android.domain.model.chatbot.ChatItem
+import com.example.avocado_android.domain.model.local.chatbot.ChatItem
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 

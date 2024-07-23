@@ -4,7 +4,7 @@
     <data>
         <variable
             name="SameWordItem"
-            type="com.example.avocado_android.domain.model.vocalist.SameWordItem" />
+            type="com.example.avocado_android.domain.model.local.vocalist.SameWordItem" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"

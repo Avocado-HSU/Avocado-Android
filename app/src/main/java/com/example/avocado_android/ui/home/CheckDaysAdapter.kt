@@ -4,7 +4,7 @@ import com.example.avocado_android.R
 import com.example.avocado_android.base.BaseAdapter
 import com.example.avocado_android.base.BaseDiffCallback
 import com.example.avocado_android.databinding.ItemHomeCheckedDaysBinding
-import com.example.avocado_android.domain.model.home.HomeDaysItem
+import com.example.avocado_android.domain.model.local.home.HomeDaysItem
 
 
 class CheckDaysAdapter : BaseAdapter<HomeDaysItem, ItemHomeCheckedDaysBinding>(

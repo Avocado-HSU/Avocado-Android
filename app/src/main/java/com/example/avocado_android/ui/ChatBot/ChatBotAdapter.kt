@@ -15,7 +15,7 @@ import com.example.avocado_android.base.BaseDiffCallback
 import com.example.avocado_android.databinding.ItemChatbotBotMsgBinding
 import com.example.avocado_android.databinding.ItemChatbotSelectionImgBinding
 import com.example.avocado_android.databinding.ItemChatbotUserMsgBinding
-import com.example.avocado_android.domain.model.chatbot.ChatItem
+import com.example.avocado_android.domain.model.local.chatbot.ChatItem
 
 class ChatBotAdapter() : ListAdapter<ChatItem, RecyclerView.ViewHolder>(diffUtilCallback) {
 

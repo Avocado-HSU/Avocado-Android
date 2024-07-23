@@ -7,7 +7,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.avocado_android.R
 import com.example.avocado_android.base.BaseFragment
 import com.example.avocado_android.databinding.FragmentLibraryBinding
-import com.example.avocado_android.domain.model.library.LibraryCardAdapter
+import com.example.avocado_android.domain.model.local.library.LibraryCardAdapter
 import com.example.avocado_android.ui.MainViewModel
 import com.example.avocado_android.ui.home.BestChoiceAdapter
 import com.example.avocado_android.ui.home.CheckDaysAdapter

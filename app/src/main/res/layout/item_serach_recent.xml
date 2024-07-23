@@ -6,7 +6,7 @@
     <data>
         <variable
             name="searchRecent"
-            type="com.example.avocado_android.domain.model.search.RecentWordItem" />
+            type="com.example.avocado_android.domain.model.local.search.RecentWordItem" />
 
     </data>
 

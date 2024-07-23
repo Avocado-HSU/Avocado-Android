@@ -1,4 +1,4 @@
-package com.example.avocado_android.domain.model.library
+package com.example.avocado_android.domain.model.local.library
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
