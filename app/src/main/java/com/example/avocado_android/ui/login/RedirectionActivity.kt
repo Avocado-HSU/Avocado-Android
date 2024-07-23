@@ -95,8 +95,11 @@ class RedirectionActivity :
             }
 
             // 저장
+            Log.d("로그1",sessionId.toString())
+            Log.d("로그2",authorizationToken.toString())
+
             authorizationToken?.let { handleToken(it) }
-            sessionId?.let { tokenManager.saveCookie(it) }
+            sessionId?.let { tokenManager.saveCookie("Authorization=$authorizationToken; $it")}
         }
     }
 
@@ -107,7 +110,7 @@ class RedirectionActivity :
 
             // 토큰 저장
             val tokenManager = TokenManager(this)
-            tokenManager.saveToken(token)
+            tokenManager.saveToken("$token")
 
             // 다음 액티비티로 이동
             val intent = Intent(this, MainActivity::class.java).apply {
