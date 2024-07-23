@@ -39,10 +39,4 @@ object ApiModule {
     fun provideWordPageApi(
         @NetworkModule.ApiRetrofit retrofit: Retrofit
     ): WordPageApi = retrofit.create(WordPageApi::class.java)
-
-    @Provides
-    @Singleton
-    fun provideMemberControlApi(
-        @NetworkModule.ApiRetrofit retrofit: Retrofit
-    ) : MemberControlApi = retrofit.create(MemberControlApi::class.java)
 }

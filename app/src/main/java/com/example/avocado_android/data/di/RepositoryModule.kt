@@ -34,8 +34,6 @@ object RepositoryModule {
     fun provideMainPageRepository(mainPageDataSource: MainPageDataSource) : MainPageRepository =
         MainPageRepositoryImpl(mainPageDataSource)
 
-    //fun provideMemberControlRepository
-
     //fun provideWordPageRepository
 
 }
