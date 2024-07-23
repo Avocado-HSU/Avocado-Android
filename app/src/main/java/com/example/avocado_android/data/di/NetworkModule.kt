@@ -67,7 +67,7 @@ object NetworkModule {
         return Retrofit.Builder()
             .addConverterFactory(moshiConverterFactory)
             .client(okHttpClient)
-            .baseUrl("")
+            .baseUrl("http://avocado-hsu.kro.kr")
             .build()
     }
 
