@@ -3,7 +3,6 @@ package com.example.avocado_android.data.di
 import com.example.avocado_android.data.remote.ChatBotApi
 import com.example.avocado_android.data.remote.LibraryPageApi
 import com.example.avocado_android.data.remote.MainPageApi
-import com.example.avocado_android.data.remote.MemberControlApi
 import com.example.avocado_android.data.remote.WordPageApi
 import dagger.Module
 import dagger.Provides
@@ -39,10 +38,4 @@ object ApiModule {
     fun provideWordPageApi(
         @NetworkModule.ApiRetrofit retrofit: Retrofit
     ): WordPageApi = retrofit.create(WordPageApi::class.java)
-
-    @Provides
-    @Singleton
-    fun provideMemberControlApi(
-        @NetworkModule.ApiRetrofit retrofit: Retrofit
-    ) : MemberControlApi = retrofit.create(MemberControlApi::class.java)
 }

@@ -36,12 +36,7 @@ class VocaListFragment : BaseFragment<FragmentVocaListBinding>(R.layout.fragment
         suffixAdapter = SuffixAdapter()
 
         with(binding) {
-            binding.vocalistSameAffixRv.adapter = affixAdapter
-            binding.vocalistSameWordRv.adapter = sameWordAdapter
             binding.vocalistSuffixRv.adapter = suffixAdapter
-
-            binding.vocalistSameWordRv.addItemDecoration(HorizontalSpaceItemDecoration(8))
-            binding.vocalistSameAffixRv.addItemDecoration(HorizontalSpaceItemDecoration(8))
         }
     }
 
