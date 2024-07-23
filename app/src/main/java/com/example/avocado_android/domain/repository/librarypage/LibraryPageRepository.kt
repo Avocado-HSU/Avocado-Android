@@ -1,4 +1,4 @@
-package com.example.avocado_android.domain.repository.library
+package com.example.avocado_android.domain.repository.librarypage
 
 import com.example.avocado_android.domain.model.response.library.LibraryPageResponseDto
 import com.example.avocado_android.domain.model.response.library.UpdateLibraryResponseDto

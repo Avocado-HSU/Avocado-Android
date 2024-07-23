@@ -5,7 +5,7 @@ import com.example.avocado_android.data.source.chatbot.ChatBotRepositoryImpl
 import com.example.avocado_android.data.source.library.LibraryPageDataSource
 import com.example.avocado_android.data.source.library.LibraryPageRepositoryImpl
 import com.example.avocado_android.domain.repository.chatbot.ChatBotRepository
-import com.example.avocado_android.domain.repository.library.LibraryPageRepository
+import com.example.avocado_android.domain.repository.librarypage.LibraryPageRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
