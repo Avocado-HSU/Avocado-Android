@@ -1,16 +1,16 @@
 package com.example.avocado_android.data.di
 
 import com.example.avocado_android.utils.token.AccessTokenInterceptor
+import com.example.avocado_android.utils.token.CookieInterceptor
 import com.example.avocado_android.utils.token.TokenManager
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
-
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
-import retrofit2.converter.moshi.MoshiConverterFactory
+import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Qualifier
 import javax.inject.Singleton
@@ -23,11 +23,12 @@ object NetworkModule {
     @Retention(AnnotationRetention.BINARY)
     annotation class ApiRetrofit
 
-    // HttpLoggingInterceptor 생성
     @Singleton
     @Provides
     fun provideHttpLoggingInterceptor(): HttpLoggingInterceptor {
-        return HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BODY }
+        return HttpLoggingInterceptor().apply {
+            level = HttpLoggingInterceptor.Level.BODY
+        }
     }
 
     @Singleton
@@ -35,40 +36,45 @@ object NetworkModule {
     fun provideAccessTokenInterceptor(tokenManager: TokenManager): AccessTokenInterceptor {
         return AccessTokenInterceptor(tokenManager)
     }
+
     @Singleton
     @Provides
-    fun provideMoshiConverterFactory(): MoshiConverterFactory {
-        return MoshiConverterFactory.create()
+    fun provideCookieInterceptor(tokenManager: TokenManager): CookieInterceptor {
+        return CookieInterceptor(tokenManager)
     }
 
-    // OkHttpClient 생성
+    @Provides
+    @Singleton
+    fun provideConverterFactory(): GsonConverterFactory = GsonConverterFactory.create()
+
     @Singleton
     @Provides
     fun provideOkHttpClient(
         httpLoggingInterceptor: HttpLoggingInterceptor,
-        accessTokenInterceptor: AccessTokenInterceptor): OkHttpClient {
+        accessTokenInterceptor: AccessTokenInterceptor,
+        cookieInterceptor: CookieInterceptor
+    ): OkHttpClient {
         return OkHttpClient.Builder()
             .connectTimeout(30, TimeUnit.SECONDS)
             .readTimeout(30, TimeUnit.SECONDS)
             .writeTimeout(30, TimeUnit.SECONDS)
             .addInterceptor(httpLoggingInterceptor)
             .addInterceptor(accessTokenInterceptor)
+            .addInterceptor(cookieInterceptor)
             .build()
     }
 
-    // Retrofit 생성
     @ApiRetrofit
     @Singleton
     @Provides
     fun provideRetrofit(
         okHttpClient: OkHttpClient,
-        moshiConverterFactory: MoshiConverterFactory
+        gsonConverterFactory: GsonConverterFactory
     ): Retrofit {
         return Retrofit.Builder()
-            .addConverterFactory(moshiConverterFactory)
+            .addConverterFactory(gsonConverterFactory)
             .client(okHttpClient)
             .baseUrl("http://avocado-hsu.kro.kr")
             .build()
     }
-
 }
