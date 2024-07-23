@@ -4,8 +4,11 @@ import com.example.avocado_android.data.source.chatbot.ChatBotDataSource
 import com.example.avocado_android.data.source.chatbot.ChatBotRepositoryImpl
 import com.example.avocado_android.data.source.library.LibraryPageDataSource
 import com.example.avocado_android.data.source.library.LibraryPageRepositoryImpl
+import com.example.avocado_android.data.source.mainpage.MainPageDataSource
+import com.example.avocado_android.data.source.mainpage.MainPageRepositoryImpl
 import com.example.avocado_android.domain.repository.chatbot.ChatBotRepository
 import com.example.avocado_android.domain.repository.librarypage.LibraryPageRepository
+import com.example.avocado_android.domain.repository.mainpage.MainPageRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -26,7 +29,10 @@ object RepositoryModule {
     fun provideLibraryPageRepository(libraryPageDataSource: LibraryPageDataSource) : LibraryPageRepository =
         LibraryPageRepositoryImpl(libraryPageDataSource)
 
-    //fun provideMainPageRepository
+    @Singleton
+    @Provides
+    fun provideMainPageRepository(mainPageDataSource: MainPageDataSource) : MainPageRepository =
+        MainPageRepositoryImpl(mainPageDataSource)
 
     //fun provideMemberControlRepository
 
