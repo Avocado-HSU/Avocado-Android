@@ -142,7 +142,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
-                        <!-- 프레임1 -->
+                        <!-- 프레임1, 단어적 의미 -->
                         <TextView
                             android:id="@+id/vocalist_word_meaning_tv"
                             style="@style/title_bold_18"
@@ -223,7 +223,7 @@
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintStart_toStartOf="parent"/>
 
-                        <!-- 프레임2 -->
+                        <!-- 프레임2, 어원분리 -->
                         <TextView
                             android:id="@+id/vocalist_etymology_tv"
                             style="@style/title_bold_18"
@@ -333,60 +333,64 @@
                             app:layout_constraintTop_toBottomOf="@id/vocalist_frame_1"
                             app:layout_constraintStart_toStartOf="parent"/>
 
-                        <!-- 프레임3 -->
+                        <!-- 프레임3, 단어를 쉽게 외우는 법 -->
                         <TextView
-                            android:id="@+id/vocalist_example_sentence_title_tv"
+                            android:id="@+id/vocalist_easy_memorize_word_tv"
                             style="@style/title_bold_18"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="55dp"
                             android:layout_marginStart="8dp"
-                            android:text="예문"
+                            android:text="단어를 쉽게 외우는 법"
                             android:textColor="@color/Green_2_500"
                             app:layout_constraintTop_toBottomOf="@+id/vocalist_frame_2"
-                            app:layout_constraintStart_toEndOf="@+id/vocalist_profile_img3" />
+                            app:layout_constraintStart_toEndOf="@+id/vocalist_profile_img2" />
 
                         <FrameLayout
                             android:id="@+id/vocalist_frame_3"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="24dp"
-                            android:layout_marginEnd="24dp"
+                            android:layout_marginBottom="75dp"
                             android:layout_marginTop="4dp"
+                            android:layout_marginEnd="24dp"
                             android:background="@drawable/rounded_rectangle_40dp"
-                            app:layout_constraintTop_toBottomOf="@+id/vocalist_example_sentence_title_tv"
+                            app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent">
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/vocalist_easy_memorize_word_tv">
 
                             <androidx.constraintlayout.widget.ConstraintLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent">
 
                                 <TextView
-                                    android:id="@+id/vocalist_example_sentence_guide_tv"
+                                    android:id="@+id/vocalist_easy_memorize_word_tip_guide_tv"
+                                    style="@style/body_medium_12"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginTop="38dp"
                                     android:layout_marginStart="28dp"
-                                    android:text="@string/memorize_word_using_example_sentence"
-                                    style="@style/body_medium_12"
+                                    android:layout_marginTop="38dp"
+                                    android:layout_marginEnd="28dp"
+                                    android:text="@string/easy_memorize_word_tip"
                                     android:textColor="@color/Green_2_300"
-                                    app:layout_constraintTop_toTopOf="parent"
-                                    app:layout_constraintStart_toStartOf="parent"/>
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent" />
 
                                 <TextView
-                                    android:id="@+id/vocalist_example_sentence_tv"
+                                    android:id="@+id/vocalist_easy_memorize_word_tip_tv"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="28dp"
-                                    android:layout_marginBottom="36dp"
                                     android:layout_marginTop="12dp"
                                     android:layout_marginEnd="28dp"
-                                    android:text="@string/example_sentence"
+                                    android:layout_marginBottom="36dp"
+                                    android:text="@string/easy_easy_memorize_word_tip_exp"
                                     app:layout_constraintBottom_toBottomOf="parent"
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toBottomOf="@+id/vocalist_example_sentence_guide_tv" />
+                                    app:layout_constraintTop_toBottomOf="@+id/vocalist_easy_memorize_word_tip_guide_tv" />
 
 
                             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -402,126 +406,6 @@
                             android:src="@drawable/ic_logo_profile"
                             app:layout_constraintTop_toBottomOf="@id/vocalist_frame_2"
                             app:layout_constraintStart_toStartOf="parent"/>
-
-                        <!-- 프레임4 -->
-                        <TextView
-                            android:id="@+id/vocalist_easy_memorize_word_tv"
-                            style="@style/title_bold_18"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="55dp"
-                            android:layout_marginStart="8dp"
-                            android:text="단어를 쉽게 외우는 법"
-                            android:textColor="@color/Green_2_500"
-                            app:layout_constraintTop_toBottomOf="@+id/vocalist_frame_3"
-                            app:layout_constraintStart_toEndOf="@+id/vocalist_profile_img4" />
-
-                        <FrameLayout
-                            android:id="@+id/vocalist_frame_4"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="24dp"
-                            android:layout_marginTop="4dp"
-                            android:layout_marginEnd="24dp"
-                            android:background="@drawable/rounded_rectangle_40dp"
-                            app:layout_constraintTop_toBottomOf="@+id/vocalist_easy_memorize_word_tv"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent">
-
-                            <androidx.constraintlayout.widget.ConstraintLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent">
-
-                                <TextView
-                                    android:id="@+id/vocalist_easy_memorize_word_tip_guide_tv"
-                                    style="@style/body_medium_12"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="38dp"
-                                    android:layout_marginStart="28dp"
-                                    android:layout_marginEnd="28dp"
-                                    android:text="@string/easy_memorize_word_tip"
-                                    android:textColor="@color/Green_2_300"
-                                    app:layout_constraintEnd_toEndOf="parent"
-                                    app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toTopOf="parent" />
-
-                                <TextView
-                                    android:id="@+id/vocalist_easy_memorize_word_tip_tv"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="28dp"
-                                    android:layout_marginEnd="28dp"
-                                    android:layout_marginTop="12dp"
-                                    android:layout_marginBottom="36dp"
-                                    android:text="@string/easy_easy_memorize_word_tip_exp"
-                                    app:layout_constraintBottom_toBottomOf="parent"
-                                    app:layout_constraintEnd_toEndOf="parent"
-                                    app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toBottomOf="@+id/vocalist_easy_memorize_word_tip_guide_tv" />
-
-
-                            </androidx.constraintlayout.widget.ConstraintLayout>
-
-                        </FrameLayout>
-
-                        <ImageView
-                            android:id="@+id/vocalist_profile_img4"
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
-                            android:layout_marginTop="44dp"
-                            android:layout_marginStart="26dp"
-                            android:src="@drawable/ic_logo_profile"
-                            app:layout_constraintTop_toBottomOf="@id/vocalist_frame_3"
-                            app:layout_constraintStart_toStartOf="parent"/>
-
-                        <TextView
-                            android:id="@+id/vocalist_same_word_list_tv"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="28dp"
-                            android:text="@string/same_word_list"
-                            style="@style/title_bold_18"
-                            android:textColor="@color/Green_2_500"
-                            android:textSize="20dp"
-                            app:layout_constraintStart_toStartOf="@+id/vocalist_frame_4"
-                            app:layout_constraintTop_toBottomOf="@id/vocalist_frame_4" />
-
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/vocalist_same_word_rv"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="12dp"
-                            android:orientation="horizontal"
-                            tools:listitem="@layout/item_same_word"
-                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="@id/vocalist_same_word_list_tv"
-                            app:layout_constraintTop_toBottomOf="@id/vocalist_same_word_list_tv" />
-
-                        <TextView
-                            android:id="@+id/vocalist_same_affix_list_tv"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="28dp"
-                            android:text="@string/same_affix_list"
-                            style="@style/title_bold_18"
-                            android:textColor="@color/Green_2_500"
-                            android:textSize="20dp"
-                            app:layout_constraintStart_toStartOf="@+id/vocalist_same_word_rv"
-                            app:layout_constraintTop_toBottomOf="@id/vocalist_same_word_rv" />
-
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/vocalist_same_affix_rv"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="12dp"
-                            app:affix="@{VocaListViewModel.affixItem}"
-                            android:orientation="horizontal"
-                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="@id/vocalist_same_affix_list_tv"
-                            app:layout_constraintTop_toBottomOf="@id/vocalist_same_affix_list_tv" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
