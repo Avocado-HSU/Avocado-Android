@@ -5,14 +5,19 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import android.os.Bundle
+import android.util.Log
 import android.view.MotionEvent
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.NavHost
 import androidx.navigation.Navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
@@ -23,9 +28,17 @@ import com.example.avocado_android.databinding.ActivityMainBinding
 import com.example.avocado_android.ui.home.HomeFragment
 import com.example.avocado_android.ui.ChatBot.ChatBotFragment
 import com.example.avocado_android.ui.library.LibraryFragment
+import com.example.avocado_android.ui.login.LoginViewModel
 import com.example.avocado_android.ui.search.SearchViewModel
-
+import dagger.hilt.EntryPoint
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
+@AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
+    private val memberControlViewModel by viewModels<LoginViewModel>()
+
+
 
     private lateinit var navController: NavController
     private lateinit var viewModel : MainViewModel
@@ -33,10 +46,43 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     private var homeFragment: HomeFragment? = null
 
     override fun setLayout() {
+        cookieConfirm()
         setNavigation()
-
+        loginConfirm()
+        setOnClick()
     }
 
+
+    private fun loginConfirm() {
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                memberControlViewModel.memberData.collectLatest { response ->
+                    Log.d("response data", response.id.toString())
+                    memberControlViewModel.getToken { token ->
+                        Log.d("response datas", "Token: $token")
+                    }
+                }
+            }
+        }
+    }
+    private fun cookieConfirm() {
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                memberControlViewModel.memberData.collectLatest { response ->
+                    Log.d("response data", response.id.toString())
+                    memberControlViewModel.getCookie { cookie ->
+                        Log.d("response datas", "cookie: $cookie")
+                    }
+                }
+            }
+        }
+    }
+
+    private fun setOnClick(){
+        binding.vocalistProfileIv.setOnClickListener {
+            memberControlViewModel.getMemberData()
+        }
+    }
     private fun setNavigation() {
 
         binding.mainBottomNavigationBar.itemIconTintList = null
