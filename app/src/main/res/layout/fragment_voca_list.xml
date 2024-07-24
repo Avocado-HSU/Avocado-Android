@@ -5,8 +5,8 @@
 
     <data>
         <variable
-            name="VocaListViewModel"
-            type="com.example.avocado_android.ui.vocalist.VocaListViewModel" />
+            name="SearchViewModel"
+            type="com.example.avocado_android.ui.search.SearchViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

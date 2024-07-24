@@ -34,7 +34,11 @@
         android:id="@+id/searchFragment"
         android:name="com.example.avocado_android.ui.search.SearchFragment"
         android:label="SearchFragment"
-        tools:layout="@layout/fragment_search"/>
+        tools:layout="@layout/fragment_search">
+        <action
+            android:id="@+id/action_searchFragment_to_vocaListFragment"
+            app:destination="@id/vocaListFragment" />
+    </fragment>
     <fragment
         android:id="@+id/vocaListFragment"
         android:name="com.example.avocado_android.ui.vocalist.VocaListFragment"
