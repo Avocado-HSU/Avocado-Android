@@ -3,8 +3,8 @@
 
     <data>
         <variable
-            name="AffixItem"
-            type="com.example.avocado_android.domain.model.local.vocalist.AffixItem" />
+            name="searchWordResponseDto"
+            type="com.example.avocado_android.domain.model.response.main.SearchWordResponseDto" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -18,7 +18,7 @@
             android:layout_width="100dp"
             android:layout_height="36dp"
             android:gravity="center"
-            android:text="@{AffixItem.affix}"
+            android:text=""
             style="@style/body_semi_bold_14"
             android:textColor="@color/Green_2_300"
             app:layout_constraintBottom_toBottomOf="parent"

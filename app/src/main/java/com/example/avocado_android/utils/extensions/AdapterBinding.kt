@@ -13,18 +13,19 @@ import com.example.avocado_android.ui.vocalist.AffixAdapter
 
 object AdapterBinding {
 
-    @JvmStatic
-    @BindingAdapter("app:affix")
-    fun bindData(recyclerView: RecyclerView, data: LiveData<List<AffixItem>>?) {
-        if (recyclerView.adapter == null) {
-            val adapter = AffixAdapter()
-            recyclerView.adapter = adapter
-        }
-        val myAdapter = recyclerView.adapter as AffixAdapter
-        data?.observe(recyclerView.context as LifecycleOwner) { items ->
-            myAdapter.submitList(items)
-        }
-    }
+    // api 완성되면 다시 작성
+//    @JvmStatic
+//    @BindingAdapter("app:affix")
+//    fun bindData(recyclerView: RecyclerView, data: LiveData<List<AffixItem>>?) {
+//        if (recyclerView.adapter == null) {
+//            val adapter = AffixAdapter()
+//            recyclerView.adapter = adapter
+//        }
+//        val myAdapter = recyclerView.adapter as AffixAdapter
+//        data?.observe(recyclerView.context as LifecycleOwner) { items ->
+//            myAdapter.submitList(items)
+//        }
+//    }
 
     @JvmStatic
     @BindingAdapter("app:listData")

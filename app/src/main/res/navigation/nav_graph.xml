@@ -34,17 +34,24 @@
         android:id="@+id/searchFragment"
         android:name="com.example.avocado_android.ui.search.SearchFragment"
         android:label="SearchFragment"
-        tools:layout="@layout/fragment_search"/>
-    <fragment
-        android:id="@+id/vocaListFragment"
-        android:name="com.example.avocado_android.ui.vocalist.VocaListFragment"
-        android:label="VocaListFragment"
-        tools:layout="@layout/fragment_voca_list">
+        tools:layout="@layout/fragment_search">
         <action
-            android:id="@+id/action_vocaListFragment_to_libraryFragment"
+            android:id="@+id/action_searchFragment_to_wordListFragment"
+            app:destination="@id/wordListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/wordListFragment"
+        android:name="com.example.avocado_android.ui.wordList.WordListFragment"
+        android:label="WordListFragment"
+        tools:layout="@layout/fragment_word_list">
+        <action
+            android:id="@+id/action_wordListFragment_to_libraryFragment"
             app:destination="@id/libraryFragment" />
         <action
-            android:id="@+id/action_vocaListFragment_to_searchFragment"
+            android:id="@+id/action_wordListFragment_to_searchFragment"
             app:destination="@id/searchFragment" />
+        <argument
+            android:name="word"
+            app:argType="string" />
     </fragment>
 </navigation>
