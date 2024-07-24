@@ -15,7 +15,7 @@
             android:id="@+id/item_home_checked_days_days_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{checkedDayDate.days}"
+            android:text="@{checkedDayDate.day}"
             android:textColor="@color/Green_1_300"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="@id/item_home_checked_days_circle_iv"
@@ -26,7 +26,7 @@
             android:id="@+id/item_home_checked_days_circle_iv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            drawableRes="@{checkedDayDate.checkedImg}"
+            app:imageRes="@{checkedDayDate.imageRes}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/item_home_checked_days_days_tv" />

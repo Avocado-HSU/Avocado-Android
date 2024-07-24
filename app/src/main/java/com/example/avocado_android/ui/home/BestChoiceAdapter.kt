@@ -8,8 +8,8 @@ import com.example.avocado_android.databinding.ItemHomeBestSearchBinding
 
 class BestChoiceAdapter : BaseAdapter<String, ItemHomeBestSearchBinding>(
     BaseDiffCallback(
-        areItemsTheSame = { oldItem, newItem -> oldItem == newItem },
-        areContentsTheSame = { oldItem, newItem -> oldItem == newItem }
+        itemsTheSame = { oldItem, newItem -> oldItem == newItem },
+        contentsTheSame = { oldItem, newItem -> oldItem == newItem }
     )
 ) {
 

@@ -30,58 +30,50 @@ import com.example.avocado_android.ui.ChatBot.ChatBotFragment
 import com.example.avocado_android.ui.library.LibraryFragment
 import com.example.avocado_android.ui.login.LoginViewModel
 import com.example.avocado_android.ui.search.SearchViewModel
+import com.example.avocado_android.utils.extensions.MyAppGlideModule
 import dagger.hilt.EntryPoint
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import javax.inject.Inject
+
 @AndroidEntryPoint
-class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
-    private val memberControlViewModel by viewModels<LoginViewModel>()
-
-
+class MainActivity (
+) : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
     private lateinit var navController: NavController
+    private lateinit var loginViewModel: LoginViewModel
     private lateinit var viewModel : MainViewModel
     private lateinit var searchViewModel : SearchViewModel
     private var homeFragment: HomeFragment? = null
 
     override fun setLayout() {
-        cookieConfirm()
+        bindingViewModel()
         setNavigation()
         loginConfirm()
-        setOnClick()
+        setData()
     }
 
 
     private fun loginConfirm() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                memberControlViewModel.memberData.collectLatest { response ->
-                    Log.d("response data", response.id.toString())
-                    memberControlViewModel.getToken { token ->
-                        Log.d("response datas", "Token: $token")
-                    }
-                }
-            }
-        }
-    }
-    private fun cookieConfirm() {
-        lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                memberControlViewModel.memberData.collectLatest { response ->
-                    Log.d("response data", response.id.toString())
-                    memberControlViewModel.getCookie { cookie ->
-                        Log.d("response datas", "cookie: $cookie")
-                    }
+                loginViewModel.memberData.collectLatest { response ->
+                    Log.d("response data", response.id)
+                    binding.memberData = response
                 }
             }
         }
     }
 
-    private fun setOnClick(){
-        binding.vocalistProfileIv.setOnClickListener {
-            memberControlViewModel.getMemberData()
+    private fun setData(){
+        loginViewModel.getToken { token ->
+            Log.d("response datas", "Token: $token")
         }
+        loginViewModel.getCookie { cookie ->
+            Log.d("response datas", "cookie: $cookie")
+        }
+        loginViewModel.getMemberData()
     }
     private fun setNavigation() {
 
@@ -113,6 +105,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     private fun bindingViewModel(){
         viewModel = ViewModelProvider(this)[MainViewModel::class.java]
         searchViewModel = ViewModelProvider(this)[SearchViewModel::class.java]
+        loginViewModel = ViewModelProvider(this)[LoginViewModel::class.java]
     }
 
     // 외부 터치시 키보드 숨기기, 포커스 제거

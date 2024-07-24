@@ -4,7 +4,7 @@
     <data>
         <variable
             name="recommendedData"
-            type="com.example.avocado_android.domain.model.local.home.HomeRecommendedItem" />
+            type="com.example.avocado_android.domain.model.response.main.WordDto" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="8dp"
-            android:text="@{recommendedData.word}"
+            android:text="@{recommendedData.english}"
             android:textSize="16dp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -31,7 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
-            android:text="@{recommendedData.meaning}"
+            android:text="@{recommendedData.korean}"
             app:layout_constraintBottom_toBottomOf="@id/item_recommend_word_word_tv"
             app:layout_constraintStart_toEndOf="@id/item_recommend_word_word_tv" />
 
@@ -40,7 +40,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:text="@{recommendedData.description}"
+            android:text="@{recommendedData.etymology}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@id/item_recommend_word_word_tv" />
 

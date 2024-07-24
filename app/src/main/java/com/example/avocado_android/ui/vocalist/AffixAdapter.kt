@@ -17,8 +17,8 @@ import com.example.avocado_android.domain.model.local.vocalist.SameWordItem
 
 class AffixAdapter: BaseAdapter<AffixItem, ItemVocalistAffixBinding>(
     BaseDiffCallback(
-        areItemsTheSame = { oldItem, newItem -> oldItem.id == newItem.id },
-        areContentsTheSame = { oldItem, newItem -> oldItem == newItem }
+        itemsTheSame = { oldItem, newItem -> oldItem.id == newItem.id },
+        contentsTheSame = { oldItem, newItem -> oldItem == newItem }
     )
 ) {
 

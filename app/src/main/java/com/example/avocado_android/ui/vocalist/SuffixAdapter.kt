@@ -15,8 +15,8 @@ import com.example.avocado_android.domain.model.local.vocalist.SuffixItem
 
 class SuffixAdapter: BaseAdapter<SuffixItem, ItemVocalistSuffixBinding>(
     BaseDiffCallback(
-        areItemsTheSame = {oldItem, newItem -> oldItem.id == newItem.id },
-        areContentsTheSame = {oldItem, newItem -> oldItem == newItem }
+        itemsTheSame = { oldItem, newItem -> oldItem.id == newItem.id },
+        contentsTheSame = { oldItem, newItem -> oldItem == newItem }
     )
 ) {
 
