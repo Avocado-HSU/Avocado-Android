@@ -34,7 +34,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(R.layout.activity_login
 
                     memberControlViewModel.getToken { token ->
                         Log.d("response data", "Token: $token")
-                        if(token != null){
+                        if (token != null) {
                             startNextActivity(MainActivity::class.java)
                         }
                     }

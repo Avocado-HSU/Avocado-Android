@@ -1,45 +1,24 @@
 package com.example.avocado_android.domain.model.local.library
 
-import android.view.LayoutInflater
-import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
-import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
-import androidx.recyclerview.widget.RecyclerView
 import com.example.avocado_android.R
+import com.example.avocado_android.base.BaseAdapter
+import com.example.avocado_android.base.BaseDiffCallback
+import com.example.avocado_android.databinding.ItemHomeBestSearchBinding
 import com.example.avocado_android.databinding.ItemLibraryWordCardBinding
+import com.example.avocado_android.domain.model.response.library.LibraryWordDto
 
-class LibraryCardAdapter : ListAdapter<LibraryWordCard, LibraryCardAdapter.LibraryCardViewHolder>(
-    LibraryCardDiffCallback()
+
+class LibraryCardAdapter : BaseAdapter<LibraryWordDto, ItemLibraryWordCardBinding>(
+    BaseDiffCallback(
+        itemsTheSame = { oldItem, newItem -> oldItem == newItem },
+        contentsTheSame = { oldItem, newItem -> oldItem == newItem }
+    )
 ) {
 
-    inner class LibraryCardViewHolder(private val binding: ItemLibraryWordCardBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: LibraryWordCard) {
-            binding.libraryWordCardData = item
-            binding.executePendingBindings()
-        }
-    }
+    override val layoutId: Int
+        get() = R.layout.item_library_word_card
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LibraryCardViewHolder {
-        val binding: ItemLibraryWordCardBinding = DataBindingUtil.inflate(
-            LayoutInflater.from(parent.context),
-            R.layout.item_library_word_card, parent, false
-        )
-        return LibraryCardViewHolder(binding)
-    }
-
-    override fun onBindViewHolder(holder: LibraryCardViewHolder, position: Int) {
-        holder.bind(getItem(position))
-    }
-
-    class LibraryCardDiffCallback : DiffUtil.ItemCallback<LibraryWordCard>() {
-        override fun areItemsTheSame(oldItem: LibraryWordCard, newItem: LibraryWordCard): Boolean {
-            return oldItem == newItem
-        }
-
-        override fun areContentsTheSame(oldItem: LibraryWordCard, newItem: LibraryWordCard): Boolean {
-            return oldItem == newItem
-        }
+    override fun bind(binding: ItemLibraryWordCardBinding, item: LibraryWordDto) {
+        binding.libraryData = item
     }
 }

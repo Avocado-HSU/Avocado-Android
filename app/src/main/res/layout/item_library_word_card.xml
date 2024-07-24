@@ -4,10 +4,9 @@
 
     <data>
         <variable
-            name="LibraryWordCardData"
-            type="com.example.avocado_android.domain.model.local.library.LibraryWordCard" />
+            name="libraryData"
+            type="com.example.avocado_android.domain.model.response.library.LibraryWordDto" />
     </data>
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:background="@drawable/shape_square_gr_1_500_corner_radius_21dp"
         android:layout_width="match_parent"
@@ -15,7 +14,7 @@
 
         <TextView
             android:id="@+id/item_library_word_card_word_tv"
-            text= "@{LibraryWordCardData.word}"
+            text= "@{libraryData.english}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -27,7 +26,7 @@
             android:id="@+id/item_library_word_card_mean_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{LibraryWordCardData.mean}"
+            android:text="@{libraryData.korean}"
             android:layout_marginTop="4dp"
             app:layout_constraintStart_toStartOf="@id/item_library_word_card_word_tv"
             app:layout_constraintTop_toBottomOf="@id/item_library_word_card_word_tv"/>
@@ -53,7 +52,7 @@
             android:paddingTop="4dp"
             android:paddingEnd="8dp"
             android:paddingBottom="4dp"
-            android:text="@{LibraryWordCardData.frontDes}"
+            android:text="@{libraryData.etymologyList[0]}"
             app:layout_constraintStart_toStartOf="@id/item_library_word_card_mean_tv"
             app:layout_constraintTop_toBottomOf="@+id/item_library_word_card_mean_tv" />
 
@@ -68,7 +67,7 @@
             android:paddingEnd="8dp"
             android:paddingBottom="4dp"
             android:layout_marginBottom="16dp"
-            android:text="@{LibraryWordCardData.endDes}"
+            android:text="@{libraryData.etymologyList[1]}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@id/item_library_word_card_frontDes_tv"
             app:layout_constraintTop_toBottomOf="@+id/item_library_word_card_frontDes_tv" />
