@@ -2,7 +2,11 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-
+    <data>
+        <variable
+            name="memberData"
+            type="com.example.avocado_android.domain.model.home.MemberDto" />
+    </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main"
         android:layout_width="match_parent"
@@ -47,7 +51,7 @@
                 android:layout_gravity="end"
                 android:layout_marginTop="17dp"
                 android:layout_marginEnd="24dp"
-                android:text="Hi, 효재"
+                android:text="@{memberData.name}"
                 android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -59,7 +63,7 @@
                 android:layout_gravity="end"
                 android:layout_marginTop="17dp"
                 android:layout_marginEnd="15dp"
-                android:src="@drawable/ic_logo_profile"
+                app:loadUrl="@{memberData.profileUrl}"
                 app:layout_constraintEnd_toStartOf="@+id/vocalist_profile_name_tv"
                 app:layout_constraintTop_toTopOf="parent" />
 
