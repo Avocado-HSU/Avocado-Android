@@ -1,8 +1,12 @@
 package com.example.avocado_android.domain.model.response.main
 
-data class SearchWordResponseDto (
-    val isSuccess : Boolean = false,
-    val isLibraryRegistered: Boolean = false,
-    val libraryId: Int = 0,
-    val characterImgUrl: String = ""
+import com.example.avocado_android.utils.enunm.SearchRequestType
+
+
+data class SearchWordResponseDto(
+    val isSuccess: Boolean? = null,
+    val isLibraryRegistered: Boolean? = null,
+    val libraryId: Int? = null,
+    val characterImgUrl: String? = null,
+    val contents: Map<SearchRequestType, String>? = null
 )

@@ -18,7 +18,6 @@ import androidx.lifecycle.repeatOnLifecycle
 import com.example.avocado_android.R
 import com.example.avocado_android.base.BaseFragment
 import com.example.avocado_android.databinding.FragmentChatbotBinding
-import com.example.avocado_android.ui.vocalist.VocaListViewModel
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
