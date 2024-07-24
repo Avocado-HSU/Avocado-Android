@@ -29,8 +29,8 @@ class SearchViewModel @Inject constructor(
     private val _sameWordItemList = MutableLiveData<List<SameWordItem>>()
     val sameWordItem: LiveData<List<SameWordItem>> get() = _sameWordItemList */
 
-    private val _affixItemList = MutableStateFlow(SearchWordResponseDto())
-    val affixItem: StateFlow<SearchWordResponseDto> get() = _affixItemList
+    private val _searchWordResponseDto = MutableStateFlow(SearchWordResponseDto())
+    val searchWordResponseDto: StateFlow<SearchWordResponseDto> get() = _searchWordResponseDto
 
     private val _recentWordList = MutableStateFlow(RecentSearchWordResponseDto(emptyList()))
     val recentWordList: StateFlow<RecentSearchWordResponseDto> get() = _recentWordList
@@ -49,7 +49,7 @@ class SearchViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 wordPageRepository.wordSearch(id, word).collect {
-                    _affixItemList.value = it
+                    _searchWordResponseDto.value = it
                     Log.d("SearchViewModel", "_affixItemList : $it")
                 }
             } catch (e: Exception) {
@@ -58,7 +58,5 @@ class SearchViewModel @Inject constructor(
         }
     }
 
-    fun update(item: List<RecentWordItem>) {
-       // _recentWordList.value = item
-    }
+
 }
