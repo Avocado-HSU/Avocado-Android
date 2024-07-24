@@ -15,9 +15,9 @@ import com.example.avocado_android.domain.model.response.RecentSearchWordRespons
 
 class RecentWordAdapter: BaseAdapter<RecentSearchWordResponseDto, ItemSerachRecentBinding> (
     BaseDiffCallback(
-        areItemsTheSame = {oldItem, newItem ->  oldItem == newItem},
-        areContentsTheSame = { oldItem, newItem -> oldItem == newItem }
-        )
+        itemsTheSame = { oldItem, newItem -> oldItem == newItem },
+        contentsTheSame = { oldItem, newItem -> oldItem == newItem }
+    )
 ) {
 
     override val layoutId : Int = R.layout.item_serach_recent
