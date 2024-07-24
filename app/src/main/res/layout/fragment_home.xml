@@ -7,6 +7,14 @@
         <variable
             name="checkedDaysViewModel"
             type="com.example.avocado_android.ui.MainViewModel" />
+
+        <variable
+            name="memberData"
+            type="com.example.avocado_android.domain.model.home.MemberDto" />
+
+        <variable
+            name="mainData"
+            type="com.example.avocado_android.domain.model.response.main.MainPageResponseDto" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -66,7 +74,7 @@
                     android:gravity="center"
                     android:paddingTop="12dp"
                     android:paddingBottom="20dp"
-                    android:text="Hi, 효재"
+                    android:text='@{"Hi " + memberData.name}'
                     android:textColor="@color/white"
                     android:textSize="11sp"
                     android:textStyle="bold"
