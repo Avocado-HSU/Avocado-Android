@@ -8,12 +8,15 @@ import com.example.avocado_android.data.source.library.LibraryPageDataSource
 import com.example.avocado_android.data.source.library.LibraryPageRepositoryImpl
 import com.example.avocado_android.data.source.mainpage.MainPageDataSource
 import com.example.avocado_android.data.source.mainpage.MainPageRepositoryImpl
+import com.example.avocado_android.data.source.search.SearchPageDataSource
+import com.example.avocado_android.data.source.search.SearchPageRepositoryImpl
 import com.example.avocado_android.data.source.wordpage.WordPageDataSource
 import com.example.avocado_android.data.source.wordpage.WordPageRepositoryImpl
 import com.example.avocado_android.domain.repository.chatbot.ChatBotRepository
 import com.example.avocado_android.domain.repository.member.MemberControlRepository
 import com.example.avocado_android.domain.repository.librarypage.LibraryPageRepository
 import com.example.avocado_android.domain.repository.mainpage.MainPageRepository
+import com.example.avocado_android.domain.repository.search.SearchPageRepository
 import com.example.avocado_android.domain.repository.wordpage.WordPageRepository
 import dagger.Module
 import dagger.Provides
@@ -45,10 +48,14 @@ object RepositoryModule {
     fun provideMemberControlRepository(memberDataSource: MemberDataSource): MemberControlRepository =
         MemberRepositoryImpl(memberDataSource)
 
-    //fun provideWordPageRepository
     @Singleton
     @Provides
     fun provideWordPageRepository(wordPageDataSource: WordPageDataSource) : WordPageRepository =
         WordPageRepositoryImpl(wordPageDataSource)
+
+    @Singleton
+    @Provides
+    fun provideSearchPageRepository(searchPageDataSource: SearchPageDataSource) : SearchPageRepository =
+        SearchPageRepositoryImpl(searchPageDataSource)
 
 }

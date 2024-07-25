@@ -9,6 +9,7 @@ import com.example.avocado_android.domain.model.local.search.RecentWordItem
 import com.example.avocado_android.domain.model.response.RecentSearchWordResponseDto
 import com.example.avocado_android.domain.model.response.main.SearchWordResponseDto
 import com.example.avocado_android.domain.repository.mainpage.MainPageRepository
+import com.example.avocado_android.domain.repository.search.SearchPageRepository
 import com.example.avocado_android.domain.repository.wordpage.WordPageRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -20,7 +21,8 @@ import javax.inject.Inject
 @HiltViewModel
 class SearchViewModel @Inject constructor(
     private val mainPageRepository: MainPageRepository,
-    private val wordPageRepository: WordPageRepository
+    private val wordPageRepository: WordPageRepository,
+    private val searchPageRepository: SearchPageRepository
 ) : ViewModel() {
 
     /* private val _suffixItemList = MutableLiveData<List<SuffixItem>>()
@@ -48,7 +50,7 @@ class SearchViewModel @Inject constructor(
     fun wordSearch(id: Long, word: String) {
         viewModelScope.launch {
             try {
-                wordPageRepository.wordSearch(id, word).collect {
+                searchPageRepository.wordSearch(id, word).collect {
                     _searchWordResponseDto.value = it
                     Log.d("SearchViewModel", "_affixItemList : $it")
                 }
