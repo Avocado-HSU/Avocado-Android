@@ -1,11 +1,6 @@
 package com.example.avocado_android.ui.search
 
-import android.os.Bundle
 import android.view.KeyEvent
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
@@ -13,11 +8,8 @@ import androidx.navigation.fragment.findNavController
 import com.example.avocado_android.R
 import com.example.avocado_android.base.BaseFragment
 import com.example.avocado_android.databinding.FragmentSearchBinding
-import com.example.avocado_android.domain.model.response.main.SearchWordResponseDto
-import com.example.avocado_android.ui.home.HomeFragmentDirections
 import com.example.avocado_android.ui.vocalist.AffixAdapter
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint

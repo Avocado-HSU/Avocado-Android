@@ -2,11 +2,10 @@ package com.example.avocado_android.data.remote
 
 import com.example.avocado_android.domain.model.response.library.LibraryPageResponseDto
 import com.example.avocado_android.domain.model.response.library.UpdateLibraryResponseDto
-import com.example.avocado_android.domain.model.response.main.SearchWordResponseDto
+import com.example.avocado_android.domain.model.response.search.SearchWordResponseDto
 import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.Path
-import java.lang.reflect.Member
 
 interface LibraryPageApi {
 

@@ -4,7 +4,7 @@ import com.example.avocado_android.R
 import com.example.avocado_android.base.BaseAdapter
 import com.example.avocado_android.base.BaseDiffCallback
 import com.example.avocado_android.databinding.ItemWordListAffixBinding
-import com.example.avocado_android.domain.model.response.main.SearchWordResponseDto
+import com.example.avocado_android.domain.model.response.search.SearchWordResponseDto
 
 class AffixAdapter: BaseAdapter<SearchWordResponseDto, ItemWordListAffixBinding>(
     BaseDiffCallback(

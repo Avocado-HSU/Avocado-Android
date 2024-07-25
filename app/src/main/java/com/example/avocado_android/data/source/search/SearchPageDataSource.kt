@@ -2,8 +2,7 @@ package com.example.avocado_android.data.source.search
 
 import android.util.Log
 import com.example.avocado_android.data.remote.SearchPageApi
-import com.example.avocado_android.data.remote.WordPageApi
-import com.example.avocado_android.domain.model.response.main.SearchWordResponseDto
+import com.example.avocado_android.domain.model.response.search.SearchWordResponseDto
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
