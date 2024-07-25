@@ -4,6 +4,7 @@ import com.example.avocado_android.data.remote.ChatBotApi
 import com.example.avocado_android.data.remote.LibraryPageApi
 import com.example.avocado_android.data.remote.MainPageApi
 import com.example.avocado_android.data.remote.MemberControlApi
+import com.example.avocado_android.data.remote.SearchPageApi
 import com.example.avocado_android.data.remote.WordPageApi
 import dagger.Module
 import dagger.Provides
@@ -46,4 +47,9 @@ object ApiModule {
         @NetworkModule.ApiRetrofit retrofit: Retrofit
     ): MemberControlApi = retrofit.create(MemberControlApi::class.java)
 
+    @Provides
+    @Singleton
+    fun provideSearchPageApi(
+        @NetworkModule.ApiRetrofit retrofit: Retrofit
+    ): SearchPageApi = retrofit.create(SearchPageApi::class.java)
 }
