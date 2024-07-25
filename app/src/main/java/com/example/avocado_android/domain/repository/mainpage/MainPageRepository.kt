@@ -8,6 +8,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface MainPageRepository {
     suspend fun getMainPage(id: Long, date: MainPageRequestDto) : Flow<MainPageResponseDto>
-    suspend fun searchWord(id: Long, word: String) : Flow<SearchWordResponseDto>
     suspend fun getRecentSearch(id: Long) : Flow<RecentSearchWordResponseDto>
 }

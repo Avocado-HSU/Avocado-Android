@@ -21,16 +21,10 @@ class MainPageDataSource @Inject constructor(
     }.catch {
         Log.e("GET getMainPage By MainPageResponseDto Failure", it.message.toString()) }
 
-    fun searchWord(id: Long, word: String) : Flow<SearchWordResponseDto> = flow {
-        val result = mainPageApi.searchWord(id, word)
-        emit(result)
-    }.catch {
-        Log.e("GET searchWord By SearchWordResponseDto Failure", it.message.toString()) }
-
     fun getRecentSearch(id: Long) : Flow<RecentSearchWordResponseDto> = flow {
         val result = mainPageApi.getRecentSearch(id)
         emit(result)
     }.catch {
-        Log.e("GET getRecentSearch By RecentSearchWordResponseDto Failure", it.message.toString()) }
+        Log.e("GET searchWord By SearchWordResponseDto Failure", it.message.toString()) }
 
 }
