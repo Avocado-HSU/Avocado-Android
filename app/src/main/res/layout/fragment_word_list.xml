@@ -5,7 +5,7 @@
 
     <data>
         <variable
-            name="SearchViewModel"
+            name="searchViewModel"
             type="com.example.avocado_android.ui.search.SearchViewModel" />
     </data>
 
@@ -27,8 +27,6 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-
-
 
                 <TextView
                     android:id="@+id/word_list_search_bar"
@@ -200,7 +198,7 @@
                                     android:layout_marginTop="16dp"
                                     android:layout_marginEnd="28dp"
                                     android:layout_marginBottom="36dp"
-                                    android:text="@string/word_meaning"
+                                    android:text=""
                                     app:layout_constraintBottom_toBottomOf="parent"
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintStart_toStartOf="parent"
@@ -250,7 +248,7 @@
                                 android:layout_height="match_parent">
 
                                 <TextView
-                                    android:id="@+id/word_list_latina_word_exp_tv"
+                                    android:id="@+id/word_list_etymology_exp_tv"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="38dp"
@@ -264,13 +262,16 @@
                                 <androidx.recyclerview.widget.RecyclerView
                                     android:id="@+id/word_etymology_rv"
                                     style="@style/body_semi_bold_14"
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="0dp"
                                     android:layout_height="wrap_content"
+                                    android:layout_marginStart="28dp"
+                                    android:layout_marginEnd="28dp"
                                     android:layout_marginTop="8dp"
-                                    android:paddingStart="12dp"
-                                    tools:listitem="@layout/item_word_list_etymology"
-                                    app:layout_constraintStart_toStartOf="@+id/word_list_latina_word_exp_tv"
-                                    app:layout_constraintTop_toBottomOf="@+id/word_list_latina_word_exp_tv" />
+                                    android:orientation="vertical"
+                                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/word_list_etymology_exp_tv" />
 
                                 <TextView
                                     android:id="@+id/word_list_suffix_sub_title_tv"
@@ -284,22 +285,35 @@
                                     app:layout_constraintTop_toBottomOf="@+id/word_etymology_rv" />
 
                                 <androidx.recyclerview.widget.RecyclerView
+                                    android:id="@+id/word_list_prefix_rv"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="8dp"
+                                    android:layout_marginStart="28dp"
+                                    android:layout_marginEnd="28dp"
+                                    android:orientation="horizontal"
+                                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/word_list_suffix_sub_title_tv"/>
+                                <androidx.recyclerview.widget.RecyclerView
                                     android:id="@+id/word_list_suffix_rv"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="8dp"
                                     android:layout_marginStart="28dp"
                                     android:layout_marginEnd="28dp"
+                                    android:orientation="horizontal"
                                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                                    tools:listitem="@layout/item_word_list_affix"
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintEnd_toEndOf="parent"
-                                    app:layout_constraintTop_toBottomOf="@+id/word_list_suffix_sub_title_tv"/>
+                                    app:layout_constraintTop_toBottomOf="@+id/word_list_prefix_rv"/>
+
                                 <TextView
                                     android:id="@+id/word_list_suffix_desc_tv"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="@string/suffix_desc"
+                                    android:text=""
                                     style="@style/body_medium_14"
                                     android:layout_marginTop="36dp"
                                     android:layout_marginStart="28dp"
@@ -308,9 +322,7 @@
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintBottom_toBottomOf="parent"
-                                    app:layout_constraintTop_toBottomOf="@+id/word_list_suffix_rv"
-
-                                    />
+                                    app:layout_constraintTop_toBottomOf="@+id/word_list_suffix_rv" />
 
                             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -379,7 +391,7 @@
                                     android:layout_marginTop="12dp"
                                     android:layout_marginEnd="28dp"
                                     android:layout_marginBottom="36dp"
-                                    android:text="@string/easy_easy_memorize_word_tip_exp"
+                                    android:text=""
                                     app:layout_constraintBottom_toBottomOf="parent"
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintStart_toStartOf="parent"

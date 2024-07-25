@@ -1,15 +1,20 @@
 package com.example.avocado_android.ui.search
 
+import android.content.Context
 import android.view.KeyEvent
 import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.example.avocado_android.R
 import com.example.avocado_android.base.BaseFragment
 import com.example.avocado_android.databinding.FragmentSearchBinding
-import com.example.avocado_android.ui.vocalist.AffixAdapter
+import com.example.avocado_android.ui.vocalist.PrefixAdapter
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -17,7 +22,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
 
     private val viewModel : SearchViewModel by activityViewModels()
     private lateinit var recentWordAdapter: RecentWordAdapter
-    private lateinit var affixAdapter: AffixAdapter
+    private lateinit var prefixAdapter: PrefixAdapter
 
     private lateinit var query: String
 
@@ -48,10 +53,28 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
                     event?.action == KeyEvent.ACTION_DOWN && event.keyCode == KeyEvent.KEYCODE_ENTER) {
                 query = binding.searchSearchBar.text.toString()
 
-                viewModel.wordSearch(14, query)
-                val action = SearchFragmentDirections.actionSearchFragmentToWordListFragment(query)
-                findNavController().navigate(action)
+                val imm = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.hideSoftInputFromWindow(v.windowToken, 0)
 
+                // 서버 요청
+                viewModel.wordSearch(14, query)
+
+                // 데이터가 준비된 후 화면 전환
+                viewLifecycleOwner.lifecycleScope.launch {
+                    repeatOnLifecycle(Lifecycle.State.STARTED) {
+                        val responses = viewModel.searchWordResponseDto
+                            .filter { it.isSuccess == true }
+                            .collect { response ->
+                                if (response != null) {
+                                    val action =
+                                        SearchFragmentDirections.actionSearchFragmentToWordListFragment(
+                                            query
+                                        )
+                                    findNavController().navigate(action)
+                                }
+                            }
+                    }
+                }
                 true
             } else {
                 false

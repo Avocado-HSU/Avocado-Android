@@ -1,5 +1,6 @@
 package com.example.avocado_android.ui.vocalist
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -11,19 +12,22 @@ import com.example.avocado_android.base.BaseAdapter
 import com.example.avocado_android.base.BaseDiffCallback
 import com.example.avocado_android.databinding.ItemSerachRecentBinding
 import com.example.avocado_android.databinding.ItemVocalistSuffixBinding
+import com.example.avocado_android.databinding.ItemWordListSuffixBinding
 import com.example.avocado_android.domain.model.local.vocalist.SuffixItem
+import com.example.avocado_android.domain.model.response.search.WordEtymologyDto
 
-class SuffixAdapter: BaseAdapter<SuffixItem, ItemVocalistSuffixBinding>(
+class SuffixAdapter: BaseAdapter<WordEtymologyDto, ItemWordListSuffixBinding>(
     BaseDiffCallback(
-        itemsTheSame = { oldItem, newItem -> oldItem.id == newItem.id },
+        itemsTheSame = { oldItem, newItem -> oldItem== newItem },
         contentsTheSame = { oldItem, newItem -> oldItem == newItem }
     )
 ) {
 
-    override val layoutId: Int = R.layout.item_vocalist_suffix
+    override val layoutId: Int = R.layout.item_word_list_suffix
 
-    override fun bind(binding: ItemVocalistSuffixBinding, item: SuffixItem) {
-        binding.suffixItem = item
+    override fun bind(binding: ItemWordListSuffixBinding, item: WordEtymologyDto) {
+        binding.wordEtymologyDto = item
+        Log.d("PrefixAdapter", "SuffixAdapter: $item")
     }
 
 }

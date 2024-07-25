@@ -13,9 +13,9 @@
         android:layout_height="wrap_content"
         android:background="@drawable/shape_square_corner_gr2_300_radius_25dp_stroke_2">
 
-        <!-- 어원 -->
+        <!-- 접두사 -->
         <TextView
-            android:id="@+id/item_word_list_etymology_tv"
+            android:id="@+id/item_word_list_prefix_tv"
             android:layout_width="wrap_content"
             android:layout_height="36dp"
             android:minWidth="100dp"
@@ -24,14 +24,13 @@
             android:paddingEnd="12dp"
             android:paddingTop="4dp"
             android:paddingBottom="4dp"
-            android:text="@{wordEtymologyDto.etymology}"
+            android:text="@{wordEtymologyDto.prefix}"
             style="@style/body_semi_bold_14"
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

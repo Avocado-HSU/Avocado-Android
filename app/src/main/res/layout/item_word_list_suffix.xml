@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
         <variable
@@ -7,31 +8,29 @@
             type="com.example.avocado_android.domain.model.response.search.WordEtymologyDto" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/shape_square_corner_gr2_300_radius_25dp_stroke_2">
 
-        <!-- 어원 -->
+        <!-- 접미사 -->
         <TextView
-            android:id="@+id/item_word_list_etymology_tv"
+            android:id="@+id/item_word_list_suffix_tv"
+            style="@style/body_semi_bold_14"
             android:layout_width="wrap_content"
             android:layout_height="36dp"
-            android:minWidth="100dp"
             android:gravity="center"
+            android:minWidth="100dp"
             android:paddingStart="12dp"
-            android:paddingEnd="12dp"
             android:paddingTop="4dp"
+            android:paddingEnd="12dp"
             android:paddingBottom="4dp"
-            android:text="@{wordEtymologyDto.etymology}"
-            style="@style/body_semi_bold_14"
+            android:text="@{wordEtymologyDto.suffix}"
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
