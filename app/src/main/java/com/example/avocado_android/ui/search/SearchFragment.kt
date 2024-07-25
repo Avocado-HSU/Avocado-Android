@@ -16,6 +16,7 @@ import com.example.avocado_android.databinding.FragmentSearchBinding
 import com.example.avocado_android.ui.login.LoginViewModel
 import com.example.avocado_android.ui.vocalist.PrefixAdapter
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.launch
@@ -24,43 +25,46 @@ import java.time.LocalDateTime
 @AndroidEntryPoint
 class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_search) {
 
+    private val loginViewModel: LoginViewModel by activityViewModels()
     private val viewModel : SearchViewModel by activityViewModels()
     private lateinit var recentWordAdapter: RecentWordAdapter
     private lateinit var prefixAdapter: PrefixAdapter
 
-    private val loginViewModel: LoginViewModel by activityViewModels()
-
+    private var id : Long = 0
     private lateinit var query: String
 
     override fun setLayout() {
+        getLoginId()
         setAdapter()
+        observeViewModel()
         searchWord()
     }
+
+    private fun observeViewModel() {
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.getRecentSearch(id)
+            }
+        }
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.recentWordList.collectLatest { recentWordList->
+                    val limitedList = recentWordList.recentSearchWords.take(7)
+                    recentWordAdapter.submitList(limitedList)
+                }
+            }
+        }
+    }
+
 
     private fun setAdapter() {
         recentWordAdapter = RecentWordAdapter()
         binding.searchRecentWordRv.adapter = recentWordAdapter
-
-        //affixAdapter = AffixAdapter()
-
-        viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.searchWordResponseDto.collect() { data ->
-                //affixAdapter.submitList(data)
-            }
-        }
     }
 
-    private fun getLoginId() : Long {
-        var id: Long = 0L
-        lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                loginViewModel.memberData.collectLatest { response ->
-                    Log.d("getLoginId", response.id)
-                    id = response.id.takeIf { it.isNotEmpty() }?.toLong() ?: 0L
-                }
-            }
-        }
-        return id
+    private fun getLoginId() {
+        val sharedPreferences = requireContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+        id = sharedPreferences.getLong("userId", 0L)
     }
 
     // 검색 창에 단어 입력하고 엔터 누르면 서버에서 값 받아와 뷰모델로 저장
@@ -74,7 +78,10 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
                 imm.hideSoftInputFromWindow(v.windowToken, 0)
 
                 // 서버 요청
-                viewModel.wordSearch(getLoginId(), query)
+                lifecycleScope.launch {
+                    viewModel.wordSearch(id, query)
+                    Log.d("11111111", "$id")
+                }
 
                 // 데이터가 준비된 후 화면 전환
                 viewLifecycleOwner.lifecycleScope.launch {

@@ -13,6 +13,7 @@ import com.example.avocado_android.domain.repository.wordpage.WordPageRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -46,16 +47,20 @@ class SearchViewModel @Inject constructor(
         _wordEtymologyDto.value = wordEtymologyDto
     }
 
+    // 최근 검색어
     fun getRecentSearch(id: Long) {
-//        viewModelScope.launch {
-//            try {
-//                mainPageRepository.getRecentSearch(id).collect {
-//                    _recentWordList.value = it
-//                }
-//            }
-//        }
+        viewModelScope.launch {
+            try {
+                mainPageRepository.getRecentSearch(id).collect {
+                    _recentWordList.value = it
+                }
+            } catch (e: Exception) {
+                Log.e("SearchViewModel getRecentSearch Error", e.message.toString())
+            }
+        }
     }
 
+    // 단어 검색하면 단어장 화면에 나옴
     fun wordSearch(id: Long, word: String) {
         viewModelScope.launch {
             try {
@@ -64,7 +69,20 @@ class SearchViewModel @Inject constructor(
                     Log.d("SearchViewModel", "_affixItemList : $it")
                 }
             } catch (e: Exception) {
-                Log.e("SearchViewModel Error", e.message.toString())
+                Log.e("SearchViewModel wordSearch Error", e.message.toString())
+            }
+        }
+    }
+
+    // 라이브러리에 단어 등록/삭제
+    fun updateLibrary(libraryId: Long) {
+        viewModelScope.launch {
+            try {
+                wordPageRepository.updateLibrary(libraryId).collect(){
+                    Log.d("WordListFragment", "it : $it")
+                }
+            } catch (e: Exception) {
+                Log.e("SearchViewModel updateLibrary Error", e.message.toString())
             }
         }
     }
