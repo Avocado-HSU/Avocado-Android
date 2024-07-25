@@ -255,24 +255,20 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="38dp"
                                     android:layout_marginStart="28dp"
-                                    android:text="접두사"
+                                    android:text="어원"
                                     style="@style/body_semi_bold_14"
                                     android:textColor="@color/Green_2_500"
                                     app:layout_constraintTop_toTopOf="parent"
                                     app:layout_constraintStart_toStartOf="parent"/>
 
-                                <TextView
-                                    android:id="@+id/word_list_latina_word_tv"
+                                <androidx.recyclerview.widget.RecyclerView
+                                    android:id="@+id/word_etymology_rv"
                                     style="@style/body_semi_bold_14"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="8dp"
-                                    android:background="@drawable/shape_square_corner_radius_55dp_stroke_1"
                                     android:paddingStart="12dp"
-                                    android:paddingTop="4dp"
-                                    android:paddingEnd="12dp"
-                                    android:paddingBottom="4dp"
-                                    android:text="Dicere (말하다)"
+                                    tools:listitem="@layout/item_word_list_etymology"
                                     app:layout_constraintStart_toStartOf="@+id/word_list_latina_word_exp_tv"
                                     app:layout_constraintTop_toBottomOf="@+id/word_list_latina_word_exp_tv" />
 
@@ -281,11 +277,11 @@
                                     style="@style/body_semi_bold_14"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="접미사"
+                                    android:text="접두사/접미사"
                                     android:textColor="@color/Green_2_500"
                                     android:layout_marginTop="16dp"
-                                    app:layout_constraintStart_toStartOf="@+id/word_list_latina_word_tv"
-                                    app:layout_constraintTop_toBottomOf="@+id/word_list_latina_word_tv" />
+                                    app:layout_constraintStart_toStartOf="@+id/word_etymology_rv"
+                                    app:layout_constraintTop_toBottomOf="@+id/word_etymology_rv" />
 
                                 <androidx.recyclerview.widget.RecyclerView
                                     android:id="@+id/word_list_suffix_rv"
@@ -295,7 +291,7 @@
                                     android:layout_marginStart="28dp"
                                     android:layout_marginEnd="28dp"
                                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                                    tools:listitem="@layout/item_word_list_suffix"
+                                    tools:listitem="@layout/item_word_list_affix"
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintTop_toBottomOf="@+id/word_list_suffix_sub_title_tv"/>
