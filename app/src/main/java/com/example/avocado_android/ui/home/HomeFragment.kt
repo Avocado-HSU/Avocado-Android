@@ -56,7 +56,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home)  
 
     private fun mainSetting() {
         lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
+            repeatOnLifecycle(Lifecycle.State.RESUMED) {
                 viewModel.mainPageItem.collectLatest { mainData ->
                     binding.mainData = mainData
                     with(mainData) {

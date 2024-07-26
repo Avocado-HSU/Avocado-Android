@@ -36,6 +36,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(R.layout.activity_login
                         Log.d("response data", "Token: $token")
                         if (token != null) {
                             startNextActivity(MainActivity::class.java)
+                            finish()
                         }
                     }
 

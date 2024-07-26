@@ -23,34 +23,23 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class MainActivity (
+class MainActivity(
 ) : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
     private lateinit var navController: NavController
     private lateinit var loginViewModel: LoginViewModel
-    private lateinit var viewModel : MainViewModel
+    private lateinit var viewModel: MainViewModel
     private var homeFragment: HomeFragment? = null
 
     override fun setLayout() {
         bindingViewModel()
         setNavigation()
-        loginConfirm()
         setData()
     }
 
 
-    private fun loginConfirm() {
-        lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                loginViewModel.memberData.collectLatest { response ->
-                    Log.d("response data", response.id)
-                    binding.memberData = response
-                }
-            }
-        }
-    }
 
-    private fun setData(){
+    private fun setData() {
         loginViewModel.getToken { token ->
             Log.d("response datas", "Token: $token")
         }
@@ -59,6 +48,7 @@ class MainActivity (
         }
         loginViewModel.getMemberData()
     }
+
     private fun setNavigation() {
 
         binding.mainBottomNavigationBar.itemIconTintList = null
@@ -86,17 +76,18 @@ class MainActivity (
     }
 
     // 뷰모델 초기화 및 연결 (MainActivity 생명주기에 맞춤)
-    private fun bindingViewModel(){
+    private fun bindingViewModel() {
         viewModel = ViewModelProvider(this)[MainViewModel::class.java]
         loginViewModel = ViewModelProvider(this)[LoginViewModel::class.java]
     }
 
     // 외부 터치시 키보드 숨기기, 포커스 제거
     override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
-        val imm: InputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        val imm: InputMethodManager =
+            getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(currentFocus?.windowToken, 0)
 
-        if(currentFocus is EditText) {
+        if (currentFocus is EditText) {
             currentFocus!!.clearFocus()
         }
 
