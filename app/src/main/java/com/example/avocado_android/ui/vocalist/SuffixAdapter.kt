@@ -27,7 +27,7 @@ class SuffixAdapter: BaseAdapter<WordEtymologyDto, ItemWordListSuffixBinding>(
     override val layoutId: Int = R.layout.item_word_list_suffix
 
     override fun bind(binding: ItemWordListSuffixBinding, item: WordEtymologyDto) {
-        if (item.suffix.isNullOrEmpty() && item.suffix!!.contains("없음")) {
+        if (item.suffix.isNullOrEmpty() || item.suffix!!.contains("없음")) {
             binding.root.visibility = View.GONE
         } else {
             binding.root.visibility = View.VISIBLE

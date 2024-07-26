@@ -19,7 +19,7 @@ class PrefixAdapter: BaseAdapter<WordEtymologyDto, ItemWordListPrefixBinding>(
     override val layoutId: Int = R.layout.item_word_list_prefix
 
     override fun bind(binding: ItemWordListPrefixBinding, item: WordEtymologyDto) {
-        if (item.prefix.isNullOrEmpty() && item.prefix!!.contains("없음")) {
+        if (item.prefix.isNullOrEmpty() || item.prefix!!.contains("없음")) {
             binding.root.visibility = View.GONE
         } else {
             binding.root.visibility = View.VISIBLE

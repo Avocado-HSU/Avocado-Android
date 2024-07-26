@@ -17,7 +17,7 @@ class EtymologyAdapter : BaseAdapter<WordEtymologyDto, ItemWordListEtymologyBind
     override val layoutId: Int get() = R.layout.item_word_list_etymology
 
     override fun bind(binding: ItemWordListEtymologyBinding, item: WordEtymologyDto) {
-        if (item.etymology.isNullOrEmpty() && item.etymology!!.contains("없음")) {
+        if (item.etymology.isNullOrEmpty() || item.etymology!!.contains("없음")) {
             binding.root.visibility = View.GONE
         } else {
             binding.root.visibility = View.VISIBLE
