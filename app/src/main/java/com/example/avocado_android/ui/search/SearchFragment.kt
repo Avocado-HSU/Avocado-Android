@@ -53,8 +53,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 searchViewModel.recentWordList.collectLatest { recentWordList->
-                    val limitedList = recentWordList.recentSearchWords.take(5)
-                    recentWordAdapter.submitList(limitedList)
+                    recentWordAdapter.submitList(recentWordList.recentSearchWords)
                 }
             }
         }
