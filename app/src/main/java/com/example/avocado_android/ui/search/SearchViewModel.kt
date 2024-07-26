@@ -1,22 +1,18 @@
 package com.example.avocado_android.ui.search
 
 import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.avocado_android.domain.model.response.RecentSearchWordResponseDto
+import com.example.avocado_android.domain.model.response.search.RecentSearchWordResponseDto
 import com.example.avocado_android.domain.model.response.library.UpdateLibraryResponseDto
 import com.example.avocado_android.domain.model.response.search.SearchWordResponseDto
 import com.example.avocado_android.domain.model.response.search.WordEtymologyDto
-import com.example.avocado_android.domain.model.response.search.WordTipsDto
 import com.example.avocado_android.domain.repository.mainpage.MainPageRepository
 import com.example.avocado_android.domain.repository.search.SearchPageRepository
 import com.example.avocado_android.domain.repository.wordpage.WordPageRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
