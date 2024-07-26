@@ -38,16 +38,16 @@ object AdapterBinding {
         }
     }
 
-    @JvmStatic
-    @BindingAdapter("app:items")
-    fun bindSearchRecyclerView(recyclerView: RecyclerView, data: LiveData<List<RecentWordItem?>>?) {
-        if (recyclerView.adapter == null) {
-            val adapter = RecentWordAdapter()
-            recyclerView.adapter = adapter
-        }
-        val myAdapter = recyclerView.adapter as RecentWordAdapter
-        data?.observe(recyclerView.context as LifecycleOwner) { items ->
-           // myAdapter.submitList(items)
-        }
-    }
+//    @JvmStatic
+//    @BindingAdapter("app:items")
+//    fun bindSearchRecyclerView(recyclerView: RecyclerView, data: LiveData<List<RecentWordItem?>>?) {
+//        if (recyclerView.adapter == null) {
+//            val adapter = RecentWordAdapter()
+//            recyclerView.adapter = adapter
+//        }
+//        val myAdapter = recyclerView.adapter as RecentWordAdapter
+//        data?.observe(recyclerView.context as LifecycleOwner) { items ->
+//           // myAdapter.submitList(items)
+//        }
+//    }
 }

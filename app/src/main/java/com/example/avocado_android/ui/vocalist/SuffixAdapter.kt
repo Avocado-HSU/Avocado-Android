@@ -2,6 +2,7 @@ package com.example.avocado_android.ui.vocalist
 
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
@@ -26,8 +27,12 @@ class SuffixAdapter: BaseAdapter<WordEtymologyDto, ItemWordListSuffixBinding>(
     override val layoutId: Int = R.layout.item_word_list_suffix
 
     override fun bind(binding: ItemWordListSuffixBinding, item: WordEtymologyDto) {
-        binding.wordEtymologyDto = item
-        Log.d("PrefixAdapter", "SuffixAdapter: $item")
+        if (item.suffix.isNullOrEmpty() && item.suffix!!.contains("없음")) {
+            binding.root.visibility = View.GONE
+        } else {
+            binding.root.visibility = View.VISIBLE
+            binding.wordEtymologyDto = item
+        }
     }
 
 }
