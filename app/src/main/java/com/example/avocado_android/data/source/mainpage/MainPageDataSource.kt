@@ -5,7 +5,7 @@ import com.example.avocado_android.data.remote.MainPageApi
 import com.example.avocado_android.domain.model.request.MainPageRequestDto
 import com.example.avocado_android.domain.model.response.RecentSearchWordResponseDto
 import com.example.avocado_android.domain.model.response.main.MainPageResponseDto
-import com.example.avocado_android.domain.model.response.main.SearchWordResponseDto
+import com.example.avocado_android.domain.model.response.search.SearchWordResponseDto
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
@@ -21,16 +21,10 @@ class MainPageDataSource @Inject constructor(
     }.catch {
         Log.e("GET getMainPage By MainPageResponseDto Failure", it.message.toString()) }
 
-    fun searchWord(id: Long, word: String) : Flow<SearchWordResponseDto> = flow {
-        val result = mainPageApi.searchWord(id, word)
-        emit(result)
-    }.catch {
-        Log.e("GET searchWord By SearchWordResponseDto Failure", it.message.toString()) }
-
     fun getRecentSearch(id: Long) : Flow<RecentSearchWordResponseDto> = flow {
         val result = mainPageApi.getRecentSearch(id)
         emit(result)
     }.catch {
-        Log.e("GET getRecentSearch By RecentSearchWordResponseDto Failure", it.message.toString()) }
+        Log.e("GET searchWord By SearchWordResponseDto Failure", it.message.toString()) }
 
 }

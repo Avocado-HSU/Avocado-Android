@@ -1,5 +1,6 @@
 package com.example.avocado_android.ui.home
 
+import android.content.Context
 import android.os.Build
 import android.util.Log
 import androidx.annotation.RequiresApi
@@ -43,6 +44,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home)  
                     Log.d("response data", response.id)
                     binding.memberData = response
                     val id = response.id.takeIf { it.isNotEmpty() }?.toLong() ?: 0L
+
+                    // id -> sharedPreferences에 저장
+                    val sharedPreferences = requireContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+                    val editor = sharedPreferences.edit()
+                    editor.putLong("userId", id)
+                    editor.apply()
+
                     viewModel.getMainItemData(id, formatDateTime(LocalDateTime.now()))
                 }
             }
