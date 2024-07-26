@@ -14,7 +14,9 @@ import com.example.avocado_android.databinding.ItemSerachRecentBinding
 import com.example.avocado_android.domain.model.local.search.RecentWordItem
 import com.example.avocado_android.domain.model.response.RecentSearchWordResponseDto
 
-class RecentWordAdapter: BaseAdapter<String, ItemSerachRecentBinding> (
+class RecentWordAdapter(
+    private val onItemClick: (String) -> Unit
+): BaseAdapter<String, ItemSerachRecentBinding> (
     BaseDiffCallback(
         itemsTheSame = { oldItem, newItem -> oldItem == newItem },
         contentsTheSame = { oldItem, newItem -> oldItem == newItem }
@@ -26,5 +28,10 @@ class RecentWordAdapter: BaseAdapter<String, ItemSerachRecentBinding> (
     override fun bind(binding: ItemSerachRecentBinding, item: String) {
         binding.recentSearch = item
         Log.d("recentSearch", "recentSearch: $item")
+
+        // 클릭 리스너 설정
+        binding.root.setOnClickListener {
+            onItemClick(item)
+        }
     }
 }

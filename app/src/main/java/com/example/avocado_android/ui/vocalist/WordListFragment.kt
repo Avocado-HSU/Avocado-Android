@@ -90,7 +90,7 @@ class WordListFragment : BaseFragment<FragmentWordListBinding>(R.layout.fragment
         else { setLibraryButton(true) }
 
         // 영어 단어 한글 뜻
-        binding.wordListWordMeaningKorWord.text = data.korean ?: "내용 없음"
+        binding.wordListWordMeaningKorWord.text = data.korean ?: "null"
 
         // 이미지 설정
         val imgUrl = data.characterImgUrl.toString()
@@ -103,16 +103,16 @@ class WordListFragment : BaseFragment<FragmentWordListBinding>(R.layout.fragment
 
             // 단어적 의미 -> 데이터 바인딩 사용하면 혼자만 값이 빨리 나와서 직접 바인딩
             Log.d("wordMeanDto?.greetingMsg", "contents.wordMeanDto?.greetingMsg : ${contents.wordMeanDto?.greetingMsg} " )
-            binding.wordListWordMeaningDescription.text = contents.wordMeanDto?.greetingMsg ?: "서버에서 null 수신"
+            binding.wordListWordMeaningDescription.text = contents.wordMeanDto?.greetingMsg ?: ""
 
             // 쉽게 외우는 팁
             val wordTipsDto = contents.wordTipsDto
             val wordTipsDesc = buildString {
                 // 각 속성이 null인 경우 빈 문자열을 추가하여 처리
-                append(wordTipsDto?.mnemonicMethod ?: "내용없음").append("\n")
-                append(wordTipsDto?.wordAnalysis ?: "내용없음").append("\n")
-                append(wordTipsDto?.spacedRepetition ?: "내용없음").append("\n")
-                append(wordTipsDto?.storytelling ?: "내용없음")
+                append(wordTipsDto?.mnemonicMethod ?: "").append("\n")
+                append(wordTipsDto?.wordAnalysis ?: "").append("\n")
+                append(wordTipsDto?.spacedRepetition ?: "").append("\n")
+                append(wordTipsDto?.storytelling ?: "")
             }
             binding.wordListEasyMemorizeWordTipTv.text = wordTipsDesc
 
@@ -196,4 +196,20 @@ class WordListFragment : BaseFragment<FragmentWordListBinding>(R.layout.fragment
         return originalLibraryId
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        // UI 요소들 초기화
+        with(binding) {
+            wordListWordTv.text = ""
+            wordListWordMeaningEngWord.text = ""
+            wordListWordMeaningKorWord.text = ""
+            wordListWordMeaningDescription.text = ""
+            wordListEasyMemorizeWordTipTv.text = ""
+            wordListSuffixDescTv.text = ""
+            wordListLogoImgIv.setImageDrawable(null)
+            prefixAdapter.submitList(emptyList())
+            suffixAdapter.submitList(emptyList())
+            etymologyAdapter.submitList(emptyList())
+        }
+    }
 }

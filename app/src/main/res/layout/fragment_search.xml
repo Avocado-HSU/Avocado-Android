@@ -44,7 +44,7 @@
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
-<!--                app:items="@{SearchViewModel.recentWordList}"-->
+
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/search_recent_word_rv"
                     android:layout_width="match_parent"
