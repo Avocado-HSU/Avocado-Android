@@ -77,6 +77,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
                 query = binding.searchSearchBarEt.text.toString()
 
                 val imm = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.hideSoftInputFromWindow(v.windowToken, 0)
 
                 // 서버 요청
                 lifecycleScope.launch {
@@ -89,7 +90,6 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
                         launch {
                             viewModel.searchWordResponseDto.collect{ response ->
                                 if (response.isSuccess == true) {
-                                    imm.hideSoftInputFromWindow(v.windowToken, 0)
                                     val action =
                                         SearchFragmentDirections.actionSearchFragmentToWordListFragment(
                                             query

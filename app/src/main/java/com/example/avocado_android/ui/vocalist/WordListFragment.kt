@@ -17,6 +17,7 @@ import com.example.avocado_android.ui.search.SearchViewModel
 import com.example.avocado_android.ui.vocalist.PrefixAdapter
 import com.example.avocado_android.ui.vocalist.EtymologyAdapter
 import com.example.avocado_android.ui.vocalist.SuffixAdapter
+import com.example.avocado_android.utils.enunm.ResponseType
 import com.example.avocado_android.utils.extensions.HorizontalSpaceItemDecoration
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
@@ -41,17 +42,37 @@ class WordListFragment : BaseFragment<FragmentWordListBinding>(R.layout.fragment
         setAdapter()
         observeViewModel()
         setSearchBar()
-        setButton()
+        setLibraryButton()
     }
 
-    private fun setButton() {
+    // 라이브러리 저장/삭제 버튼 클릭하면 저장/삭제 수행
+    private fun setLibraryButton() {
         binding.wordListSaveLibraryBtn.setOnClickListener {
-            Log.d("WordListFragment", "Save Library Button Clicked11111111")
-            Log.d("WordListFragment", "Save Library Button Clicked2222222")
             lifecycleScope.launch {
                 viewModel.updateLibrary(getLibraryId())
-                Log.d("getLibraryId", "4: ${getLibraryId()}")
+                viewModel.updateLibraryResponseDto.collectLatest { updateLibraryResponseDto ->
+                    when (updateLibraryResponseDto.responseType) {
+                        ResponseType.REGISTERED -> setLibraryButton(true) // 라이브러리에 저장된 상태
+                        ResponseType.DELETED -> setLibraryButton(false)      // 라이브러리에서 삭제된 상태
+                        //ResponseType.ERROR ->
+                        else -> true
+                    }
+                }
             }
+        }
+    }
+
+    // T/F 값에 따라 라이브러리 저장/삭제 버튼 UI 설정
+    private fun setLibraryButton(state: Boolean) {
+        val wordListSaveLibraryBtn = binding.wordListSaveLibraryBtn
+        if(state) {
+            wordListSaveLibraryBtn.background =  ContextCompat.getDrawable(requireContext(), R.drawable.rounded_rectangle_gr1_300_50dp)
+            wordListSaveLibraryBtn.text = "라이브러리에서 삭제하기"
+            wordListSaveLibraryBtn.setTextColor(ContextCompat.getColor(requireContext(), R.color.Green_2_500))
+        } else {
+            wordListSaveLibraryBtn.background =  ContextCompat.getDrawable(requireContext(), R.drawable.rounded_rectangle_gr2_500_50dp)
+            wordListSaveLibraryBtn.text = "라이브러리에 저장하기"
+            wordListSaveLibraryBtn.setTextColor(ContextCompat.getColor(requireContext(), R.color.Yellow))
         }
     }
 
@@ -59,22 +80,14 @@ class WordListFragment : BaseFragment<FragmentWordListBinding>(R.layout.fragment
     private fun updateUI(data: SearchWordResponseDto) {
 
         val wordTipsTv = binding.wordListEasyMemorizeWordTipTv
-        val wordListSaveLibraryBtn = binding.wordListSaveLibraryBtn
 
         // 단어 부분은 검색 프래그먼트에서 safeArgs로 받음
         binding.wordListWordTv.text = args.word
         binding.wordListWordMeaningEngWord.text = args.word
 
-        // 라이브러리 저장 버튼 UI 변경
-        if (data.isLibraryRegistered == false) {
-            wordListSaveLibraryBtn.background =  ContextCompat.getDrawable(requireContext(), R.drawable.rounded_rectangle_gr2_500_50dp)
-            wordListSaveLibraryBtn.text = "라이브러리에 저장하기"
-            wordListSaveLibraryBtn.setTextColor(ContextCompat.getColor(requireContext(), R.color.Yellow))
-        } else {
-            wordListSaveLibraryBtn.background =  ContextCompat.getDrawable(requireContext(), R.drawable.rounded_rectangle_gr1_300_50dp)
-            wordListSaveLibraryBtn.text = "라이브러리에서 삭제하기"
-            wordListSaveLibraryBtn.setTextColor(ContextCompat.getColor(requireContext(), R.color.Green_2_500))
-        }
+        // 라이브러리에 단어 없을 때 (저장하기)
+        if (data.isLibraryRegistered == false) { setLibraryButton(false) }
+        else { setLibraryButton(true) }
 
         // 영어 단어 한글 뜻
         binding.wordListWordMeaningKorWord.text = data.korean ?: "내용 없음"
@@ -129,7 +142,6 @@ class WordListFragment : BaseFragment<FragmentWordListBinding>(R.layout.fragment
     }
 
     private fun observeViewModel() {
-
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.searchWordResponseDto.collect { searchWordResponseDto ->
@@ -182,21 +194,6 @@ class WordListFragment : BaseFragment<FragmentWordListBinding>(R.layout.fragment
     private fun getLibraryId() : Long {
         Log.d("originalLibraryId", "originalLibraryId: $originalLibraryId")
         return originalLibraryId
-    }
-
-    // UI 값 초기화
-    override fun onDestroyView() {
-        super.onDestroyView()
-        binding.wordListWordTv.text = ""
-        binding.wordListWordMeaningEngWord.text = ""
-        binding.wordListWordMeaningKorWord.text = ""
-        binding.wordListWordMeaningDescription.text = ""
-        binding.wordListEasyMemorizeWordTipTv.text = ""
-        binding.wordListSuffixDescTv.text = ""
-        binding.wordListSaveLibraryBtn.text = ""
-        binding.wordListSaveLibraryBtn.background = ContextCompat.getDrawable(requireContext(), R.drawable.rounded_rectangle_gr2_500_50dp)
-        binding.wordListSaveLibraryBtn.setTextColor(ContextCompat.getColor(requireContext(), R.color.Yellow))
-        Glide.with(requireContext()).clear(binding.wordListLogoImgIv) // 이미지 클리어
     }
 
 }
