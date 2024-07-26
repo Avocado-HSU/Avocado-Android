@@ -18,7 +18,7 @@ import com.example.avocado_android.databinding.ItemChatbotSelectionImgBinding
 import com.example.avocado_android.databinding.ItemChatbotUserMsgBinding
 import com.example.avocado_android.domain.model.local.chatbot.ChatItem
 
-class ChatBotAdapter : ListAdapter<ChatItem, RecyclerView.ViewHolder>(diffUtilCallback) {
+class ChatBotAdapter(private val onCardClick: (ChatItem.ChatCardItem) -> Unit) : ListAdapter<ChatItem, RecyclerView.ViewHolder>(diffUtilCallback) {
 
     inner class BotViewHolder(private val binding: ItemChatbotBotMsgBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bindLeft(item: ChatItem.BotChatItem) {
@@ -64,6 +64,10 @@ class ChatBotAdapter : ListAdapter<ChatItem, RecyclerView.ViewHolder>(diffUtilCa
                     cardViews[i].visibility = View.VISIBLE
                     imageViews[i].setImageResource(card.imageUri)
                     textViews[i].text = card.text
+
+                    cardViews[i].setOnClickListener {
+                        onCardClick(card)
+                    }
                 }
             }
 
@@ -75,6 +79,28 @@ class ChatBotAdapter : ListAdapter<ChatItem, RecyclerView.ViewHolder>(diffUtilCa
             binding.executePendingBindings()
         }
     }
+
+    // 챗봇의 말풍선 추가
+    fun addBotChatItem(item: ChatItem.BotChatItem) {
+        val currentList = currentList.toMutableList()
+        currentList.add(item)
+        submitList(currentList)
+    }
+
+    // 사용자 말풍선 추가
+    fun addUserChatItem(item: ChatItem.UserChatItem) {
+        val currentList = currentList.toMutableList()
+        currentList.add(item)
+        submitList(currentList)
+    }
+
+    // 질문 이미지 선택지
+    fun addChatCardListItem(items: List<ChatItem.ChatCardItem>) {
+        val currentList = currentList.toMutableList()
+        currentList.add(ChatItem.ChatCardListItem(items))
+        submitList(currentList)
+    }
+
 
     override fun getItemViewType(position: Int): Int {
         return when (getItem(position)) {
