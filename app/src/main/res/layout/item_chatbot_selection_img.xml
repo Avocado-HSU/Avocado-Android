@@ -16,8 +16,8 @@
             <!-- 첫 번째 카드 -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/item_chatbot_card_view1"
-                android:layout_width="210dp"
-                android:layout_height="200dp"
+                android:layout_width="130dp"
+                android:layout_height="125dp"
                 app:cardCornerRadius="26.5dp"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="5dp"
@@ -32,11 +32,10 @@
 
                     <ImageView
                         android:id="@+id/item_chatbot_card_iv1"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:layout_marginStart="35dp"
-                        android:layout_marginTop="21dp"
-                        android:layout_marginEnd="35dp"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_marginTop="14dp"
+                        android:src="@drawable/ic_chatbot_meaning_word"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -47,8 +46,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15dp"
+                        android:layout_marginBottom="15dp"
                         android:text="뜻이 궁금한 단어가 있어!"
-                        android:textSize="16sp"
+                        android:textSize="10sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/item_chatbot_card_iv1" />
@@ -59,8 +60,8 @@
             <!-- 두 번째 카드 -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/item_chatbot_card_view2"
-                android:layout_width="210dp"
-                android:layout_height="200dp"
+                android:layout_width="130dp"
+                android:layout_height="125dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
@@ -75,11 +76,12 @@
 
                     <ImageView
                         android:id="@+id/item_chatbot_card_iv2"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="14dp"
                         android:layout_marginStart="35dp"
-                        android:layout_marginTop="21dp"
-                        android:layout_marginEnd="35dp"
+                        android:layout_marginEnd="37dp"
+                        android:src="@drawable/ic_chatbot_similar_word"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -90,8 +92,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15dp"
+                        android:layout_marginBottom="15dp"
                         android:text="뜻이 궁금한 단어가 있어!"
-                        android:textSize="16sp"
+                        android:textSize="10sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/item_chatbot_card_iv2" />
@@ -102,8 +106,8 @@
             <!-- 세 번째 카드 -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/item_chatbot_card_view3"
-                android:layout_width="210dp"
-                android:layout_height="200dp"
+                android:layout_width="130dp"
+                android:layout_height="125dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
@@ -118,11 +122,12 @@
 
                     <ImageView
                         android:id="@+id/item_chatbot_card_iv3"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:layout_marginStart="35dp"
-                        android:layout_marginTop="21dp"
-                        android:layout_marginEnd="35dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="14dp"
+                        android:layout_marginStart="28dp"
+                        android:layout_marginEnd="22dp"
+                        android:src="@drawable/ic_chatbot_etymology"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -132,9 +137,11 @@
                         style="@style/body_regular_14"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
                         android:text="뜻이 궁금한 단어가 있어!"
-                        android:textSize="16sp"
+                        android:textSize="10sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/item_chatbot_card_iv3" />
@@ -145,9 +152,10 @@
             <!-- 네 번째 카드 -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/item_chatbot_card_view4"
-                android:layout_width="210dp"
-                android:layout_height="200dp"
+                android:layout_width="130dp"
+                android:layout_height="125dp"
                 android:layout_marginStart="10dp"
+                android:layout_marginEnd="24dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
                 app:cardCornerRadius="26.5dp"
@@ -161,11 +169,12 @@
 
                     <ImageView
                         android:id="@+id/item_chatbot_card_iv4"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:layout_marginStart="35dp"
-                        android:layout_marginTop="21dp"
-                        android:layout_marginEnd="35dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="14dp"
+                        android:layout_marginStart="40dp"
+                        android:layout_marginEnd="40dp"
+                        android:src="@drawable/ic_chatbot_tips"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -176,8 +185,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15dp"
+                        android:layout_marginBottom="15dp"
                         android:text="뜻이 궁금한 단어가 있어!"
-                        android:textSize="16sp"
+                        android:textSize="10sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/item_chatbot_card_iv4" />
