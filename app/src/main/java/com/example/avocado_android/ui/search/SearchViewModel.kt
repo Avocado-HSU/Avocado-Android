@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.avocado_android.domain.model.response.RecentSearchWordResponseDto
+import com.example.avocado_android.domain.model.response.library.UpdateLibraryResponseDto
 import com.example.avocado_android.domain.model.response.search.SearchWordResponseDto
 import com.example.avocado_android.domain.model.response.search.WordEtymologyDto
 import com.example.avocado_android.domain.model.response.search.WordTipsDto
@@ -47,6 +48,10 @@ class SearchViewModel @Inject constructor(
     private val _recentWordList = MutableStateFlow(RecentSearchWordResponseDto(emptyList()))
     val recentWordList: StateFlow<RecentSearchWordResponseDto> get() = _recentWordList
 
+    // 라이브러리 저장/삭제 DTO
+    private val _updateLibraryResponseDto = MutableStateFlow(UpdateLibraryResponseDto())
+    val updateLibraryResponseDto: StateFlow<UpdateLibraryResponseDto> get() = _updateLibraryResponseDto
+
     // 어원 분리 DTO Set 함수
     fun setWordEtymologyDto(wordEtymologyDto: WordEtymologyDto) {
         _wordEtymologyDto.value = wordEtymologyDto
@@ -84,6 +89,7 @@ class SearchViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 wordPageRepository.updateLibrary(libraryId).collect(){
+                    _updateLibraryResponseDto.value = it
                     Log.d("WordListFragment", "it : $it")
                 }
             } catch (e: Exception) {

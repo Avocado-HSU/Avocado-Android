@@ -1,6 +1,7 @@
 package com.example.avocado_android.ui.vocalist
 
 import android.util.Log
+import android.view.View
 import com.example.avocado_android.R
 import com.example.avocado_android.base.BaseAdapter
 import com.example.avocado_android.base.BaseDiffCallback
@@ -18,8 +19,12 @@ class PrefixAdapter: BaseAdapter<WordEtymologyDto, ItemWordListPrefixBinding>(
     override val layoutId: Int = R.layout.item_word_list_prefix
 
     override fun bind(binding: ItemWordListPrefixBinding, item: WordEtymologyDto) {
-       binding.wordEtymologyDto = item
-        Log.d("PrefixAdapter", "PrefixAdapter: $item")
+        if (item.prefix.isNullOrEmpty() || item.prefix!!.contains("없음")) {
+            binding.root.visibility = View.GONE
+        } else {
+            binding.root.visibility = View.VISIBLE
+            binding.wordEtymologyDto = item
+        }
     }
 
 }
