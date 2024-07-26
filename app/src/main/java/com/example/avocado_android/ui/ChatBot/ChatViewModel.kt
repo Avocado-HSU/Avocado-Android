@@ -1,40 +1,97 @@
 package com.example.avocado_android.ui.ChatBot
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.avocado_android.R
 import com.example.avocado_android.domain.model.local.chatbot.ChatItem
+import com.example.avocado_android.domain.model.response.chatbot.ChatBotResponseDto
+import com.example.avocado_android.domain.model.response.chatbot.WordSimilarDto
+import com.example.avocado_android.domain.model.response.search.WordEtymologyDto
+import com.example.avocado_android.domain.model.response.search.WordTipsDto
+import com.example.avocado_android.domain.repository.chatbot.ChatBotRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.scopes.ViewModelScoped
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class ChatViewModel: ViewModel() {
-    private val _userMsgList = MutableStateFlow<List<ChatItem.UserChatItem>>(emptyList())
-    val userMsgList : StateFlow<List<ChatItem.UserChatItem>> get() = _userMsgList
+@HiltViewModel
+class ChatViewModel @Inject constructor(
+    private val chatBotRepository: ChatBotRepository
+) : ViewModel() {
 
-    private val _botMsgList = MutableStateFlow<List<ChatItem.BotChatItem>>(emptyList())
-    val botMsgList : StateFlow<List<ChatItem.BotChatItem>> get() = _botMsgList
+    // 외우기 팁
+    private val _wordTipsDto = MutableStateFlow(WordTipsDto())
+    val wordTipsDto : StateFlow<WordTipsDto> get() = _wordTipsDto
 
-    private val _imageCardList = MutableStateFlow<List<ChatItem.ChatCardItem>>(emptyList())
-    val imageCardList : StateFlow<List<ChatItem.ChatCardItem>> get() = _imageCardList
+    // 유사 단어
+    private val _wordSimilarDto = MutableStateFlow(WordSimilarDto())
+    val wordSimilarDto : StateFlow<WordSimilarDto> get() = _wordSimilarDto
 
-    init {
-        _userMsgList.value = listOf(
-            ChatItem.UserChatItem(0, "hi"),
-            ChatItem.UserChatItem(0, "I am user"),
-        )
+    // 단어 뜻
+    private val _wordEtymologyDto = MutableStateFlow(WordEtymologyDto())
+    val wordEtymologyDto : StateFlow<WordEtymologyDto> get() = _wordEtymologyDto
 
-        _botMsgList.value = listOf(
-            ChatItem.BotChatItem(0, "hi"),
-            ChatItem.BotChatItem(0, "I am bot"),
-        )
+    // 어원 분류
+    private val _chatBotResponseDto = MutableStateFlow(ChatBotResponseDto())
+    val chatBotResponseDto : StateFlow<ChatBotResponseDto> get() = _chatBotResponseDto
 
-        _imageCardList.value = listOf(
-            ChatItem.ChatCardItem(R.drawable.ic_chatbot_logo),
-            ChatItem.ChatCardItem(R.drawable.ic_chatbot_mike),
-            ChatItem.ChatCardItem(R.drawable.ic_chatbot_logo),
-            ChatItem.ChatCardItem(R.drawable.ic_chatbot_mike),
-            ChatItem.ChatCardItem(R.drawable.ic_chatbot_logo),
-        )
+    fun getWordTips(requestType: String, word: String) {
+        try {
+            viewModelScope.launch {
+                chatBotRepository.getWordTips(requestType, word).collect {
+                    _wordTipsDto.value = it
+                    Log.d("ChatViewModel getWordTips", "getWordTips: $it")
+                }
+            }
+        } catch (e: Exception) {
+            Log.e("ChatViewModel getWordTips Error", e.message.toString())
+        }
     }
+
+    fun getWordSimilar(requestType: String, word: String) {
+        try {
+            viewModelScope.launch {
+                chatBotRepository.getWordSimilar(requestType, word).collect {
+                    _wordSimilarDto.value = it
+                    Log.d("ChatViewModel getWordSimilar", "getWordSimilar: $it")
+                }
+            }
+        } catch (e: Exception) {
+            Log.e("ChatViewModel getWordSimilar Error", e.message.toString())
+        }
+    }
+
+    fun getWordMean(requestType: String, word: String) {
+        try {
+            viewModelScope.launch {
+                chatBotRepository.getWordMean(requestType, word).collect {
+                    _wordEtymologyDto.value = it
+                    Log.d("ChatViewModel getWordMean", "getWordMean: $it")
+                }
+            }
+        } catch (e: Exception) {
+            Log.e("ChatViewModel getWordMean Error", e.message.toString())
+        }
+    }
+
+    fun getWordEtymology(requestType: String, word: String) {
+        try {
+            viewModelScope.launch {
+                chatBotRepository.getWordEtymology(requestType, word).collect {
+                    _chatBotResponseDto.value = it
+                    Log.d("ChatViewModel getWordEtymology", "getWordEtymology: $it")
+                }
+            }
+        } catch (e: Exception) {
+            Log.e("ChatViewModel getWordEtymology Error", e.message.toString())
+        }
+    }
+
 }

@@ -196,20 +196,4 @@ class WordListFragment : BaseFragment<FragmentWordListBinding>(R.layout.fragment
         return originalLibraryId
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        // UI 요소들 초기화
-        with(binding) {
-            wordListWordTv.text = ""
-            wordListWordMeaningEngWord.text = ""
-            wordListWordMeaningKorWord.text = ""
-            wordListWordMeaningDescription.text = ""
-            wordListEasyMemorizeWordTipTv.text = ""
-            wordListSuffixDescTv.text = ""
-            wordListLogoImgIv.setImageDrawable(null)
-            prefixAdapter.submitList(emptyList())
-            suffixAdapter.submitList(emptyList())
-            etymologyAdapter.submitList(emptyList())
-        }
-    }
 }

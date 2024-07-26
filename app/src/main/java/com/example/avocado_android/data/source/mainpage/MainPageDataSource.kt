@@ -3,9 +3,8 @@ package com.example.avocado_android.data.source.mainpage
 import android.util.Log
 import com.example.avocado_android.data.remote.MainPageApi
 import com.example.avocado_android.domain.model.request.MainPageRequestDto
-import com.example.avocado_android.domain.model.response.RecentSearchWordResponseDto
+import com.example.avocado_android.domain.model.response.search.RecentSearchWordResponseDto
 import com.example.avocado_android.domain.model.response.main.MainPageResponseDto
-import com.example.avocado_android.domain.model.response.search.SearchWordResponseDto
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
