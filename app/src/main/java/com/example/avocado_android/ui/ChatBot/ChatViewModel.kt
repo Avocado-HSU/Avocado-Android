@@ -26,10 +26,6 @@ class ChatViewModel @Inject constructor(
     private val chatBotRepository: ChatBotRepository
 ) : ViewModel() {
 
-    // 외우기 팁
-    private val _wordTipsDto = MutableStateFlow(WordTipsDto())
-    val wordTipsDto : StateFlow<WordTipsDto> get() = _wordTipsDto
-
     // 유사 단어
     private val _wordSimilarDto = MutableStateFlow(WordSimilarDto())
     val wordSimilarDto : StateFlow<WordSimilarDto> get() = _wordSimilarDto
@@ -41,19 +37,6 @@ class ChatViewModel @Inject constructor(
     // 어원 분류
     private val _chatBotResponseDto = MutableStateFlow(ChatBotResponseDto())
     val chatBotResponseDto : StateFlow<ChatBotResponseDto> get() = _chatBotResponseDto
-
-    fun getWordTips(requestType: String, word: String) {
-        try {
-            viewModelScope.launch {
-                chatBotRepository.getWordTips(requestType, word).collect {
-                    _wordTipsDto.value = it
-                    Log.d("ChatViewModel getWordTips", "getWordTips: $it")
-                }
-            }
-        } catch (e: Exception) {
-            Log.e("ChatViewModel getWordTips Error", e.message.toString())
-        }
-    }
 
     fun getWordSimilar(requestType: String, word: String) {
         try {
