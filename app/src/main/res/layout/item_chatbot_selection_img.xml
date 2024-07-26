@@ -18,9 +18,10 @@
                 android:id="@+id/item_chatbot_card_view1"
                 android:layout_width="210dp"
                 android:layout_height="200dp"
-
                 app:cardCornerRadius="26.5dp"
                 android:layout_marginStart="24dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -61,7 +62,8 @@
                 android:layout_width="210dp"
                 android:layout_height="200dp"
                 android:layout_marginStart="10dp"
-
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
                 app:cardCornerRadius="26.5dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/item_chatbot_card_view1"
@@ -103,7 +105,8 @@
                 android:layout_width="210dp"
                 android:layout_height="200dp"
                 android:layout_marginStart="10dp"
-
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
                 app:cardCornerRadius="26.5dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/item_chatbot_card_view2"
@@ -145,7 +148,8 @@
                 android:layout_width="210dp"
                 android:layout_height="200dp"
                 android:layout_marginStart="10dp"
-
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
                 app:cardCornerRadius="26.5dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/item_chatbot_card_view3"
