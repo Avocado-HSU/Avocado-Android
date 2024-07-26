@@ -64,7 +64,7 @@
         </FrameLayout>
 
             <EditText
-                android:id="@+id/search_search_bar"
+                android:id="@+id/search_search_bar_et"
                 style="@style/body_medium_14"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"

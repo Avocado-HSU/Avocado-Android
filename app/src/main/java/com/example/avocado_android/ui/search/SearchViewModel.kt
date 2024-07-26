@@ -1,6 +1,8 @@
 package com.example.avocado_android.ui.search
 
 import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.avocado_android.domain.model.response.RecentSearchWordResponseDto
@@ -34,6 +36,9 @@ class SearchViewModel @Inject constructor(
     private val _searchWordResponseDto = MutableStateFlow(SearchWordResponseDto())
     val searchWordResponseDto: StateFlow<SearchWordResponseDto> get() = _searchWordResponseDto
 
+    private val _httpStatusCode = MutableStateFlow<Int>(0)
+    val httpStatusCode: StateFlow<Int> get() = _httpStatusCode
+
     // 어원 분리 DTO
     private val _wordEtymologyDto = MutableStateFlow(WordEtymologyDto())
     val wordEtymologyDto: StateFlow<WordEtymologyDto> get() = _wordEtymologyDto
@@ -63,13 +68,13 @@ class SearchViewModel @Inject constructor(
     // 단어 검색하면 단어장 화면에 나옴
     fun wordSearch(id: Long, word: String) {
         viewModelScope.launch {
-            try {
-                searchPageRepository.wordSearch(id, word).collect {
-                    _searchWordResponseDto.value = it
-                    Log.d("SearchViewModel", "_affixItemList : $it")
+            searchPageRepository.wordSearch(id, word).collect { response ->
+                if (response.isSuccessful) {
+                    _searchWordResponseDto.value = response.body() ?: SearchWordResponseDto()
+                } else {
+                    val errorMessage = response.errorBody()?.string() ?: "Unknown error"
+                    _httpStatusCode.value = response.code()
                 }
-            } catch (e: Exception) {
-                Log.e("SearchViewModel wordSearch Error", e.message.toString())
             }
         }
     }
