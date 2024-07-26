@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/dialog_search_failed_constraintLayout1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_square_corner_radius_20dp"
+    android:backgroundTint="@color/white">
+
+        <TextView
+            android:id="@+id/dialog_search_failed_title_tv"
+            style="@style/head_semi_bold_16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="36dp"
+            android:text="검색되지 않는 단어입니다"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/dialog_search_failed_sub_title_tv"
+            style="@style/body_light_12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="13dp"
+            android:text="검색어의 철자를 확인하거나\n다른 검색어를 사용해주세요."
+            app:layout_constraintEnd_toEndOf="@+id/dialog_search_failed_title_tv"
+            app:layout_constraintStart_toStartOf="@+id/dialog_search_failed_title_tv"
+            app:layout_constraintTop_toBottomOf="@+id/dialog_search_failed_title_tv" />
+
+        <TextView
+            android:id="@+id/dialog_search_failed_confirm_tv"
+            style="@style/body_medium_14"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp
+"
+            android:background="@drawable/shape_square_gr_2_300_corner_radius_20dp_btm"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:text="확인"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dialog_search_failed_sub_title_tv" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>

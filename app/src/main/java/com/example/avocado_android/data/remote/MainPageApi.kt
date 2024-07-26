@@ -5,6 +5,7 @@ import com.example.avocado_android.domain.model.response.RecentSearchWordRespons
 import com.example.avocado_android.domain.model.response.main.MainPageResponseDto
 import com.example.avocado_android.domain.model.response.search.SearchWordResponseDto
 import retrofit2.http.Body
+import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Path
 
@@ -17,17 +18,9 @@ interface MainPageApi {
         @Body data : MainPageRequestDto
     ) : MainPageResponseDto
 
-    // 최근 검색어 가져옴
-    @POST("/api/main/{id}/search/{word}")
-    suspend fun searchWord(
-        @Path("id") id : Long,
-        @Path("word") word : String
-    ) : SearchWordResponseDto
-
-    // 최근 검색어 가져옴
-    @POST("/api/main/{id}/search/recent")
+    // 검색 페이지로 이동
+    @GET("/api/word/{id}/search")
     suspend fun getRecentSearch(
-        @Path("id") id : Long
+        @Path("id") id : Long,
     ) : RecentSearchWordResponseDto
-
 }

@@ -1,6 +1,8 @@
 package com.example.avocado_android.data.remote
 
+import com.example.avocado_android.base.ApiResponse
 import com.example.avocado_android.domain.model.response.search.SearchWordResponseDto
+import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
 
@@ -10,5 +12,5 @@ interface SearchPageApi {
     suspend fun wordSearch(
         @Path("id") id : Long,
         @Path("word") word : String
-    ) : SearchWordResponseDto
+    ) : Response<SearchWordResponseDto>
 }

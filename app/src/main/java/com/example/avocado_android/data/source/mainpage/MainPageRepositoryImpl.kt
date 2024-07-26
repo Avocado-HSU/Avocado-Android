@@ -13,6 +13,5 @@ class MainPageRepositoryImpl @Inject constructor(
 ) : MainPageRepository {
 
     override suspend fun getMainPage(id: Long, date : MainPageRequestDto) : Flow<MainPageResponseDto> = dataSource.getMainPage(id, date)
-    override suspend fun searchWord(id: Long, word: String) : Flow<SearchWordResponseDto> = dataSource.searchWord(id, word)
     override suspend fun getRecentSearch(id: Long) : Flow<RecentSearchWordResponseDto> = dataSource.getRecentSearch(id)
 }

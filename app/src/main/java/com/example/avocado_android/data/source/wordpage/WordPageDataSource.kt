@@ -2,6 +2,7 @@ package com.example.avocado_android.data.source.wordpage
 
 import android.util.Log
 import com.example.avocado_android.data.remote.WordPageApi
+import com.example.avocado_android.domain.model.response.RecentSearchWordResponseDto
 import com.example.avocado_android.domain.model.response.library.UpdateLibraryResponseDto
 import com.example.avocado_android.domain.model.response.search.SearchWordResponseDto
 import kotlinx.coroutines.flow.Flow
@@ -19,8 +20,8 @@ class WordPageDataSource @Inject constructor(
         Log.e("POST updateLibrary By UpdateLibraryResponseDto Failure", it.message.toString())
     }
 
-    fun wordSearch(id : Long, word: String) : Flow<SearchWordResponseDto> = flow {
-        val result = wordPageApi.wordSearch(id, word)
+    fun wordSearch(id : Long) : Flow<RecentSearchWordResponseDto> = flow {
+        val result = wordPageApi.wordSearch(id)
         emit(result)
     }.catch {
         Log.e("POST wordSearch By SearchWordResponseDto Failure", it.message.toString())

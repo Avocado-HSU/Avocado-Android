@@ -35,6 +35,8 @@ class WordListFragment : BaseFragment<FragmentWordListBinding>(R.layout.fragment
     private lateinit var suffixAdapter: SuffixAdapter
     private lateinit var etymologyAdapter: EtymologyAdapter
 
+    private var originalLibraryId: Long = 0
+
     override fun setLayout() {
         setAdapter()
         observeViewModel()
@@ -42,11 +44,22 @@ class WordListFragment : BaseFragment<FragmentWordListBinding>(R.layout.fragment
         setButton()
     }
 
+    private fun setButton() {
+        binding.wordListSaveLibraryBtn.setOnClickListener {
+            Log.d("WordListFragment", "Save Library Button Clicked11111111")
+            Log.d("WordListFragment", "Save Library Button Clicked2222222")
+            lifecycleScope.launch {
+                viewModel.updateLibrary(getLibraryId())
+                Log.d("getLibraryId", "4: ${getLibraryId()}")
+            }
+        }
+    }
+
     // 서버에서 온 값 파싱하여 값에 따라 화면 UI 업데이트
     private fun updateUI(data: SearchWordResponseDto) {
 
         val wordTipsTv = binding.wordListEasyMemorizeWordTipTv
-        val wordListSaveLibraryText = binding.wordListSaveLibraryTv
+        val wordListSaveLibraryBtn = binding.wordListSaveLibraryBtn
 
         // 단어 부분은 검색 프래그먼트에서 safeArgs로 받음
         binding.wordListWordTv.text = args.word
@@ -54,13 +67,13 @@ class WordListFragment : BaseFragment<FragmentWordListBinding>(R.layout.fragment
 
         // 라이브러리 저장 버튼 UI 변경
         if (data.isLibraryRegistered == false) {
-            wordListSaveLibraryText.background =  ContextCompat.getDrawable(requireContext(), R.drawable.rounded_rectangle_gr2_500_50dp)
-            wordListSaveLibraryText.text = "라이브러리에 저장하기"
-            wordListSaveLibraryText.setTextColor(ContextCompat.getColor(requireContext(), R.color.Yellow))
+            wordListSaveLibraryBtn.background =  ContextCompat.getDrawable(requireContext(), R.drawable.rounded_rectangle_gr2_500_50dp)
+            wordListSaveLibraryBtn.text = "라이브러리에 저장하기"
+            wordListSaveLibraryBtn.setTextColor(ContextCompat.getColor(requireContext(), R.color.Yellow))
         } else {
-            wordListSaveLibraryText.background =  ContextCompat.getDrawable(requireContext(), R.drawable.rounded_rectangle_gr1_300_50dp)
-            wordListSaveLibraryText.text = "라이브러리에서 삭제하기"
-            wordListSaveLibraryText.setTextColor(ContextCompat.getColor(requireContext(), R.color.Green_2_500))
+            wordListSaveLibraryBtn.background =  ContextCompat.getDrawable(requireContext(), R.drawable.rounded_rectangle_gr1_300_50dp)
+            wordListSaveLibraryBtn.text = "라이브러리에서 삭제하기"
+            wordListSaveLibraryBtn.setTextColor(ContextCompat.getColor(requireContext(), R.color.Green_2_500))
         }
 
         // 영어 단어 한글 뜻
@@ -122,6 +135,7 @@ class WordListFragment : BaseFragment<FragmentWordListBinding>(R.layout.fragment
                 viewModel.searchWordResponseDto.collect { searchWordResponseDto ->
                     if (searchWordResponseDto.isSuccess == true) {
                         etymologyAdapter.submitList(listOf(searchWordResponseDto.contents?.wordEtymologyDto))
+                        searchWordResponseDto.libraryId?.let { saveLibraryId(it) }
                     }
                     searchWordResponseDto.contents?.wordEtymologyDto?.let { viewModel.setWordEtymologyDto(it) }
                     updateUI(searchWordResponseDto)
@@ -162,12 +176,12 @@ class WordListFragment : BaseFragment<FragmentWordListBinding>(R.layout.fragment
         }
     }
 
-    // 라이브리에 저장하기 버튼
-    private fun setButton() {
-        binding.wordListSaveLibraryTv.setOnClickListener {
-            val action = WordListFragmentDirections.actionWordListFragmentToSearchFragment()
-            findNavController().navigate(action)
-        }
+    private fun saveLibraryId(libraryId: Long) {
+        originalLibraryId = libraryId
+    }
+    private fun getLibraryId() : Long {
+        Log.d("originalLibraryId", "originalLibraryId: $originalLibraryId")
+        return originalLibraryId
     }
 
     // UI 값 초기화
@@ -179,9 +193,9 @@ class WordListFragment : BaseFragment<FragmentWordListBinding>(R.layout.fragment
         binding.wordListWordMeaningDescription.text = ""
         binding.wordListEasyMemorizeWordTipTv.text = ""
         binding.wordListSuffixDescTv.text = ""
-        binding.wordListSaveLibraryTv.text = ""
-        binding.wordListSaveLibraryTv.background = ContextCompat.getDrawable(requireContext(), R.drawable.rounded_rectangle_gr2_500_50dp)
-        binding.wordListSaveLibraryTv.setTextColor(ContextCompat.getColor(requireContext(), R.color.Yellow))
+        binding.wordListSaveLibraryBtn.text = ""
+        binding.wordListSaveLibraryBtn.background = ContextCompat.getDrawable(requireContext(), R.drawable.rounded_rectangle_gr2_500_50dp)
+        binding.wordListSaveLibraryBtn.setTextColor(ContextCompat.getColor(requireContext(), R.color.Yellow))
         Glide.with(requireContext()).clear(binding.wordListLogoImgIv) // 이미지 클리어
     }
 
