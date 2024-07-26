@@ -18,67 +18,60 @@ import androidx.lifecycle.repeatOnLifecycle
 import com.example.avocado_android.R
 import com.example.avocado_android.base.BaseFragment
 import com.example.avocado_android.databinding.FragmentChatbotBinding
+import com.example.avocado_android.ui.search.SearchViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class ChatBotFragment : BaseFragment<FragmentChatbotBinding>(R.layout.fragment_chatbot) {
 
-    private val viewModel by activityViewModels<ChatViewModel>()
+    private val chatViewModel : ChatViewModel by activityViewModels()
     private lateinit var adapter: ChatBotAdapter
 
     override fun setLayout() {
-        observeViewModel()
+        //observeViewModel()
     }
 
     fun toast() {
         Toast.makeText(requireContext(), "ㅎㅎㅎ", Toast.LENGTH_SHORT).show()
     }
 
-    private fun observeViewModel() {
+    private fun setAdapter() {
         adapter = ChatBotAdapter()
         binding.chatbotChatRv.adapter = adapter
+    }
+
+    private fun observeViewModel() {
 
         lifecycleScope.launch {
             lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
-
-                launch {
-                    // 챗봇
-                    viewModel.botMsgList.collect { botMsgList ->
-                        val currentList = adapter.currentList.toMutableList()  // 기존 데이터를 가져옴
-                        currentList.addAll(botMsgList) // 새로운 데이터를 기존 데이터에 추가
-                        adapter.submitList(currentList) // 변경된 리스트를 Adapter에 전달
-                    }
-                }
-
-//                launch {
-//                    // 이미지
-//                    viewModel.imageCardList.collect() { imageCardList ->
-//                        adapter.submitList(imageCardList)
-//                    }
-                }
-        }
-
-        // 사용자
-        binding.chatbotChatEt.setOnKeyListener { _, keyCode, event ->
-            if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
-                lifecycleScope.launch {
-                    lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                        viewModel.userMsgList.collect { userMsgList ->
-                            val currentList = adapter.currentList.toMutableList()
-                            currentList.addAll(userMsgList)
-                            adapter.submitList(currentList)
-
-                            // 키보드 내리고 내용 삭제
-                            hideKeyboard(binding.chatbotChatEt, requireContext())
-                            binding.chatbotChatEt.text = null
-                        }
-                    }
-                }
-                true
-            } else {
-                false
             }
         }
+    }
+
+    private fun sendChatBot() {
+        // 사용자
+//        binding.chatbotChatEt.setOnKeyListener { _, keyCode, event ->
+//            if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
+//                lifecycleScope.launch {
+//                    lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+//                        viewModel.userMsgList.collect { userMsgList ->
+//                            val currentList = adapter.currentList.toMutableList()
+//                            currentList.addAll(userMsgList)
+//                            adapter.submitList(currentList)
+//
+//                            // 키보드 내리고 내용 삭제
+//                            hideKeyboard(binding.chatbotChatEt, requireContext())
+//                            binding.chatbotChatEt.text = null
+//                        }
+//                    }
+//                }
+//                true
+//            } else {
+//                false
+//            }
+//        }
     }
 
     // 화면 터치 시 키보드 내리기
