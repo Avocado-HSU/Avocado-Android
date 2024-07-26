@@ -2,7 +2,7 @@ package com.example.avocado_android.data.source.chatbot
 
 import android.util.Log
 import com.example.avocado_android.data.remote.ChatBotApi
-import com.example.avocado_android.domain.model.response.ChatBotResponseDto
+import com.example.avocado_android.domain.model.response.chatbot.ChatBotResponseDto
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow

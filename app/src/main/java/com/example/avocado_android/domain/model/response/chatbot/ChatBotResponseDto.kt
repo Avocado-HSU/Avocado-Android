@@ -1,4 +1,4 @@
-package com.example.avocado_android.domain.model.response
+package com.example.avocado_android.domain.model.response.chatbot
 
 data class ChatBotResponseDto (
     val isSuccess: Boolean = false,
