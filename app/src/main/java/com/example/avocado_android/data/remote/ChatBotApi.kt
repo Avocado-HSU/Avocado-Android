@@ -3,6 +3,7 @@ package com.example.avocado_android.data.remote
 import com.example.avocado_android.domain.model.response.chatbot.ChatBotResponseDto
 import com.example.avocado_android.domain.model.response.chatbot.WordSimilarDto
 import com.example.avocado_android.domain.model.response.search.WordEtymologyDto
+import com.example.avocado_android.domain.model.response.search.WordMeanDto
 import com.example.avocado_android.domain.model.response.search.WordTipsDto
 import retrofit2.http.POST
 import retrofit2.http.Path
@@ -28,13 +29,13 @@ interface ChatBotApi {
     suspend fun getWordMean(
         @Path("requestType") requestType: String,
         @Path("word") word: String
-    )  : WordEtymologyDto
+    )  : WordMeanDto
 
     // 어원 분류
     @POST("/api/test/getWordEtymology/{requestType}/{word}")
     suspend fun getWordEtymology(
         @Path("requestType") requestType: String,
         @Path("word") word: String
-    )  : ChatBotResponseDto
+    )  : WordEtymologyDto
 
 }

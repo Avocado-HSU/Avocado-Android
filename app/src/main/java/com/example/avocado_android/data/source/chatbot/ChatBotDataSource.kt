@@ -5,6 +5,7 @@ import com.example.avocado_android.data.remote.ChatBotApi
 import com.example.avocado_android.domain.model.response.chatbot.ChatBotResponseDto
 import com.example.avocado_android.domain.model.response.chatbot.WordSimilarDto
 import com.example.avocado_android.domain.model.response.search.WordEtymologyDto
+import com.example.avocado_android.domain.model.response.search.WordMeanDto
 import com.example.avocado_android.domain.model.response.search.WordTipsDto
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
@@ -26,13 +27,13 @@ class ChatBotDataSource @Inject constructor(
     }.catch {
         Log.e("Post getWordSimilar Failure", it.message.toString())
     }
-    fun getWordMean(requestType: String, word: String): Flow<WordEtymologyDto> = flow {
+    fun getWordMean(requestType: String, word: String): Flow<WordMeanDto> = flow {
         val result = chatBotApi.getWordMean(requestType, word)
         emit(result)
     }.catch {
         Log.e("Post getWordMean Failure", it.message.toString())
     }
-    fun getWordEtymology(requestType: String, word: String): Flow<ChatBotResponseDto> = flow {
+    fun getWordEtymology(requestType: String, word: String): Flow<WordEtymologyDto> = flow {
         val result = chatBotApi.getWordEtymology(requestType, word)
         emit(result)
     }.catch {
