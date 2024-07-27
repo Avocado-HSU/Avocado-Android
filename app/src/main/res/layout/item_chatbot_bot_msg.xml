@@ -13,6 +13,7 @@
             android:id="@+id/item_chatbot_bot_msg_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:maxWidth="220dp"
             android:text="안녕하세요"
             android:layout_marginTop="16dp"
             android:layout_marginStart="24dp"
