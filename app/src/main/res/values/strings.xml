@@ -19,10 +19,21 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="library">라이브러리</string>
 
+    <string name="chatbot_answer_last">또 궁금하신 내용이 있으신가요?</string>
+    <string name="chatbot_answer_null">아보카가 길을 잃었어요! 다른 단어를 검색해주세요</string>
     <string name="chatbot_which_word">어떤 단어를 검색해 드릴까요?</string>
     <string name="chatbot_meaning">뜻이 궁금한 단어가 있어!</string>
     <string name="chatbot_similar">이 단어에 유사 단어가\n있는지 궁금해!</string>
     <string name="chatbot_etymology">어원으로 단어를 분류해줘!</string>
-    <string name="chatbot_tips">외우기 어려운 단어의 외우기 팁을 알려줘!</string>
+    <string name="chatbot_tips">외우기 어려운 단어의\n외우기 팁을 알려줘!</string>
+
+    <string name="chatbot_tip_card_title1">1. 옛연상 기억법:</string>
+    <string name="chatbot_tip_card_title2">2. 단어 분해:</string>
+    <string name="chatbot_tip_card_title3">3. 반복 학습:</string>
+    <string name="chatbot_tip_card_title4">4. 스토리텔링:</string>
+    <string name="chatbot_tip_card_desc1">단어와 관련된\n이미지를  떠올려 보세요.</string>
+    <string name="chatbot_tip_card_desc2">발음에 따라 단어를\n분해해 보세요.\n단어를 발음해보면\n 더 쉽게 외울 수 있어요!</string>
+    <string name="chatbot_tip_card_desc3">여러 번 소리 내어 발음해 보고,\n손으로 여러 번 써보세요.</string>
+    <string name="chatbot_tip_card_desc4">간단한 이야기를 만들어 보세요.\n예를 들어, &quot;애플(Apple) 회사에서\n사과(apple)를 만든다&quot;\n같은 간단한 이야기를 떠올리면\n더 쉽게 기억할 수 있습니다.</string>
 
 </resources>
