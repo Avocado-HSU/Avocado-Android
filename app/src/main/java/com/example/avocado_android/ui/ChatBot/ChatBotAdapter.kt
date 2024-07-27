@@ -15,6 +15,7 @@ import com.example.avocado_android.base.BaseAdapter
 import com.example.avocado_android.base.BaseDiffCallback
 import com.example.avocado_android.databinding.ItemChatbotBotMsgBinding
 import com.example.avocado_android.databinding.ItemChatbotSelectionImgBinding
+import com.example.avocado_android.databinding.ItemChatbotTipsBinding
 import com.example.avocado_android.databinding.ItemChatbotUserMsgBinding
 import com.example.avocado_android.domain.model.local.chatbot.ChatItem
 
@@ -80,6 +81,69 @@ class ChatBotAdapter(private val onCardClick: (ChatItem.ChatCardItem) -> Unit) :
         }
     }
 
+    inner class TipsViewHolder(private val binding: ItemChatbotTipsBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(item: ChatItem.ChatTipsListItem) {
+
+            val cardViews = listOf(
+                binding.itemChatbotCardView1,
+                binding.itemChatbotCardView2,
+                binding.itemChatbotCardView3,
+                binding.itemChatbotCardView4
+            )
+
+            val imageViews = listOf(
+                binding.itemChatbotCardIv1,
+                binding.itemChatbotCardIv2,
+                binding.itemChatbotCardIv3,
+                binding.itemChatbotCardIv4
+            )
+
+            val titles = listOf(
+                binding.itemChatbotCardTitleTv1,
+                binding.itemChatbotCardTitleTv2,
+                binding.itemChatbotCardTitleTv3,
+                binding.itemChatbotCardTitleTv4
+            )
+
+            val description = listOf(
+                binding.itemChatbotCardTv1,
+                binding.itemChatbotCardTv2,
+                binding.itemChatbotCardTv3,
+                binding.itemChatbotCardTv4
+            )
+
+            for (i in item.cards.indices) {
+                if (i < cardViews.size) {
+                    val card = item.cards[i]
+                    cardViews[i].visibility = View.VISIBLE
+                    imageViews[i].setImageResource(card.imageUri)
+                    titles[i].text = card.title
+                    description[i].text = card.description
+                }
+            }
+
+            // 카드가 부족한 경우 숨기기
+            for (i in item.cards.size until cardViews.size) {
+                cardViews[i].visibility = View.GONE
+            }
+
+            binding.executePendingBindings()
+        }
+    }
+
+
+    // 어댑터 초기화
+    fun reset() {
+        submitList(emptyList())
+    }
+
+    // 여러 항목 추가
+    fun addMultipleItems(items: List<ChatItem>) {
+        val currentList = currentList.toMutableList()
+        currentList.addAll(items)
+        submitList(currentList)
+    }
+
     // 챗봇의 말풍선 추가
     fun addBotChatItem(item: ChatItem.BotChatItem) {
         val currentList = currentList.toMutableList()
@@ -94,10 +158,17 @@ class ChatBotAdapter(private val onCardClick: (ChatItem.ChatCardItem) -> Unit) :
         submitList(currentList)
     }
 
-    // 질문 이미지 선택지
-    fun addChatCardListItem(items: List<ChatItem.ChatCardItem>) {
+    // 질문 이미지 선택지 추가
+    fun addChatCardListItem(items: ChatItem.ChatCardListItem) {
         val currentList = currentList.toMutableList()
-        currentList.add(ChatItem.ChatCardListItem(items))
+        currentList.add(items)
+        submitList(currentList)
+    }
+
+    // 팁 설명 이미지 추가
+    fun addChatTipCardListItem(items: ChatItem.ChatTipsListItem) {
+        val currentList = currentList.toMutableList()
+        currentList.add(items)
         submitList(currentList)
     }
 
@@ -107,6 +178,7 @@ class ChatBotAdapter(private val onCardClick: (ChatItem.ChatCardItem) -> Unit) :
             is ChatItem.BotChatItem -> BOT
             is ChatItem.UserChatItem -> USER
             is ChatItem.ChatCardListItem -> IMG
+            is ChatItem.ChatTipsListItem -> TIPS
             else -> throw IllegalArgumentException("Invalid getItemViewType")
         }
     }
@@ -125,6 +197,10 @@ class ChatBotAdapter(private val onCardClick: (ChatItem.ChatCardItem) -> Unit) :
                 val binding = ItemChatbotSelectionImgBinding.inflate(LayoutInflater.from(parent.context), parent, false)
                 ImageSelectionViewHolder(binding)
             }
+            TIPS -> {
+                val binding = ItemChatbotTipsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+                TipsViewHolder(binding)
+            }
             else -> throw IllegalArgumentException("Invalid onCreateViewHolder")
         }
     }
@@ -140,6 +216,9 @@ class ChatBotAdapter(private val onCardClick: (ChatItem.ChatCardItem) -> Unit) :
             is ChatItem.ChatCardListItem -> {
                 (holder as ImageSelectionViewHolder).bind(item)
             }
+            is ChatItem.ChatTipsListItem -> {
+                (holder as TipsViewHolder).bind(item)
+            }
             else -> throw IllegalArgumentException("Invalid onBindViewHolder")
         }
     }
@@ -148,6 +227,7 @@ class ChatBotAdapter(private val onCardClick: (ChatItem.ChatCardItem) -> Unit) :
         private const val BOT = 0
         private const val USER = 1
         private const val IMG = 2
+        private const val TIPS = 3
 
         private val diffUtilCallback = object : DiffUtil.ItemCallback<ChatItem>() {
             override fun areItemsTheSame(oldItem: ChatItem, newItem: ChatItem) = oldItem == newItem
