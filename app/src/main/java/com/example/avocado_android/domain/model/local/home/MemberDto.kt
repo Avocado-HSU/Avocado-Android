@@ -1,4 +1,4 @@
-package com.example.avocado_android.domain.model.home
+package com.example.avocado_android.domain.model.local.home
 
 data class MemberDto(
     val createdAt : String = "",

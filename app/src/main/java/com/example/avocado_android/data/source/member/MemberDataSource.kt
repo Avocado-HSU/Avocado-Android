@@ -2,7 +2,7 @@ package com.example.avocado_android.data.source.member
 
 import android.util.Log
 import com.example.avocado_android.data.remote.MemberControlApi
-import com.example.avocado_android.domain.model.home.MemberDto
+import com.example.avocado_android.domain.model.local.home.MemberDto
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow

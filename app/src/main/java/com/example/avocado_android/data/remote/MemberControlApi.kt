@@ -1,11 +1,8 @@
 package com.example.avocado_android.data.remote
 
-import com.example.avocado_android.domain.model.home.MemberDto
-import kotlinx.coroutines.flow.Flow
+import com.example.avocado_android.domain.model.local.home.MemberDto
 import retrofit2.http.DELETE
 import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Query
 
 interface MemberControlApi {
 

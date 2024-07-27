@@ -1,12 +1,16 @@
 package com.example.avocado_android.ui
 
 import android.content.Context
+import android.os.Build
+import android.text.format.DateUtils.formatDateTime
 import android.view.View
 import androidx.navigation.NavController
 import android.util.Log
 import android.view.MotionEvent
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
+import androidx.annotation.RequiresApi
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -21,7 +25,10 @@ import com.example.avocado_android.ui.login.LoginViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
+@RequiresApi(Build.VERSION_CODES.O)
 @AndroidEntryPoint
 class MainActivity(
 ) : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
@@ -32,12 +39,39 @@ class MainActivity(
     private var homeFragment: HomeFragment? = null
 
     override fun setLayout() {
+        loginConfirm()
         bindingViewModel()
         setNavigation()
         setData()
     }
 
 
+    private fun loginConfirm() {
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                loginViewModel.memberData.collectLatest { response ->
+                    Log.d("response data", response.id)
+                    binding.memberData = response
+                    val id = response.id.takeIf { it.isNotEmpty() }?.toLong() ?: 0L
+
+                    // id -> sharedPreferences에 저장
+                    val sharedPreferences = this@MainActivity.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+                    val editor = sharedPreferences.edit()
+                    editor.putLong("userId", id)
+                    editor.apply()
+
+
+
+                    viewModel.getMainItemData(id, formatDateTime(LocalDateTime.now()))
+                }
+            }
+        }
+    }
+
+    private fun formatDateTime(dateTime: LocalDateTime): String {
+        val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+        return dateTime.format(formatter)
+    }
 
     private fun setData() {
         loginViewModel.getToken { token ->
