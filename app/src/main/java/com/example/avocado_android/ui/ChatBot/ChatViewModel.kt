@@ -10,6 +10,7 @@ import com.example.avocado_android.domain.model.local.chatbot.ChatItem
 import com.example.avocado_android.domain.model.response.chatbot.ChatBotResponseDto
 import com.example.avocado_android.domain.model.response.chatbot.WordSimilarDto
 import com.example.avocado_android.domain.model.response.search.WordEtymologyDto
+import com.example.avocado_android.domain.model.response.search.WordMeanDto
 import com.example.avocado_android.domain.model.response.search.WordTipsDto
 import com.example.avocado_android.domain.repository.chatbot.ChatBotRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -26,34 +27,17 @@ class ChatViewModel @Inject constructor(
     private val chatBotRepository: ChatBotRepository
 ) : ViewModel() {
 
-    // 외우기 팁
-    private val _wordTipsDto = MutableStateFlow(WordTipsDto())
-    val wordTipsDto : StateFlow<WordTipsDto> get() = _wordTipsDto
-
     // 유사 단어
     private val _wordSimilarDto = MutableStateFlow(WordSimilarDto())
     val wordSimilarDto : StateFlow<WordSimilarDto> get() = _wordSimilarDto
 
     // 단어 뜻
-    private val _wordEtymologyDto = MutableStateFlow(WordEtymologyDto())
-    val wordEtymologyDto : StateFlow<WordEtymologyDto> get() = _wordEtymologyDto
+    private val _wordMeanDto = MutableStateFlow(WordMeanDto())
+    val wordMeanDto : StateFlow<WordMeanDto> get() = _wordMeanDto
 
     // 어원 분류
-    private val _chatBotResponseDto = MutableStateFlow(ChatBotResponseDto())
-    val chatBotResponseDto : StateFlow<ChatBotResponseDto> get() = _chatBotResponseDto
-
-    fun getWordTips(requestType: String, word: String) {
-        try {
-            viewModelScope.launch {
-                chatBotRepository.getWordTips(requestType, word).collect {
-                    _wordTipsDto.value = it
-                    Log.d("ChatViewModel getWordTips", "getWordTips: $it")
-                }
-            }
-        } catch (e: Exception) {
-            Log.e("ChatViewModel getWordTips Error", e.message.toString())
-        }
-    }
+    private val _wordEtymologyDto = MutableStateFlow(WordEtymologyDto())
+    val wordEtymologyDto : StateFlow<WordEtymologyDto> get() = _wordEtymologyDto
 
     fun getWordSimilar(requestType: String, word: String) {
         try {
@@ -72,7 +56,7 @@ class ChatViewModel @Inject constructor(
         try {
             viewModelScope.launch {
                 chatBotRepository.getWordMean(requestType, word).collect {
-                    _wordEtymologyDto.value = it
+                    _wordMeanDto.value = it
                     Log.d("ChatViewModel getWordMean", "getWordMean: $it")
                 }
             }
@@ -85,7 +69,7 @@ class ChatViewModel @Inject constructor(
         try {
             viewModelScope.launch {
                 chatBotRepository.getWordEtymology(requestType, word).collect {
-                    _chatBotResponseDto.value = it
+                    _wordEtymologyDto.value = it
                     Log.d("ChatViewModel getWordEtymology", "getWordEtymology: $it")
                 }
             }
@@ -94,4 +78,9 @@ class ChatViewModel @Inject constructor(
         }
     }
 
+    fun reset() {
+        _wordSimilarDto.value = WordSimilarDto()
+        _wordMeanDto.value = WordMeanDto()
+        _wordEtymologyDto.value = WordEtymologyDto()
+    }
 }

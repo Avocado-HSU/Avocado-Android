@@ -13,15 +13,18 @@
             android:id="@+id/item_chatbot_bot_msg_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:maxWidth="220dp"
             android:text="안녕하세요"
+            android:layout_marginTop="16dp"
             android:layout_marginStart="24dp"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:paddingStart="9dp"
+            android:paddingEnd="9dp"
             android:textAlignment="center"
             style="@style/body_regular_14"
             android:background="@drawable/rounded_rectangle_26dp"
-            android:paddingStart="8dp"
-            android:paddingEnd="8dp"
-            android:paddingTop="10.5dp"
-            android:paddingBottom="10.5dp" />
+            android:backgroundTint="@color/chatbot_msg_back" />
 
     </LinearLayout>
 </layout>
