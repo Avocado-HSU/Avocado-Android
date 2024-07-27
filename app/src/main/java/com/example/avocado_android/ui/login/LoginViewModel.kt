@@ -1,11 +1,9 @@
 package com.example.avocado_android.ui.login
 
 import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.avocado_android.domain.model.home.MemberDto
+import com.example.avocado_android.domain.model.local.home.MemberDto
 
 import com.example.avocado_android.domain.repository.member.MemberControlRepository
 import com.example.avocado_android.utils.token.TokenManager
