@@ -3,10 +3,11 @@ package com.example.avocado_android.ui.search
 import android.content.Context
 import android.util.Log
 import android.view.KeyEvent
+import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
-import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -18,12 +19,12 @@ import com.example.avocado_android.databinding.FragmentSearchBinding
 import com.example.avocado_android.ui.login.LoginViewModel
 import com.example.avocado_android.ui.vocalist.PrefixAdapter
 import com.example.avocado_android.utils.dialog.SearchFailedDialog
+import com.example.avocado_android.utils.dialog.SearchLoadingDialog
+import com.example.avocado_android.utils.extensions.navigateSafe
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.flow.filter
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
-import java.time.LocalDateTime
 
 @AndroidEntryPoint
 class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_search) {
@@ -33,15 +34,22 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
     private lateinit var recentWordAdapter: RecentWordAdapter
     private lateinit var prefixAdapter: PrefixAdapter
 
+    private lateinit var searchLoadingDialog: SearchLoadingDialog
+    private lateinit var searchFailedDialog: SearchFailedDialog
     private var id : Long = 0
-    private lateinit var query: String
 
     override fun setLayout() {
         getLoginId()
         handleBackPress()
+        setDialogFragment()
         setAdapter()
         observeViewModel()
         editSearchWord()
+    }
+
+    private fun setDialogFragment() {
+        searchLoadingDialog = SearchLoadingDialog()
+        searchFailedDialog = SearchFailedDialog()
     }
 
     private fun observeViewModel() {
@@ -73,36 +81,32 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
 
     // searchViewModel 통해 실제 서버 검색 API 실행
     private fun searchWord(text : String) {
+
+        searchViewModel.resetStatus() // HttpStatus reset
+
         lifecycleScope.launch {
             searchViewModel.wordSearch(id, text)
         }
 
-        // 데이터가 준비된 후 화면 전환
         viewLifecycleOwner.lifecycleScope.launch {
+           searchLoadingDialog.show(parentFragmentManager, "SearchLoadingDialog")
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                launch {
-                    searchViewModel.searchWordResponseDto.collect{ response ->
-                        if (response.isSuccess == true) {
-                            val action =
-                                SearchFragmentDirections.actionSearchFragmentToWordListFragment(
-                                    text
-                                )
-                            findNavController().navigate(action)
-                        }
-                    }
-                }
-
-                // http status -> 404이면 다이얼로그 띄움
-                launch {
-                    searchViewModel.httpStatusCode.collect { statusCode ->
-                        when(statusCode) {
-                            404 -> {
-                                val dialog = SearchFailedDialog()
-                                dialog.onDismissListener = {
-                                    binding.searchSearchBarEt.text = null
+                searchViewModel.httpStatusCode.collectLatest { statusCode ->
+                    when (statusCode) {
+                        200 -> {
+                            searchViewModel.searchWordResponseDto.collectLatest { response ->
+                                if (response.isSuccess == true) {
+                                    searchLoadingDialog.dismiss()
+                                    val action = SearchFragmentDirections.actionSearchFragmentToWordListFragment(searchViewModel.queryText.first().toString())
+                                    findNavController().navigateSafe(action.actionId, action.arguments)
                                 }
-                                dialog.show(parentFragmentManager, "SearchFailedDialog")
                             }
+                        }
+
+                        404 -> {
+                            searchLoadingDialog.dismiss()
+                            searchFailedDialog.onDismissListener = { binding.searchSearchBarEt.text = null }
+                            searchFailedDialog.show(parentFragmentManager, "SearchFailedDialog")
                         }
                     }
                 }
@@ -115,8 +119,8 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
         binding.searchSearchBarEt.setOnEditorActionListener { v, actionId, event ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH ||
                     event?.action == KeyEvent.ACTION_DOWN && event.keyCode == KeyEvent.KEYCODE_ENTER) {
-                query = binding.searchSearchBarEt.text.toString()
-
+                val query = binding.searchSearchBarEt.text.toString()
+                Log.d("쿼리", "$query")
                 val imm = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                 imm.hideSoftInputFromWindow(v.windowToken, 0)
 
