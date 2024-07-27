@@ -10,28 +10,28 @@ import retrofit2.http.Path
 interface ChatBotApi {
 
     // 단어 외우기 팁
-    @POST("/api/test/api/getWordTips/{request}/{word}")
+    @POST("/api/test/getWordTips/{requestType}/{word}")
     suspend fun getWordTips(
         @Path("requestType") requestType: String,
         @Path("word") word: String
     )  : WordTipsDto
 
     // 유사 단어
-    @POST("/api/test/api/getWordSimilar/{request}/{word}")
+    @POST("/api/test/getWordSimilar/{requestType}/{word}")
     suspend fun getWordSimilar(
         @Path("requestType") requestType: String,
         @Path("word") word: String
     )  : WordSimilarDto
 
     // 단어 뜻
-    @POST("/api/test/api/getWordMean/{request}/{word}")
+    @POST("/api/test/getWordMean/{requestType}/{word}")
     suspend fun getWordMean(
         @Path("requestType") requestType: String,
         @Path("word") word: String
     )  : WordEtymologyDto
 
     // 어원 분류
-    @POST("/api/test/api/getWordEtymology/{request}/{word}")
+    @POST("/api/test/getWordEtymology/{requestType}/{word}")
     suspend fun getWordEtymology(
         @Path("requestType") requestType: String,
         @Path("word") word: String
