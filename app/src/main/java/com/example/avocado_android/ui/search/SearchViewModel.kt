@@ -33,8 +33,11 @@ class SearchViewModel @Inject constructor(
     private val _searchWordResponseDto = MutableStateFlow(SearchWordResponseDto())
     val searchWordResponseDto: StateFlow<SearchWordResponseDto> get() = _searchWordResponseDto
 
-    private val _httpStatusCode = MutableStateFlow<Int>(0)
-    val httpStatusCode: StateFlow<Int> get() = _httpStatusCode
+    private val _httpStatusCode = MutableStateFlow<Int?>(null)
+    val httpStatusCode: StateFlow<Int?> = _httpStatusCode
+
+    private val _queryText = MutableStateFlow<String?>(null)
+    val queryText: StateFlow<String?> = _queryText
 
     // 어원 분리 DTO
     private val _wordEtymologyDto = MutableStateFlow(WordEtymologyDto())
@@ -66,15 +69,24 @@ class SearchViewModel @Inject constructor(
         }
     }
 
+    fun resetStatus() {
+        _httpStatusCode.value = null
+    }
+
     // 단어 검색하면 단어장 화면에 나옴
     fun wordSearch(id: Long, word: String) {
         viewModelScope.launch {
+            _queryText.value = word
             searchPageRepository.wordSearch(id, word).collect { response ->
                 if (response.isSuccessful) {
                     _searchWordResponseDto.value = response.body() ?: SearchWordResponseDto()
+                    _httpStatusCode.value = response.code()
+                    Log.d("로그", "_httpStatusCode: ${_httpStatusCode.value}" )
                 } else {
                     val errorMessage = response.errorBody()?.string() ?: "Unknown error"
                     _httpStatusCode.value = response.code()
+                    _queryText.value = null
+                    Log.d("로그", "_httpStatusCode: ${_httpStatusCode.value}" )
                 }
             }
         }
