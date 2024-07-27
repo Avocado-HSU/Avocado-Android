@@ -3,10 +3,7 @@ package com.example.avocado_android.ui.library
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.avocado_android.domain.model.local.library.LibraryWordCard
-import com.example.avocado_android.domain.model.request.MainPageRequestDto
 import com.example.avocado_android.domain.model.response.library.LibraryPageResponseDto
-import com.example.avocado_android.domain.model.response.library.LibraryWordDto
 import com.example.avocado_android.domain.repository.librarypage.LibraryPageRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
