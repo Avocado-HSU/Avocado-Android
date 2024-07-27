@@ -21,7 +21,6 @@ import kotlinx.coroutines.launch
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
-@RequiresApi(Build.VERSION_CODES.O)
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home)  {
     private val viewModel: MainViewModel by activityViewModels()
@@ -43,24 +42,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home)  
                 loginViewModel.memberData.collectLatest { response ->
                     Log.d("response data", response.id)
                     binding.memberData = response
-                    val id = response.id.takeIf { it.isNotEmpty() }?.toLong() ?: 0L
-
-                    // id -> sharedPreferences에 저장
-                    val sharedPreferences = requireContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
-                    val editor = sharedPreferences.edit()
-                    editor.putLong("userId", id)
-                    editor.apply()
-
-                    viewModel.getMainItemData(id, formatDateTime(LocalDateTime.now()))
                 }
             }
         }
     }
 
-    private fun formatDateTime(dateTime: LocalDateTime): String {
-        val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
-        return dateTime.format(formatter)
-    }
 
     private fun mainSetting() {
         lifecycleScope.launch {
