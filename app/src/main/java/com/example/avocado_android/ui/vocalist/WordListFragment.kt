@@ -102,30 +102,63 @@ class WordListFragment : BaseFragment<FragmentWordListBinding>(R.layout.fragment
         data.contents?.let { contents ->
 
             // 단어적 의미 -> 데이터 바인딩 사용하면 혼자만 값이 빨리 나와서 직접 바인딩
-            Log.d("wordMeanDto?.greetingMsg", "contents.wordMeanDto?.greetingMsg : ${contents.wordMeanDto?.greetingMsg} " )
-            binding.wordListWordMeaningDescription.text = contents.wordMeanDto?.greetingMsg ?: ""
+            val meaningsText = contents.wordMeanDto?.meanings
+                ?.entries
+                ?.filter { it.value.isNotBlank() }  // 값이 비어있지 않은 항목만 필터링
+                ?.joinToString(separator = "\n") { "${it.key}: ${it.value}" }  // 필터링된 항목으로 문자열 생성
+                ?: ""  // 모든 항목이 비어있으면 빈 문자열
+            binding.wordListWordMeaningDescription.text = meaningsText
 
             // 쉽게 외우는 팁
             val wordTipsDto = contents.wordTipsDto
-            val wordTipsDesc = buildString {
-                // 각 속성이 null인 경우 빈 문자열을 추가하여 처리
-                append(wordTipsDto?.mnemonicMethod ?: "").append("\n")
-                append(wordTipsDto?.wordAnalysis ?: "").append("\n")
-                append(wordTipsDto?.spacedRepetition ?: "").append("\n")
-                append(wordTipsDto?.storytelling ?: "")
-            }
+
+            val wordTipsList = mutableListOf<String>()
+            wordTipsDto?.mnemonicMethod?.takeIf { it.isNotBlank() }?.let { wordTipsList.add(it) }
+            wordTipsDto?.wordAnalysis?.takeIf { it.isNotBlank() }?.let { wordTipsList.add(it) }
+            wordTipsDto?.spacedRepetition?.takeIf { it.isNotBlank() }?.let { wordTipsList.add(it) }
+            wordTipsDto?.storytelling?.takeIf { it.isNotBlank() }?.let { wordTipsList.add(it) }
+            val wordTipsDesc = wordTipsList.joinToString(separator = "\n\n")
+
             binding.wordListEasyMemorizeWordTipTv.text = wordTipsDesc
 
             // 어원 분리
             val wordEtymologyDto = contents.wordEtymologyDto
-            val wordSuffixDesc = buildString {
-                // 각 속성이 null인 경우 빈 문자열을 추가하여 처리
-                append(wordEtymologyDto?.etymologyDescription ?: "").append("\n")
-                append(wordEtymologyDto?.rootDescription ?: "").append("\n")
-                append(wordEtymologyDto?.prefixDescription ?: "").append("\n")
-                append(wordEtymologyDto?.suffixDescription ?: "")
-            }
-            binding.wordListSuffixDescTv.text = wordSuffixDesc
+            val rootString = buildString {
+                wordEtymologyDto?.root?.takeIf { it.isNotBlank() }?.let { append("어간 (Root): $it") }
+                wordEtymologyDto?.rootDescription?.takeIf { it.isNotBlank() }?.let {
+                    if (isNotEmpty()) append("\n") // `root`가 이미 추가된 경우 줄바꿈 추가
+                    append(it)
+                }
+            }.trim()
+
+            val prefixString = buildString {
+                wordEtymologyDto?.prefix?.takeIf { it.isNotBlank() }?.let { append("접두사 (Prefix): $it") }
+                wordEtymologyDto?.prefixDescription?.takeIf { it.isNotBlank() }?.let {
+                    if (isNotEmpty()) append("\n") // `prefix`가 이미 추가된 경우 줄바꿈 추가
+                    append(it)
+                }
+            }.trim()
+
+            val suffixString = buildString {
+                wordEtymologyDto?.suffix?.takeIf { it.isNotBlank() }?.let { append("접미사 (Suffix): $it") }
+                wordEtymologyDto?.suffixDescription?.takeIf { it.isNotBlank() }?.let {
+                    if (isNotEmpty()) append("\n") // `suffix`가 이미 추가된 경우 줄바꿈 추가
+                    append(it)
+                }
+            }.trim()
+
+            val etymologyDescription = wordEtymologyDto?.etymologyDescription?.takeIf { it.isNotBlank() } ?: ""
+
+            // 최종 어원 문자열 생성
+            val combinedString = listOf(
+                rootString,
+                prefixString,
+                suffixString,
+                etymologyDescription
+            ).filter { it.isNotEmpty() }.joinToString(separator = "\n\n")
+
+            binding.wordListSuffixDescTv.text = combinedString
+
         }
     }
 
