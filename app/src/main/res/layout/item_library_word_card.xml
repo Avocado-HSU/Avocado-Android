@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
-
     <data>
+        <variable
+            name="searchWordViewModel"
+            type="com.example.avocado_android.ui.search.SearchViewModel" />
         <variable
             name="libraryData"
             type="com.example.avocado_android.domain.model.response.library.LibraryWordDto" />
@@ -71,7 +73,5 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@id/item_library_word_card_frontDes_tv"
             app:layout_constraintTop_toBottomOf="@+id/item_library_word_card_frontDes_tv" />
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

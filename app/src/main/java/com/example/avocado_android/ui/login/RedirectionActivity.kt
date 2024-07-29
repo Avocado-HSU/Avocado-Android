@@ -2,12 +2,14 @@ package com.example.avocado_android.ui.login
 
 import android.content.Intent
 import android.net.http.SslError
+import android.os.Build
 import android.util.Log
 import android.webkit.CookieManager
 import android.webkit.SslErrorHandler
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import androidx.annotation.RequiresApi
 import com.example.avocado_android.R
 import com.example.avocado_android.base.BaseActivity
 import com.example.avocado_android.databinding.ActivityRedirectionBinding
@@ -15,6 +17,8 @@ import com.example.avocado_android.ui.MainActivity
 import com.example.avocado_android.utils.token.TokenManager
 import dagger.hilt.android.AndroidEntryPoint
 
+
+@RequiresApi(Build.VERSION_CODES.O)
 @AndroidEntryPoint
 class RedirectionActivity :
     BaseActivity<ActivityRedirectionBinding>(R.layout.activity_redirection) {
@@ -71,7 +75,6 @@ class RedirectionActivity :
             }
         }
     }
-
     private fun handleCookies(url: String) {
         val cookieManager = CookieManager.getInstance()
         val cookies = cookieManager.getCookie(url)
@@ -103,6 +106,7 @@ class RedirectionActivity :
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun handleToken(token: String?) {
         if (token != null) {
             // 토큰 로그 출력

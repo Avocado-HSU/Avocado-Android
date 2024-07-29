@@ -23,6 +23,9 @@
         <action
             android:id="@+id/action_libraryFragment_to_searchFragment"
             app:destination="@id/searchFragment" />
+        <action
+            android:id="@+id/action_libraryFragment_to_wordListFragment"
+            app:destination="@id/wordListFragment" />
     </fragment>
     <fragment
         android:id="@+id/chatBotFragment"
@@ -39,6 +42,7 @@
             android:id="@+id/action_searchFragment_to_wordListFragment"
             app:destination="@id/wordListFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/wordListFragment"
         android:name="com.example.avocado_android.ui.wordList.WordListFragment"
