@@ -57,6 +57,6 @@
 | Image | Glide |
 
 ## 저작권
-Copyright 2024. 전세원 All rights reserved.
-ⓒ 2024. 전세원 All rights reserved.
+Copyright 2024. 전세원 All rights reserved.<br>
+ⓒ 2024. 전세원 All rights reserved.<br>
 (c) 2024. 전세원 All rights reserved.
