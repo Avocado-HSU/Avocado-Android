@@ -1,6 +1,6 @@
 ## AvocaDo
 <p align="center">
- 
+ <img src="https://github.com/user-attachments/assets/5d413d5c-76dc-424b-ad4e-ed5c510bcefb" alt="아보카도"/>
 </p>
 <div align="center">
  생성형 AI 기반 영어단어 암기 보조 서비스 안드로이드 파트
@@ -11,6 +11,7 @@
   - [내용](#내용)
   - [화면](#화면)
   - [기술스택](#기술스택)
+  - [저작권](#저작권)
 
 ## 개요
 - 프로젝트 이름: AvocaDo
@@ -54,3 +55,8 @@
 | Asynchronous | Coroutines, Flow |
 | Jetpack | DataBinding, Navigation, DataStore |
 | Image | Glide |
+
+## 저작권
+Copyright 2024. 전세원 All rights reserved.
+ⓒ 2024. 전세원 All rights reserved.
+(c) 2024. 전세원 All rights reserved.
