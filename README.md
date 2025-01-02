@@ -12,7 +12,7 @@
   - [화면](#화면)
   - [기술스택](#기술스택)
   - [저작권](#저작권)
-  - [실행영상](#실행영상)
+  - [실행영상(챗봇)](#실행영상(챗봇))
 
 ## 개요
 - 프로젝트 이름: AvocaDo (한성대학교 창업동아리)
@@ -61,7 +61,7 @@ Copyright 2024. 전세원 All rights reserved.<br>
 ⓒ 2024. 전세원 All rights reserved.<br>
 (c) 2024. 전세원 All rights reserved.
 
-## 실행영상 (챗봇)
+## 실행영상(챗봇)
 <div align="center">
   <video src="https://github.com/user-attachments/assets/698a7b8d-fa76-4199-bea6-427367500543" width="200" height="200" controls>
   </video>
