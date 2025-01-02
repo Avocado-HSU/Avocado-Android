@@ -1,6 +1,6 @@
 ## AvocaDo
 <p align="center">
- <img src="https://github.com/user-attachments/assets/5d413d5c-76dc-424b-ad4e-ed5c510bcefb" alt="아보카도"/>
+ <img width="350" src="https://github.com/user-attachments/assets/5d413d5c-76dc-424b-ad4e-ed5c510bcefb" alt="아보카도"/>
 </p>
 <div align="center">
  생성형 AI 기반 영어단어 암기 보조 서비스 안드로이드 파트
