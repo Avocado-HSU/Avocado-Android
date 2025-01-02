@@ -40,12 +40,11 @@
         - 단어 외우기 팁
 
 ## 화면
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/ede50a6a-d1c8-4ffd-964e-d66e87752215" alt="아보카도"/>
-</p>
+| 시작 화면 |             메인 홈             |             검색 화면                |              라이브러리               |              단어장               |              챗봇               |
+|:---:|:-----------------------------------------------------------------------------:|:-----------------------------------------------------------------------------:|:-----------------------------------------------------------------------------:|:-----------------------------------------------------------------------------:|:-----------------------------------------------------------------------------:|
+| <img width="250" src="https://github.com/user-attachments/assets/6eed4853-1376-4abb-b80c-8b0c29bf9ad0"/> | <img width="250" src="https://github.com/user-attachments/assets/5e1aa0ab-1a78-476b-8ac4-f8598a5b4d27"/> | <img width="250" src="https://github.com/user-attachments/assets/c54befd9-889f-4645-86e7-66b97f8a18c2"/> | <img width="250" src="https://github.com/user-attachments/assets/858d1dce-822a-49e8-a6ce-a2a591475678"/> | <img width="250" src="https://github.com/user-attachments/assets/c7c2c408-2c3c-4b0f-b072-a823a6a14386"/> | <img width="250" src="https://github.com/user-attachments/assets/0b498551-af50-4098-ba2c-d0886c8ad5ab"/> |
 
 ## 기술스택
-
 ### **🤖** 안드로이드
 | **Category** | **TechStack** |
 | --- | --- |
@@ -60,3 +59,10 @@
 Copyright 2024. 전세원 All rights reserved.<br>
 ⓒ 2024. 전세원 All rights reserved.<br>
 (c) 2024. 전세원 All rights reserved.
+
+## 실행영상 (챗봇)
+<div align="center">
+  <video src="https://github.com/user-attachments/assets/698a7b8d-fa76-4199-bea6-427367500543" width="200" height="200" controls>
+  </video>
+</div>
+
